@@ -1,0 +1,783 @@
+/* ==========================================================================
+   IMAGINE PRINTERS - High-Performance Creative Atelier
+   Typography: Outfit & Plus Jakarta Sans
+   Infinite Animated Gradients & Dynamic Aurora Canvas
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --brand-indigo: #3B2C85;
+  --brand-indigo-dark: #1A1343;
+  --brand-indigo-light: #614DC8;
+  --brand-lime: #94C120;
+  --brand-lime-hover: #82AA1B;
+  --brand-coral: #FF3366;
+  --brand-orange: #FF6B35;
+  --brand-yellow: #FFEE00;
+  --brand-dark: #07090F;
+  --brand-dark-surface: #0E121E;
+  --brand-dark-card: #131728;
+  --cmyk-cyan: #00AEEF;
+  --cmyk-magenta: #EC008C;
+  --cmyk-yellow: #FFF200;
+  --cmyk-black: #111827;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #f1f5f9;
+  background-color: #07090F;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.025em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #07090F;
+}
+::-webkit-scrollbar-thumb {
+  background: #3B2C85;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94C120;
+}
+
+/* Hide scrollbar for clean horizontal filter scrolling on mobile */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* CMYK Top Registration Bar */
+.cmyk-bar {
+  display: flex;
+  height: 4px;
+  width: 100%;
+  position: relative;
+  z-index: 60;
+}
+.cmyk-bar span {
+  flex: 1;
+}
+.cmyk-bar .cmyk-c { background: #00AEEF; }
+.cmyk-bar .cmyk-m { background: #EC008C; }
+.cmyk-bar .cmyk-y { background: #FFF200; }
+.cmyk-bar .cmyk-k { background: #3B2C85; }
+
+/* --------------------------------------------------------------------------
+   CUSTOM INTERACTIVE CURSOR (Ashvik Media Style: Transparent Ring + Text Zoom)
+   -------------------------------------------------------------------------- */
+#cursorDot {
+  width: 7px;
+  height: 7px;
+  background: linear-gradient(135deg, #FFEE00 0%, #94C120 100%);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px rgba(255, 238, 0, 0.9), 0 0 18px rgba(148, 193, 32, 0.6);
+  transition: transform 0.15s ease-out, opacity 0.2s ease;
+  opacity: 0;
+}
+
+#cursorRing {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(255, 204, 0, 0.7);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px rgba(255, 204, 0, 0.2);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease, 
+              box-shadow 0.25s ease,
+              opacity 0.2s ease;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important; /* ALWAYS TRANSPARENT - ZERO TEXT OBSCURING */
+}
+
+/* Dynamic Inner Text inside Transparent Cursor Ring (Ashvik Media Style) */
+#cursorText {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #94C120;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(148, 193, 32, 0.6);
+}
+
+/* Hover Expanding on Buttons & General Links (CLEAN TRANSPARENT HOLLOW RING) */
+#cursorRing.cursor-expand {
+  transform: translate(-50%, -50%) scale(1.6);
+  border-color: #94C120;
+  box-shadow: 0 0 20px rgba(148, 193, 32, 0.4);
+}
+
+#cursorDot.cursor-shrink {
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0.6;
+}
+
+/* Card Hover State: Expands as a Clean Transparent Outer Ring with Text */
+#cursorRing.cursor-card-hover {
+  width: 64px;
+  height: 64px;
+  transform: translate(-50%, -50%) scale(1);
+  border: 1.5px solid #94C120;
+  box-shadow: 0 0 25px rgba(148, 193, 32, 0.5), inset 0 0 12px rgba(148, 193, 32, 0.15);
+}
+
+#cursorRing.cursor-card-hover #cursorText {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#cursorDot.cursor-hide {
+  opacity: 0 !important;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+/* Text Zoom & Big Cursor Ring on Hover */
+.zoom-text-hover {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease, text-shadow 0.25s ease;
+  will-change: transform;
+}
+.zoom-text-hover:hover {
+  transform: scale(1.05);
+  color: #94C120 !important;
+  text-shadow: 0 0 20px rgba(148, 193, 32, 0.4);
+}
+
+#cursorRing.cursor-text-expand {
+  width: 62px;
+  height: 62px;
+  transform: translate(-50%, -50%) scale(1.35);
+  border: 1.5px solid #FFEE00;
+  box-shadow: 0 0 24px rgba(255, 238, 0, 0.5);
+}
+
+/* Click / Mouse Down State */
+#cursorRing.cursor-click {
+  transform: translate(-50%, -50%) scale(0.85);
+  border-color: #FF3366;
+}
+
+/* Gracefully Hide on Touch / Mobile Devices */
+@media (pointer: coarse), (max-width: 1024px) {
+  #cursorDot, #cursorRing {
+    display: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   SILKY-SMOOTH INFINITE BLENDED HERO LIGHTING (All 5 Brand Colors)
+   -------------------------------------------------------------------------- */
+.hero-ambient-container {
+  position: relative;
+  background-color: #060810;
+  overflow: hidden;
+}
+
+/* Tactile Prepress Dot Matrix Grid Texture */
+.prepress-grid-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Organic Ambient Floating Glowing Orbs - Smooth 26s-36s Fluid Drift */
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.28; }
+  35% { transform: translate(50px, -35px) scale(1.15); opacity: 0.38; }
+  70% { transform: translate(-30px, 30px) scale(0.92); opacity: 0.22; }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.24; }
+  40% { transform: translate(-60px, 45px) scale(1.2); opacity: 0.35; }
+  80% { transform: translate(35px, -25px) scale(0.9); opacity: 0.18; }
+}
+
+@keyframes orbFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+  50% { transform: translate(45px, 40px) scale(1.18); opacity: 0.32; }
+}
+
+@keyframes orbFloat4 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.18; }
+  45% { transform: translate(-40px, -45px) scale(1.15); opacity: 0.3; }
+}
+
+@keyframes orbFloat5 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.22; }
+  55% { transform: translate(55px, -30px) scale(1.18); opacity: 0.32; }
+}
+
+.hero-orb-indigo { animation: orbFloat1 26s ease-in-out infinite; }
+.hero-orb-lime { animation: orbFloat2 30s ease-in-out infinite; }
+.hero-orb-amber { animation: orbFloat3 34s ease-in-out infinite; }
+.hero-orb-cyan { animation: orbFloat4 28s ease-in-out infinite; }
+.hero-orb-magenta { animation: orbFloat5 32s ease-in-out infinite; }
+
+/* --------------------------------------------------------------------------
+   SCROLL-TRIGGERED MOTION ANIMATIONS (Smooth Reveal)
+   -------------------------------------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-1 { transition-delay: 0.08s; }
+.stagger-2 { transition-delay: 0.16s; }
+.stagger-3 { transition-delay: 0.24s; }
+.stagger-4 { transition-delay: 0.32s; }
+.stagger-5 { transition-delay: 0.4s; }
+
+
+/* --------------------------------------------------------------------------
+   INFINITE ANIMATED GLOWING GRADIENT TEXT (Works across entire phrases)
+   -------------------------------------------------------------------------- */
+@keyframes brandGradientFlow {
+  0% {
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 24px rgba(255, 107, 53, 0.45));
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: drop-shadow(0 0 32px rgba(255, 238, 0, 0.5));
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 24px rgba(255, 107, 53, 0.45));
+  }
+}
+
+.brand-gradient-text {
+  background: linear-gradient(105deg, #FF3366 0%, #FF6B35 25%, #FFB800 50%, #FFEE00 75%, #94C120 100%);
+  background-size: 250% 250%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: brandGradientFlow 4.5s ease infinite;
+  display: inline;
+  will-change: background-position, filter;
+}
+
+/* --------------------------------------------------------------------------
+   INTERACTIVE 3D PERSPECTIVE TILT & FINISH SIMULATOR
+   -------------------------------------------------------------------------- */
+.perspective-stage {
+  perspective: 1200px;
+}
+
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+/* Finish Simulator Overlays */
+.finish-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  z-index: 15;
+}
+
+.finish-active-spot-uv .finish-overlay-spot-uv {
+  opacity: 1;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0.35) 65%, rgba(255,255,255,0) 100%);
+  box-shadow: inset 0 0 35px rgba(255, 255, 255, 0.25);
+}
+
+.finish-active-gold-foil .finish-overlay-gold-foil {
+  opacity: 1;
+  background: linear-gradient(115deg, rgba(255, 215, 0, 0) 15%, rgba(255, 215, 0, 0.4) 50%, rgba(255, 245, 160, 0.6) 55%, rgba(255, 215, 0, 0) 75%);
+  mix-blend-mode: color-dodge;
+}
+
+.finish-active-velvet .finish-overlay-velvet {
+  opacity: 1;
+  background: radial-gradient(circle at center, rgba(15, 23, 42, 0.35) 0%, rgba(7, 9, 15, 0.65) 100%);
+  backdrop-filter: contrast(1.1) brightness(0.95);
+}
+
+.finish-active-led-acrylic {
+  box-shadow: 0 0 35px rgba(255, 187, 0, 0.45), 0 0 70px rgba(148, 193, 32, 0.3) !important;
+  border-color: rgba(255, 204, 0, 0.6) !important;
+}
+
+/* --------------------------------------------------------------------------
+   INTERACTIVE ANIMATED ICONS
+   -------------------------------------------------------------------------- */
+.icon-container {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.group:hover .icon-container {
+  transform: scale(1.12) rotate(6deg);
+  box-shadow: 0 12px 25px -4px rgba(148, 193, 32, 0.4);
+}
+
+@keyframes gentlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+.animate-icon-pulse {
+  animation: gentlePulse 2.5s infinite ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   MARQUEE UTILITIES
+   -------------------------------------------------------------------------- */
+@keyframes marqueeLeft {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: 200%;
+  animation: marqueeLeft 25s linear infinite;
+}
+.animate-marquee-left:hover {
+  animation-play-state: paused;
+}
+
+/* Giant Footer Marquee Typography */
+.footer-marquee-text {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.25);
+  color: transparent;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  display: flex;
+  transition: all 0.3s ease;
+}
+.footer-marquee-text:hover {
+  -webkit-text-stroke: 1.5px rgba(148, 193, 32, 0.7);
+  filter: drop-shadow(0 0 25px rgba(148, 193, 32, 0.4));
+}
+
+/* Spot UV Light Sweep Animation */
+.spot-uv-card {
+  position: relative;
+  overflow: hidden;
+}
+.spot-uv-card::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 50%;
+  height: 220%;
+  background: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.spot-uv-card:hover::after {
+  opacity: 1;
+  animation: shineSweep 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes shineSweep {
+  0% { transform: translateX(-150%) rotate(25deg); }
+  100% { transform: translateX(350%) rotate(25deg); }
+}
+
+/* Card Glow Effect on Hover */
+.glow-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-hover:hover {
+  transform: translateY(-5px);
+  border-color: rgba(148, 193, 32, 0.55);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.85), 0 0 25px 0 rgba(148, 193, 32, 0.25);
+}
+
+/* Glassmorphic Nav */
+.glass-nav {
+  background: rgba(7, 9, 15, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Multi-Channel Floating Dock */
+.floating-dock {
+  background: rgba(14, 18, 30, 0.95);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.85), 0 0 25px 0 rgba(148, 193, 32, 0.2);
+}
+
+/* Instagram Gradient Button */
+.btn-instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+/* Pulsing Status Orb */
+@keyframes pulseOrb {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(37, 211, 102, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+.pulse-orb {
+  animation: pulseOrb 1.8s infinite;
+}
+
+/* Filter Active Tab */
+.filter-btn.active {
+  background-color: #94C120 !important;
+  color: #07090F !important;
+  font-weight: 800 !important;
+  box-shadow: 0 8px 20px -4px rgba(148, 193, 32, 0.45);
+}
+
+/* Hero Showcase Tab Buttons */
+.hero-tab-btn.active {
+  background-color: #94C120;
+  color: #07090F;
+  font-weight: 800;
+  box-shadow: 0 4px 15px -2px rgba(148, 193, 32, 0.4);
+}
+
+/* Prepress Crosshair */
+.prepress-target {
+  width: 20px;
+  height: 20px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+}
+.prepress-target::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -4px;
+  right: -4px;
+  height: 1px;
+  background: currentColor;
+}
+.prepress-target::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -4px;
+  bottom: -4px;
+  width: 1px;
+  background: currentColor;
+}
+
+/* Lightbox Modal Animation */
+.modal-active {
+  display: flex !important;
+  animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Mobile Friendly Tap Target */
+@media (max-width: 640px) {
+  .floating-dock {
+    padding: 6px 12px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   INTERACTIVE SERVICE CARDS (Simple, Attractive, and Tactile)
+   -------------------------------------------------------------------------- */
+.service-card {
+  background: #0E121E;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-accent, #94C120);
+  transition: height 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 25px -5px var(--card-glow, rgba(148, 193, 32, 0.3));
+}
+
+.service-card:hover::before {
+  height: 4px;
+}
+
+/* Service Card Accents */
+.accent-cyan {
+  --card-accent: #00AEEF;
+  --card-glow: rgba(0, 174, 239, 0.35);
+}
+.accent-lime {
+  --card-accent: #94C120;
+  --card-glow: rgba(148, 193, 32, 0.35);
+}
+.accent-amber {
+  --card-accent: #FFB800;
+  --card-glow: rgba(255, 184, 0, 0.35);
+}
+.accent-magenta {
+  --card-accent: #EC008C;
+  --card-glow: rgba(236, 0, 140, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   TACTILE TEXTURE & EMBELLISHMENT CARDS (Realistic Previews)
+   -------------------------------------------------------------------------- */
+.texture-card {
+  background: #0E121E;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.texture-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(148, 193, 32, 0.45);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 20px 0 rgba(148, 193, 32, 0.25);
+}
+
+/* Foil Shimmer Animation */
+@keyframes foilShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.foil-gold-preview {
+  background: linear-gradient(
+    115deg,
+    #996515 0%,
+    #D4AF37 25%,
+    #FFF4D0 50%,
+    #AA771C 75%,
+    #805A10 100%
+  );
+  background-size: 200% 100%;
+}
+.texture-card:hover .foil-gold-preview {
+  animation: foilShimmer 2.2s linear infinite;
+}
+
+/* Spot UV Gloss Droplet Highlight */
+.spot-uv-preview {
+  background: radial-gradient(circle at 40% 40%, rgba(0, 174, 239, 0.25) 0%, #080D1A 80%);
+}
+
+/* Velvet Matte Suede Texture */
+.velvet-preview {
+  background: radial-gradient(circle at center, #261D42 0%, #0F0B1E 100%);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+/* Emboss 3D Relief Shadow */
+.emboss-preview {
+  background: #151922;
+  box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.1), inset -2px -2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* UV DTF Decal Glow */
+.uv-dtf-preview {
+  background: linear-gradient(135deg, #091F24 0%, #061118 100%);
+}
+
+/* GSM Thickness Range Slider */
+.gsm-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #1E2538;
+  outline: none;
+}
+.gsm-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #94C120;
+  border: 2px solid #07090F;
+  box-shadow: 0 0 15px rgba(148, 193, 32, 0.7);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.gsm-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* --------------------------------------------------------------------------
+   SCROLL-TRIGGERED MOTION REVEALS
+   -------------------------------------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-1 { transition-delay: 0.08s; }
+.stagger-2 { transition-delay: 0.16s; }
+.stagger-3 { transition-delay: 0.24s; }
+.stagger-4 { transition-delay: 0.32s; }
+.stagger-5 { transition-delay: 0.40s; }
+
+/* --------------------------------------------------------------------------
+   INFINITE ANIMATED MOBILE DRAWER BACKGROUND & STAGGERED ENTRANCE
+   -------------------------------------------------------------------------- */
+@keyframes mobileBgMesh {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.mobile-menu-container {
+  background: radial-gradient(circle at 15% 15%, rgba(59, 44, 133, 0.65) 0%, transparent 45%),
+              radial-gradient(circle at 85% 20%, rgba(236, 0, 140, 0.45) 0%, transparent 45%),
+              radial-gradient(circle at 10% 85%, rgba(0, 174, 239, 0.45) 0%, transparent 50%),
+              radial-gradient(circle at 85% 85%, rgba(148, 193, 32, 0.45) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(255, 184, 0, 0.30) 0%, transparent 55%),
+              #05070E;
+  background-size: 220% 220%;
+  animation: mobileBgMesh 12s ease-in-out infinite;
+}
+
+/* Floating Ambient Orbs inside Mobile Menu */
+@keyframes mobileOrbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.45; }
+  50% { transform: translate(35px, 45px) scale(1.3); opacity: 0.75; }
+}
+
+@keyframes mobileOrbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  50% { transform: translate(-40px, -35px) scale(1.25); opacity: 0.7; }
+}
+
+@keyframes mobileOrbFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.35; }
+  50% { transform: translate(30px, -40px) scale(1.35); opacity: 0.65; }
+}
+
+.mobile-orb-1 {
+  animation: mobileOrbFloat1 8s ease-in-out infinite;
+}
+.mobile-orb-2 {
+  animation: mobileOrbFloat2 10s ease-in-out infinite;
+}
+.mobile-orb-3 {
+  animation: mobileOrbFloat3 12s ease-in-out infinite;
+}
+
+/* Staggered Gliding Entrance Animation for Links */
+@keyframes mobileLinkSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mobile-menu-active .mobile-nav-link {
+  animation: mobileLinkSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mobile-menu-active .mobile-nav-link:nth-child(1) { animation-delay: 0.04s; }
+.mobile-menu-active .mobile-nav-link:nth-child(2) { animation-delay: 0.08s; }
+.mobile-menu-active .mobile-nav-link:nth-child(3) { animation-delay: 0.12s; }
+.mobile-menu-active .mobile-nav-link:nth-child(4) { animation-delay: 0.16s; }
+.mobile-menu-active .mobile-nav-link:nth-child(5) { animation-delay: 0.20s; }
+.mobile-menu-active .mobile-nav-link:nth-child(6) { animation-delay: 0.24s; }
+.mobile-menu-active .mobile-nav-link:nth-child(7) { animation-delay: 0.28s; }
+
+.mobile-menu-active .mobile-dock-enter {
+  animation: mobileLinkSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.32s forwards;
+  opacity: 0;
+}
+
+
+
+

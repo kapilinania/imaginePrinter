@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imagine Printers | Creative Commercial Printing, Branding & 3D Signages</title>
+  <meta name="description" content="Established in 2011 in Thane, Imagine Printers crafts luxury business cards, tri-fold brochures, LED signages, UV DTF stickers, and outdoor highway billboards.">
+  <meta name="keywords" content="Imagine Printers, printing thane, luxury visiting cards, brochure printing mumbai, 3d led signboard thane, uv dtf stickers, flex banner printing">
+  <link rel="icon" type="image/png" href="logo/Imagine Logo.png">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              indigo: '#3B2C85',
+              indigoDark: '#1A1343',
+              indigoLight: '#614DC8',
+              lime: '#94C120',
+              limeHover: '#82AA1B',
+              coral: '#FF3366',
+              orange: '#FF6B35',
+              yellow: '#FFEE00',
+              dark: '#07090F',
+              darkSurface: '#0E121E',
+              darkCard: '#131728',
+            },
+            cmyk: {
+              cyan: '#00AEEF',
+              magenta: '#EC008C',
+              yellow: '#FFF200',
+              black: '#111827',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Outfit"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Creative Studio CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#07090F] text-slate-100 antialiased selection:bg-brand-lime selection:text-brand-dark overflow-x-hidden">
+
+  <!-- Ashvik Media Style Custom Interactive Cursor (Dot + Expanding Ring + Card Text) -->
+  <div id="cursorDot"></div>
+  <div id="cursorRing">
+    <span id="cursorText"></span>
+  </div>
+
+  <!-- CMYK Top Registration Ribbon -->
+  <div class="cmyk-bar">
+    <span class="cmyk-c"></span>
+    <span class="cmyk-m"></span>
+    <span class="cmyk-y"></span>
+    <span class="cmyk-k"></span>
+  </div>
+
+  <!-- Top Announcement Utility Bar -->
+  <div class="bg-[#05060A] text-slate-400 text-xs py-2.5 px-4 border-b border-white/5">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center space-x-3">
+        <span class="inline-flex items-center text-brand-lime font-bold">
+          <span class="w-2 h-2 rounded-full bg-brand-lime mr-2 animate-ping"></span>
+          Est. 2011 • 13+ Years of Printing Mastery in Thane & Mumbai
+        </span>
+        <span class="hidden md:inline text-slate-700">•</span>
+        <span class="hidden md:inline text-slate-400">Same-Day Express Dispatch Available</span>
+      </div>
+      <div class="flex items-center space-x-6">
+        <a href="tel:9820636646" class="hover:text-brand-lime transition-colors flex items-center gap-1.5 text-slate-300">
+          <i class="fa-solid fa-phone text-brand-lime text-[11px]"></i>
+          <span>+91 98206 36646</span>
+        </a>
+        <a href="https://instagram.com/imagine_digital_print" target="_blank" class="hover:text-pink-400 transition-colors flex items-center gap-1.5 text-slate-300">
+          <i class="fa-brands fa-instagram text-pink-500 text-xs"></i>
+          <span>@imagine_digital_print</span>
+        </a>
+        <a href="https://g.page/r/CeP1FvGE_OIiEA0" target="_blank" class="hidden sm:flex hover:text-brand-lime transition-colors items-center gap-1.5 text-slate-300">
+          <i class="fa-solid fa-location-dot text-brand-lime text-[11px]"></i>
+          <span>Thane Facility</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Glassmorphic Header -->
+  <header class="sticky top-0 z-50 glass-nav border-b border-white/10 shadow-2xl transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="p-1.5 bg-white/95 rounded-2xl backdrop-blur-md shadow-lg border border-white/20 transition-transform duration-300 group-hover:scale-105">
+            <img src="logo/Imagine Logo.png" alt="Imagine Printers Logo" class="h-10 sm:h-11 w-auto object-contain">
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center space-x-8 font-semibold text-sm text-slate-300">
+          <a href="#home" class="text-brand-lime font-bold hover:text-white transition-colors">Home</a>
+          <a href="#services" class="hover:text-brand-lime transition-colors">Services</a>
+          <a href="#portfolio" class="hover:text-brand-lime transition-colors">Portfolio</a>
+          <a href="#finishes" class="hover:text-brand-lime transition-colors">Luxury Finishes</a>
+          <a href="#calculator" class="hover:text-brand-lime transition-colors">Spec Calculator</a>
+          <a href="#about" class="hover:text-brand-lime transition-colors">About</a>
+          <a href="#contact" class="hover:text-brand-lime transition-colors">Contact</a>
+        </nav>
+
+        <!-- Header Action Hub -->
+        <div class="hidden sm:flex items-center space-x-3">
+          <a href="https://instagram.com/imagine_digital_print" target="_blank" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500 text-slate-300 hover:text-pink-400 flex items-center justify-center text-sm transition-all" title="Follow us on Instagram">
+            <i class="fa-brands fa-instagram text-base"></i>
+          </a>
+          <a href="tel:9820636646" class="px-4 py-2.5 text-xs font-bold text-slate-200 bg-slate-900 border border-slate-800 rounded-xl hover:bg-slate-800 hover:text-white transition-all flex items-center gap-2">
+            <i class="fa-solid fa-phone text-brand-lime text-xs"></i>
+            <span>Call Desk</span>
+          </a>
+          <a href="https://wa.me/919820636646?text=Hello%20Imagine%20Printers%20team,%20I%20would%20like%20to%20get%20an%20instant%20quote." target="_blank" class="px-5 py-2.5 rounded-xl bg-brand-lime text-brand-dark font-heading font-black text-xs shadow-lg shadow-brand-lime/20 hover:bg-brand-limeHover transition-all flex items-center gap-2">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span>WhatsApp Quote</span>
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="mobileMenuBtn" class="lg:hidden p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white focus:outline-none">
+          <i class="fa-solid fa-bars-staggered text-lg text-brand-lime"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- App-Grade Interactive Full-Screen Mobile Drawer with Infinite Animated Ambient Lighting -->
+  <div id="mobileMenu" class="mobile-menu-container fixed inset-0 z-50 hidden flex-col justify-between p-4 sm:p-6 text-white h-[100dvh] max-h-[100dvh] overflow-hidden select-none">
+    
+    <!-- Infinite Ambient Glowing Floating Orbs in Mobile Drawer Background -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <div class="mobile-orb-1 absolute -top-16 -left-16 w-64 h-64 rounded-full bg-[#3B2C85] blur-[80px] opacity-60"></div>
+      <div class="mobile-orb-2 absolute top-1/3 -right-16 w-64 h-64 rounded-full bg-[#EC008C] blur-[90px] opacity-50"></div>
+      <div class="mobile-orb-3 absolute -bottom-16 left-1/4 w-72 h-72 rounded-full bg-[#94C120] blur-[100px] opacity-45"></div>
+      <div class="prepress-grid-pattern absolute inset-0 opacity-20"></div>
+    </div>
+
+    <!-- Header: Logo + Live Badge + Close Button -->
+    <div class="relative z-10 flex justify-between items-center border-b border-white/10 pb-3 shrink-0">
+      <div class="bg-white px-2.5 py-1 rounded-xl shadow-md">
+        <img src="logo/Imagine Logo.png" alt="Imagine Printers" class="h-8 w-auto">
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="px-2 py-0.5 rounded-full bg-brand-lime/20 border border-brand-lime/40 text-brand-lime text-[10px] font-mono font-bold">
+          LIVE ATELIER
+        </span>
+        <button id="closeMobileMenu" class="w-9 h-9 rounded-full bg-slate-900/80 border border-slate-700 text-slate-300 hover:text-white hover:border-brand-lime flex items-center justify-center text-lg transition-all" aria-label="Close Menu">
+          &times;
+        </button>
+      </div>
+    </div>
+
+    <!-- Staggered Numbered Nav Links (No Scroll - Perfectly proportioned for all mobile viewports) -->
+    <div class="relative z-10 flex flex-col justify-center flex-1 my-auto py-2 space-y-1 sm:space-y-1.5 font-heading text-lg sm:text-xl font-bold">
+      <a href="#home" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
+        <span class="group-hover:translate-x-1.5 transition-transform">Home</span>
+        <span class="text-[11px] font-mono text-slate-500 group-hover:text-brand-lime font-normal">01</span>
+      </a>
+      <a href="#services" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
+        <span class="group-hover:translate-x-1.5 transition-transform">Printing Services</span>
+        <span class="text-[11px] font-mono text-slate-500 group-hover:text-brand-lime font-normal">02</span>
+      </a>
+      <a href="#portfolio" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
+        <span class="group-hover:translate-x-1.5 transition-transform">Client Showcase</span>
+        <span class="text-[11px] font-mono text-slate-500 group-hover:text-brand-lime font-normal">03</span>
+      </a>
+      <a href="#finishes" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
+        <span class="group-hover:translate-x-1.5 transition-transform">Luxury Finishes</span>
+        <span class="text-[11px] font-mono text-slate-500 group-hover:text-brand-lime font-normal">04</span>
+      </a>
+      <a href="#calculator" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
+        <span class="group-hover:translate-x-1.5 transition-transform">Quote Estimator</span>
+        <span class="text-[11px] font-mono text-slate-500 group-hover:text-brand-lime font-normal">05</span>
+      </a>
+      <a href="#about" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
+        <span class="group-hover:translate-x-1.5 transition-transform">About Our Atelier</span>
+        <span class="text-[11px] font-mono text-slate-500 group-hover:text-brand-lime font-normal">06</span>
+      </a>
+      <a href="#contact" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
+        <span class="group-hover:translate-x-1.5 transition-transform">Thane Facility</span>
+        <span class="text-[11px] font-mono text-slate-500 group-hover:text-brand-lime font-normal">07</span>
+      </a>
+    </div>
+
+    <!-- Embedded Mobile Action Dock (Compact 2x2 Grid) -->
+    <div class="relative z-10 pt-2.5 border-t border-white/10 shrink-0 mobile-dock-enter">
+      <div class="grid grid-cols-2 gap-2">
+        <a href="https://wa.me/919820636646" class="py-2 px-3 rounded-xl bg-[#25D366] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg hover:brightness-110 active:scale-95 transition-all">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span>WhatsApp</span>
+        </a>
+        <a href="tel:9820636646" class="py-2 px-3 rounded-xl bg-brand-indigo text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg hover:bg-brand-indigoLight active:scale-95 transition-all">
+          <i class="fa-solid fa-phone text-brand-lime text-xs"></i>
+          <span>Direct Call</span>
+        </a>
+        <a href="https://instagram.com/imagine_digital_print" target="_blank" class="py-2 px-3 rounded-xl btn-instagram text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg hover:brightness-110 active:scale-95 transition-all">
+          <i class="fa-brands fa-instagram text-sm"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="https://g.page/r/CeP1FvGE_OIiEA0" target="_blank" class="py-2 px-3 rounded-xl bg-slate-900/90 text-slate-200 border border-slate-700/80 font-bold text-xs flex items-center justify-center gap-2 hover:border-brand-lime active:scale-95 transition-all">
+          <i class="fa-solid fa-map-location-dot text-brand-lime text-xs"></i>
+          <span>Google Map</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO SECTION WITH SILKY-SMOOTH AMBIENT LIGHTING & PREPRESS GRID PATTERN -->
+  <section id="home" class="hero-ambient-container prepress-grid-pattern relative text-white pt-8 pb-16 sm:pt-12 sm:pb-24 lg:pt-16 lg:pb-28 overflow-hidden">
+    
+    <!-- Organic Ambient Floating Radiant Orbs (Blended Brand Palette: Indigo, Lime, Amber, Cyan, Magenta) -->
+    <div class="hero-orb-indigo absolute -top-24 -left-24 w-96 sm:w-[540px] h-96 sm:h-[540px] bg-[#2A1E6B] rounded-full blur-[140px] sm:blur-[190px] pointer-events-none"></div>
+    <div class="hero-orb-lime absolute top-1/2 -right-20 w-80 sm:w-[480px] h-80 sm:h-[480px] bg-[#5C850E] rounded-full blur-[150px] sm:blur-[200px] pointer-events-none"></div>
+    <div class="hero-orb-amber absolute -bottom-24 left-1/3 w-72 sm:w-[420px] h-72 sm:h-[420px] bg-[#8A4B08] rounded-full blur-[130px] sm:blur-[180px] pointer-events-none"></div>
+    <div class="hero-orb-cyan absolute top-1/4 right-1/4 w-80 sm:w-[460px] h-80 sm:h-[460px] bg-[#0B4F6C] rounded-full blur-[140px] sm:blur-[190px] pointer-events-none"></div>
+    <div class="hero-orb-magenta absolute bottom-1/4 -left-16 w-72 sm:w-[400px] h-72 sm:h-[400px] bg-[#6B134D] rounded-full blur-[140px] sm:blur-[180px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        
+        <!-- Left Hero Content -->
+        <div class="lg:col-span-6 space-y-6 reveal-on-scroll">
+          
+          <div class="flex flex-wrap items-center gap-2">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-bold text-slate-300 shadow-xl">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-lime pulse-orb"></span>
+              <span class="text-brand-lime font-mono">ESTD. 2011</span>
+              <span class="text-slate-700">•</span>
+              <span>Thane Commercial Print Atelier</span>
+            </div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-indigo/30 border border-brand-indigo/50 text-[11px] font-mono font-bold text-slate-200">
+              <i class="fa-solid fa-bolt text-brand-lime"></i>
+              <span>Next-Day Dispatch Ready</span>
+            </div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-[11px] font-mono font-bold text-cyan-300">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+              <span>Press Load: 78% Active</span>
+            </div>
+          </div>
+
+          <!-- Headline with full-phrase animated gradient & text zoom -->
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-heading font-black tracking-tight leading-[1.15]">
+            <span class="zoom-text-hover">We Engineer Impeccable Prints For</span> <br>
+            <span class="brand-gradient-text text-4xl sm:text-6xl lg:text-7xl font-black zoom-text-hover">
+              Iconic Global Brands.
+            </span>
+          </h1>
+
+          <p class="text-slate-300 text-sm sm:text-base lg:text-lg max-w-xl font-light leading-relaxed">
+            From tactile velvet visiting cards and corporate brochures to 3D illuminated LED signboards and heavy-duty highway hoardings. We combine Japanese & German press precision with sensory craftsmanship across Thane, Mumbai, and India.
+          </p>
+
+          <!-- Interactive Action Buttons -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+            <a href="https://wa.me/919820636646?text=Hello%20Imagine%20Printers%20team,%20I%20would%20like%20to%20get%20an%20instant%20quote." target="_blank" class="px-7 py-4 rounded-xl bg-brand-lime text-brand-dark font-heading font-black text-sm shadow-xl shadow-brand-lime/25 hover:bg-brand-limeHover transition-all flex items-center justify-center gap-2.5 group">
+              <i class="fa-brands fa-whatsapp text-xl"></i>
+              <span>Get WhatsApp Quote</span>
+              <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="#portfolio" class="px-6 py-4 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white font-semibold text-sm border border-slate-800 shadow-lg transition-all flex items-center justify-center gap-2">
+              <i class="fa-solid fa-eye text-brand-lime"></i>
+              <span>Explore 54+ Client Works</span>
+            </a>
+          </div>
+
+          <!-- Creative Feature 1: Interactive Paper GSM & Tactile Thickness Simulator -->
+          <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 backdrop-blur-md shadow-xl">
+            <div class="flex items-center justify-between mb-2.5">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-brand-lime text-xs"></i>
+                <span class="text-xs font-heading font-black text-white uppercase tracking-wider">Tactile Stock & Paper Gauge:</span>
+              </div>
+              <span id="gsmBadge" class="px-2.5 py-0.5 rounded-full bg-brand-lime/20 border border-brand-lime/50 text-[11px] font-mono font-bold text-brand-lime">
+                350 GSM Velvet Touch
+              </span>
+            </div>
+            
+            <input id="gsmSlider" type="range" min="1" max="4" value="2" step="1" class="gsm-slider w-full mb-3 cursor-pointer">
+
+            <div class="grid grid-cols-3 gap-2 text-center text-[10px] font-mono">
+              <div class="p-2 rounded-xl bg-slate-950/60 border border-slate-800">
+                <span class="text-slate-400 block text-[9px] uppercase">Thickness</span>
+                <span id="gsmThickness" class="font-bold text-white text-xs">0.42 mm</span>
+              </div>
+              <div class="p-2 rounded-xl bg-slate-950/60 border border-slate-800">
+                <span class="text-slate-400 block text-[9px] uppercase">Rigidity</span>
+                <span id="gsmRigidity" class="font-bold text-brand-lime text-xs">92% Ultra-Rigid</span>
+              </div>
+              <div class="p-2 rounded-xl bg-slate-950/60 border border-slate-800">
+                <span class="text-slate-400 block text-[9px] uppercase">Recommended</span>
+                <span id="gsmUsage" class="font-bold text-cyan-300 text-xs truncate block">Luxury Cards</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trust Checkmarks -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 border-t border-slate-800/80 text-xs text-slate-300 font-medium">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-circle-check text-brand-lime"></i>
+              <span>Offset & Digital</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-circle-check text-brand-lime"></i>
+              <span>3D LED Signages</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-circle-check text-brand-lime"></i>
+              <span>UV DTF Stickers</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-circle-check text-brand-lime"></i>
+              <span>Doorstep Delivery</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Hero: Interactive Master Showcase Stage & Finish Simulator -->
+        <div class="lg:col-span-6 w-full">
+          <div class="bg-[#0E121E]/95 backdrop-blur-xl p-4 sm:p-6 rounded-3xl border border-slate-800/90 shadow-2xl">
+            
+            <!-- Category Switcher Tabs -->
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-3 mb-3 border-b border-slate-800 text-xs">
+              <button class="hero-tab-btn active px-3.5 py-2 rounded-xl bg-brand-lime text-brand-dark font-bold whitespace-nowrap transition-all" data-showcase="visiting_cards">
+                Visiting Cards
+              </button>
+              <button class="hero-tab-btn px-3.5 py-2 rounded-xl bg-slate-900 text-slate-300 hover:text-white font-bold whitespace-nowrap transition-all" data-showcase="brochures">
+                Brochures
+              </button>
+              <button class="hero-tab-btn px-3.5 py-2 rounded-xl bg-slate-900 text-slate-300 hover:text-white font-bold whitespace-nowrap transition-all" data-showcase="signages">
+                3D Signages
+              </button>
+              <button class="hero-tab-btn px-3.5 py-2 rounded-xl bg-slate-900 text-slate-300 hover:text-white font-bold whitespace-nowrap transition-all" data-showcase="flyers">
+                Flyers
+              </button>
+            </div>
+
+            <!-- Preview Card Stage with 3D Perspective Tilt Container -->
+            <div class="perspective-stage">
+              <div id="heroShowcaseCard" class="tilt-card relative rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 aspect-[16/11] spot-uv-card shadow-2xl transition-all">
+                <img id="heroShowcaseImg" src="images/temp_5.jpg" alt="Featured Client Deliverable" class="w-full h-full object-cover transition-all duration-300">
+                
+                <!-- Finish Simulation Overlays -->
+                <div class="finish-overlay finish-overlay-spot-uv"></div>
+                <div class="finish-overlay finish-overlay-gold-foil"></div>
+                <div class="finish-overlay finish-overlay-velvet"></div>
+
+                <div class="absolute top-3 left-3 z-20">
+                  <span id="heroShowcaseBadge" class="px-3 py-1 rounded-full bg-slate-900/90 backdrop-blur-md border border-brand-lime/40 text-[10px] font-mono font-bold text-brand-lime">
+                    Luxury Stationery
+                  </span>
+                </div>
+
+                <!-- Dynamic Finish Status Tag -->
+                <div class="absolute top-3 right-3 z-20">
+                  <span id="heroFinishTag" class="px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-[10px] font-mono font-bold text-slate-200 flex items-center gap-1 shadow-md">
+                    <i class="fa-solid fa-sparkles text-brand-lime text-[9px]"></i>
+                    <span id="heroFinishTagText">Spot UV Applied</span>
+                  </span>
+                </div>
+
+                <!-- Bottom Description Strip -->
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/95 via-black/75 to-transparent p-4 sm:p-5 flex justify-between items-end z-20">
+                  <div>
+                    <h3 id="heroShowcaseTitle" class="text-base sm:text-lg font-heading font-black text-white">
+                      Pro One Executive Business Card
+                    </h3>
+                    <p id="heroShowcaseSub" class="text-xs text-brand-lime font-medium mt-0.5">
+                      350 GSM Velvet Matte + Raised Gloss Spot UV
+                    </p>
+                  </div>
+                  <a href="#calculator" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold text-white transition-all">
+                    <span>Calculate Specs</span>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Finish Embellishment Toggles -->
+            <div class="mt-4 pt-3 border-t border-slate-800/80">
+              <span class="text-[11px] font-mono uppercase text-slate-400 font-bold block mb-2">
+                <i class="fa-solid fa-sparkles text-brand-lime mr-1"></i> Interactive Finish Simulator:
+              </span>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                <button class="hero-finish-btn active px-2.5 py-2 rounded-xl bg-brand-lime/20 border border-brand-lime text-brand-lime font-bold text-[11px] transition-all flex items-center justify-center gap-1.5" data-finish="spot-uv" data-finish-label="Raised 3D Spot UV">
+                  <span>Spot UV</span>
+                </button>
+                <button class="hero-finish-btn px-2.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white font-bold text-[11px] transition-all flex items-center justify-center gap-1.5" data-finish="gold-foil" data-finish-label="Metallic Gold Hot Foil">
+                  <span>Gold Foil</span>
+                </button>
+                <button class="hero-finish-btn px-2.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white font-bold text-[11px] transition-all flex items-center justify-center gap-1.5" data-finish="velvet" data-finish-label="Soft-Touch Velvet Matte">
+                  <span>Velvet Touch</span>
+                </button>
+                <button class="hero-finish-btn px-2.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white font-bold text-[11px] transition-all flex items-center justify-center gap-1.5" data-finish="led-acrylic" data-finish-label="3D Backlit Channel Acrylic">
+                  <span>3D LED Acrylic</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics Counter Bar - Fully Responsive 2x2 on Mobile, 4-Cols on Desktop (Zero Overflow) -->
+  <section id="metricsBar" class="relative z-20 mt-3 sm:-mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-[#0E121E] rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-800 p-3.5 sm:p-6 lg:p-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-6">
+        
+        <!-- Stat Card 1 -->
+        <div class="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-900/70 border border-slate-800/80 hover:border-brand-lime/40 transition-all flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3.5 min-w-0">
+          <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-brand-indigo/30 border border-brand-indigo/60 text-brand-lime text-base sm:text-xl flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-calendar-check"></i>
+          </div>
+          <div class="min-w-0 flex-1">
+            <div class="text-xl sm:text-2xl lg:text-3xl font-heading font-black text-white leading-tight">
+              <span class="stat-counter" data-target="13">0</span>+
+            </div>
+            <p class="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider font-mono truncate">Years Since 2011</p>
+          </div>
+        </div>
+
+        <!-- Stat Card 2 -->
+        <div class="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-900/70 border border-slate-800/80 hover:border-brand-lime/40 transition-all flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3.5 min-w-0">
+          <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-brand-lime/20 border border-brand-lime/40 text-brand-lime text-base sm:text-xl flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-boxes-stacked"></i>
+          </div>
+          <div class="min-w-0 flex-1">
+            <div class="text-xl sm:text-2xl lg:text-3xl font-heading font-black text-white leading-tight">
+              <span class="stat-counter" data-target="1200">0</span>+
+            </div>
+            <p class="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider font-mono truncate">Completed Jobs</p>
+          </div>
+        </div>
+
+        <!-- Stat Card 3 -->
+        <div class="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-900/70 border border-slate-800/80 hover:border-brand-lime/40 transition-all flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3.5 min-w-0">
+          <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-brand-indigo/30 border border-brand-indigo/60 text-brand-lime text-base sm:text-xl flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-building-flag"></i>
+          </div>
+          <div class="min-w-0 flex-1">
+            <div class="text-xl sm:text-2xl lg:text-3xl font-heading font-black text-white leading-tight">
+              <span class="stat-counter" data-target="450">0</span>+
+            </div>
+            <p class="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider font-mono truncate">Corporate Brands</p>
+          </div>
+        </div>
+
+        <!-- Stat Card 4 -->
+        <div class="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-900/70 border border-slate-800/80 hover:border-brand-lime/40 transition-all flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3.5 min-w-0">
+          <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 text-base sm:text-xl flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <div class="min-w-0 flex-1">
+            <div class="text-xl sm:text-2xl lg:text-3xl font-heading font-black text-white leading-tight">
+              4.9 / 5.0
+            </div>
+            <p class="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider font-mono truncate">5-Star Client Rating</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Trust Marquee -->
+  <section class="py-12 bg-[#07090F] overflow-hidden border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 mb-4 text-center">
+      <p class="text-xs uppercase tracking-widest font-bold text-slate-500 font-mono">
+        Chosen By Renowned Industry Leaders & Commercial Enterprises
+      </p>
+    </div>
+    <div class="relative w-full overflow-hidden">
+      <div class="animate-marquee-left flex items-center space-x-12 sm:space-x-16 text-slate-400 font-heading font-bold text-sm tracking-wider">
+        <span class="flex items-center gap-2"><i class="fa-solid fa-car text-brand-lime"></i> VOLKSWAGEN THANE</span>
+        <span class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-brand-indigoLight"></i> MARUTI SUZUKI NAVNIT</span>
+        <span class="flex items-center gap-2"><i class="fa-solid fa-microchip text-brand-lime"></i> TECH MAHINDRA</span>
+        <span class="flex items-center gap-2"><i class="fa-solid fa-hospital text-pink-500"></i> HORIZON PRIME HOSPITAL</span>
+        <span class="flex items-center gap-2"><i class="fa-solid fa-car-rear text-brand-lime"></i> CERAMIC PRO KAVACA</span>
+        <span class="flex items-center gap-2"><i class="fa-solid fa-brain text-cyan-400"></i> ZEEX AI LABS</span>
+        <span class="flex items-center gap-2"><i class="fa-solid fa-building text-brand-lime"></i> THE EMPIRE REALTY</span>
+        <span class="flex items-center gap-2"><i class="fa-solid fa-user-doctor text-pink-400"></i> DR. SUPREET BAJWA</span>
+        <!-- Infinite marquee repeat -->
+        <span class="flex items-center gap-2"><i class="fa-solid fa-car text-brand-lime"></i> VOLKSWAGEN THANE</span>
+        <span class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-brand-indigoLight"></i> MARUTI SUZUKI NAVNIT</span>
+        <span class="flex items-center gap-2"><i class="fa-solid fa-microchip text-brand-lime"></i> TECH MAHINDRA</span>
+        <span class="flex items-center gap-2"><i class="fa-solid fa-hospital text-pink-500"></i> HORIZON PRIME HOSPITAL</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Services Section (Enriched Content & Animated Icons) -->
+  <section id="services" class="py-24 bg-[#0A0D17]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-indigo/40 border border-brand-indigo text-brand-lime text-xs font-bold uppercase tracking-wider mb-3 font-mono">
+          Comprehensive Capabilities
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-black text-white tracking-tight">
+          End-to-End Precision <br>
+          <span class="brand-gradient-text font-black">Print & Branding Solutions.</span>
+        </h2>
+        <p class="text-slate-400 mt-3 text-base font-light">
+          From micro-detail luxury stationery to monumental 50-foot outdoor highway billboards, we guarantee physical and tactile perfection.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        
+        <!-- Service Card 1: Corporate Stationery -->
+        <div class="service-card accent-cyan p-6 sm:p-7 flex flex-col justify-between group reveal-on-scroll stagger-1" data-cursor="EXPLORE">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <div class="icon-container w-12 h-12 rounded-2xl bg-cyan-500/15 border border-cyan-400/30 text-cyan-400 flex items-center justify-center text-xl shadow-lg shadow-cyan-400/10 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-id-card"></i>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-slate-900/90 border border-slate-800 text-cyan-300 text-[10px] font-mono font-bold">
+                ⚡ 24H Turnaround
+              </span>
+            </div>
+            <h3 class="text-xl font-heading font-black text-white mb-2 group-hover:text-cyan-400 transition-colors zoom-text-hover">
+              Corporate Stationery
+            </h3>
+            <p class="text-slate-400 text-xs leading-relaxed mb-5 font-light">
+              Prestige corporate identity assets on fine European tactile stocks with foil & spot UV.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-2">
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Velvet Visiting Cards
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Letterheads & Envelopes
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Smart Corporate IDs
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Official Invoices
+              </span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+            <a href="#calculator" class="text-xs font-bold text-cyan-400 hover:text-white flex items-center gap-1.5 transition-colors">
+              <span>Configure Specs</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="https://wa.me/919820636646?text=Hi%20Imagine%20Printers,%20I%20need%20a%20quote%20for%20Corporate%20Stationery." target="_blank" class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-cyan-500 hover:text-brand-dark text-slate-400 flex items-center justify-center text-xs transition-all" title="WhatsApp Quote">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service Card 2: Marketing Collateral -->
+        <div class="service-card accent-lime p-6 sm:p-7 flex flex-col justify-between group reveal-on-scroll stagger-2" data-cursor="EXPLORE">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <div class="icon-container w-12 h-12 rounded-2xl bg-brand-lime/15 border border-brand-lime/30 text-brand-lime flex items-center justify-center text-xl shadow-lg shadow-brand-lime/10 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-newspaper"></i>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-slate-900/90 border border-slate-800 text-brand-lime text-[10px] font-mono font-bold">
+                🚀 High-Speed Run
+              </span>
+            </div>
+            <h3 class="text-xl font-heading font-black text-white mb-2 group-hover:text-brand-lime transition-colors zoom-text-hover">
+              Marketing Collateral
+            </h3>
+            <p class="text-slate-400 text-xs leading-relaxed mb-5 font-light">
+              High-volume promotional printing engineered with sharp offset color fidelity.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-2">
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-lime"></span> Tri-Fold & Bi-Fold
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-lime"></span> Gloss / Matte Flyers
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-lime"></span> Corporate Booklets
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-lime"></span> Restaurant Menus
+              </span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+            <a href="#calculator" class="text-xs font-bold text-brand-lime hover:text-white flex items-center gap-1.5 transition-colors">
+              <span>Configure Specs</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="https://wa.me/919820636646?text=Hi%20Imagine%20Printers,%20I%20need%20a%20quote%20for%20Marketing%20Collateral." target="_blank" class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-brand-lime hover:text-brand-dark text-slate-400 flex items-center justify-center text-xs transition-all" title="WhatsApp Quote">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service Card 3: Outdoor & 3D Signages -->
+        <div class="service-card accent-amber p-6 sm:p-7 flex flex-col justify-between group reveal-on-scroll stagger-3" data-cursor="EXPLORE">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <div class="icon-container w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center text-xl shadow-lg shadow-amber-500/10 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-store"></i>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-slate-900/90 border border-slate-800 text-amber-300 text-[10px] font-mono font-bold">
+                🛠️ CNC Fabrication
+              </span>
+            </div>
+            <h3 class="text-xl font-heading font-black text-white mb-2 group-hover:text-amber-400 transition-colors zoom-text-hover">
+              Signages & Outdoor
+            </h3>
+            <p class="text-slate-400 text-xs leading-relaxed mb-5 font-light">
+              Illuminated 3D channel letters and architectural storefronts engineered for 24/7 visibility.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-2">
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Backlit LED Signboards
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> 3D Acrylic Letters
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Heavy-Duty Hoardings
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Roll-Up Standees
+              </span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+            <a href="#calculator" class="text-xs font-bold text-amber-400 hover:text-white flex items-center gap-1.5 transition-colors">
+              <span>Configure Specs</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="https://wa.me/919820636646?text=Hi%20Imagine%20Printers,%20I%20need%20a%20quote%20for%20Signages%20and%20Outdoor." target="_blank" class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-amber-400 hover:text-brand-dark text-slate-400 flex items-center justify-center text-xs transition-all" title="WhatsApp Quote">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service Card 4: UV DTF & Next-Gen Merch -->
+        <div class="service-card accent-magenta p-6 sm:p-7 flex flex-col justify-between group reveal-on-scroll stagger-4" data-cursor="EXPLORE">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <div class="icon-container w-12 h-12 rounded-2xl bg-pink-500/15 border border-pink-500/30 text-pink-400 flex items-center justify-center text-xl shadow-lg shadow-pink-500/10 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-spray-can-sparkles"></i>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-slate-900/90 border border-slate-800 text-pink-300 text-[10px] font-mono font-bold">
+                💧 Waterproof 3D
+              </span>
+            </div>
+            <h3 class="text-xl font-heading font-black text-white mb-2 group-hover:text-pink-400 transition-colors zoom-text-hover">
+              UV DTF & Merch
+            </h3>
+            <p class="text-slate-400 text-xs leading-relaxed mb-5 font-light">
+              Permanent waterproof 3D varnish transfers for glass, metal, and branded corporate merchandise.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-2">
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span> 3D UV DTF Decals
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span> Die-Cut Vinyl Labels
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span> Ceramic Coffee Mugs
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span> Corporate Gift Kits
+              </span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+            <a href="#calculator" class="text-xs font-bold text-pink-400 hover:text-white flex items-center gap-1.5 transition-colors">
+              <span>Configure Specs</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="https://wa.me/919820636646?text=Hi%20Imagine%20Printers,%20I%20need%20a%20quote%20for%20UV%20DTF%20and%20Custom%20Merch." target="_blank" class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-pink-500 hover:text-white text-slate-400 flex items-center justify-center text-xs transition-all" title="WhatsApp Quote">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Filterable Real Client Portfolio with Mobile-Friendly Tabs -->
+  <section id="portfolio" class="py-24 bg-[#07090F] text-white relative">
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-indigo/30 border border-brand-indigo text-brand-lime text-xs font-bold uppercase tracking-wider mb-3 font-mono">
+            Genuine Client Deliverables
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-black tracking-tight">
+            Crafted With Precision. <br>
+            <span class="brand-gradient-text font-black">Printed For High-Impact.</span>
+          </h2>
+          <p class="text-slate-400 mt-2 text-sm sm:text-base max-w-xl font-light">
+            Click on any project to inspect high-resolution production mockups, paper grades, and tactile finishes.
+          </p>
+        </div>
+
+        <!-- Touch-Friendly Horizontally Scrollable Filter Tabs -->
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 w-full md:w-auto text-xs font-semibold">
+          <button class="filter-btn active px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white whitespace-nowrap transition-all" data-filter="all">
+            All Work
+          </button>
+          <button class="filter-btn px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white whitespace-nowrap transition-all" data-filter="visiting-cards">
+            Visiting Cards
+          </button>
+          <button class="filter-btn px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white whitespace-nowrap transition-all" data-filter="brochures">
+            Brochures
+          </button>
+          <button class="filter-btn px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white whitespace-nowrap transition-all" data-filter="flyers">
+            Flyers & Menus
+          </button>
+          <button class="filter-btn px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white whitespace-nowrap transition-all" data-filter="signages">
+            Signages & LED
+          </button>
+          <button class="filter-btn px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white whitespace-nowrap transition-all" data-filter="stationery">
+            Stationery
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Item 1: Pro One Visiting Card -->
+        <div class="portfolio-item portfolio-card group cursor-pointer spot-uv-card reveal-on-scroll stagger-1" data-category="visiting-cards" data-title="Executive Luxury Visiting Card" data-client="Pro One (Vishwajeet Salunke)" data-spec="350 GSM Velvet Matte + Metallic Raised Spot UV">
+          <div class="relative rounded-2xl overflow-hidden bg-[#121626] border border-slate-800 shadow-xl portfolio-card-inner">
+            <div class="aspect-[16/10] overflow-hidden">
+              <img src="images/temp_5.jpg" alt="Pro One Luxury Visiting Card" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-4 sm:p-5 bg-[#121626]/95 flex justify-between items-center border-t border-slate-800">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-brand-lime tracking-wider font-mono">Business Card</span>
+                <h4 class="text-base font-heading font-bold text-white group-hover:text-brand-lime transition-colors zoom-text-hover">Pro One Executive</h4>
+              </div>
+              <span class="w-9 h-9 rounded-full bg-slate-900 text-slate-300 flex items-center justify-center group-hover:bg-brand-lime group-hover:text-brand-dark transition-colors text-sm">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2: Zoe & Fleurs Visiting Card -->
+        <div class="portfolio-item portfolio-card group cursor-pointer spot-uv-card reveal-on-scroll stagger-2" data-category="visiting-cards" data-title="Pastel Floral Luxury Business Card" data-client="Zoe & Fleurs Bombay" data-spec="350 GSM Natural Matte Card + Dual QR Integration">
+          <div class="relative rounded-2xl overflow-hidden bg-[#121626] border border-slate-800 shadow-xl portfolio-card-inner">
+            <div class="aspect-[16/10] overflow-hidden">
+              <img src="images/temp_4.jpg" alt="Zoe & Fleurs Business Card" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-4 sm:p-5 bg-[#121626]/95 flex justify-between items-center border-t border-slate-800">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-brand-lime tracking-wider font-mono">Business Card</span>
+                <h4 class="text-base font-heading font-bold text-white group-hover:text-brand-lime transition-colors zoom-text-hover">Zoe & Fleurs Powai</h4>
+              </div>
+              <span class="w-9 h-9 rounded-full bg-slate-900 text-slate-300 flex items-center justify-center group-hover:bg-brand-lime group-hover:text-brand-dark transition-colors text-sm">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: Tech Mahindra Corporate Booklet -->
+        <div class="portfolio-item portfolio-card group cursor-pointer spot-uv-card reveal-on-scroll stagger-3" data-category="brochures" data-title="Enterprise Practice E-Book & Booklet" data-client="Tech Mahindra Ltd." data-spec="300 GSM Cover + 170 GSM Inner Pages with Satin Lamination">
+          <div class="relative rounded-2xl overflow-hidden bg-[#121626] border border-slate-800 shadow-xl portfolio-card-inner">
+            <div class="aspect-[16/10] overflow-hidden">
+              <img src="images/temp_35.jpg" alt="Tech Mahindra Oracle Practice Brochure" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-4 sm:p-5 bg-[#121626]/95 flex justify-between items-center border-t border-slate-800">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-brand-lime tracking-wider font-mono">Corporate Booklet</span>
+                <h4 class="text-base font-heading font-bold text-white group-hover:text-brand-lime transition-colors zoom-text-hover">Tech Mahindra Oracle</h4>
+              </div>
+              <span class="w-9 h-9 rounded-full bg-slate-900 text-slate-300 flex items-center justify-center group-hover:bg-brand-lime group-hover:text-brand-dark transition-colors text-sm">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4: Style 5 Hair Studio 3D Facade -->
+        <div class="portfolio-item portfolio-card group cursor-pointer spot-uv-card reveal-on-scroll stagger-1" data-category="signages" data-title="3D Warm Halo-Lit Acrylic Channel Letters" data-client="Style 5 Hair Studio" data-spec="Waterproof Gold Finish Acrylic + High-Density Warm LEDs">
+          <div class="relative rounded-2xl overflow-hidden bg-[#121626] border border-slate-800 shadow-xl portfolio-card-inner">
+            <div class="aspect-[16/10] overflow-hidden">
+              <img src="images/temp_50.jpg" alt="Style 5 Hair Studio Signage" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-4 sm:p-5 bg-[#121626]/95 flex justify-between items-center border-t border-slate-800">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-brand-lime tracking-wider font-mono">Illuminated Signage</span>
+                <h4 class="text-base font-heading font-bold text-white group-hover:text-brand-lime transition-colors zoom-text-hover">Style 5 3D Golden Facade</h4>
+              </div>
+              <span class="w-9 h-9 rounded-full bg-slate-900 text-slate-300 flex items-center justify-center group-hover:bg-brand-lime group-hover:text-brand-dark transition-colors text-sm">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5: Better Home Interior Storefront -->
+        <div class="portfolio-item portfolio-card group cursor-pointer spot-uv-card reveal-on-scroll stagger-2" data-category="signages" data-title="Modern 3D Illuminated Storefront Facade" data-client="Better Home Interior" data-spec="CNC Cut Acrylic Logo + Aluminum Composite Base">
+          <div class="relative rounded-2xl overflow-hidden bg-[#121626] border border-slate-800 shadow-xl portfolio-card-inner">
+            <div class="aspect-[16/10] overflow-hidden">
+              <img src="images/temp_49.jpg" alt="Better Home Interior Signage" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-4 sm:p-5 bg-[#121626]/95 flex justify-between items-center border-t border-slate-800">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-brand-lime tracking-wider font-mono">Storefront Signage</span>
+                <h4 class="text-base font-heading font-bold text-white group-hover:text-brand-lime transition-colors zoom-text-hover">Better Home Interior</h4>
+              </div>
+              <span class="w-9 h-9 rounded-full bg-slate-900 text-slate-300 flex items-center justify-center group-hover:bg-brand-lime group-hover:text-brand-dark transition-colors text-sm">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6: Dr. Supreet Bajwa Brochure -->
+        <div class="portfolio-item portfolio-card group cursor-pointer spot-uv-card reveal-on-scroll stagger-3" data-category="brochures" data-title="Medical Tri-fold Specialty Brochure" data-client="Dr. Supreet Bajwa (Wockhardt Hospital)" data-spec="250 GSM Premium Matte Stock + Precision Creasing">
+          <div class="relative rounded-2xl overflow-hidden bg-[#121626] border border-slate-800 shadow-xl portfolio-card-inner">
+            <div class="aspect-[16/10] overflow-hidden">
+              <img src="images/temp_33.jpg" alt="Dr. Supreet Bajwa Orthopaedic Brochure" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <div class="p-4 sm:p-5 bg-[#121626]/95 flex justify-between items-center border-t border-slate-800">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-brand-lime tracking-wider font-mono">Medical Brochure</span>
+                <h4 class="text-base font-heading font-bold text-white group-hover:text-brand-lime transition-colors zoom-text-hover">Dr. Bajwa Orthopaedic</h4>
+              </div>
+              <span class="w-9 h-9 rounded-full bg-slate-900 text-slate-300 flex items-center justify-center group-hover:bg-brand-lime group-hover:text-brand-dark transition-colors text-sm">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- More Projects Banner -->
+      <div class="mt-14 text-center">
+        <a href="https://wa.me/919820636646?text=Hello%20Imagine%20Printers,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20see%20more%20samples." target="_blank" class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-brand-lime text-brand-dark font-heading font-black text-sm shadow-xl shadow-brand-lime/25 hover:bg-brand-limeHover transition-all">
+          <i class="fa-brands fa-whatsapp text-xl"></i>
+          <span>Want More Genuine Client Samples? Chat With Us</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Print Quote & Specs Estimator -->
+  <section id="calculator" class="py-24 bg-[#0A0D17] relative border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-lime/20 text-brand-lime text-xs font-bold uppercase tracking-wider mb-3 font-mono">
+          Interactive Lead Estimator
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-black text-white tracking-tight">
+          Configure Your Custom Print In <br>
+          <span class="brand-gradient-text font-black">30 Seconds.</span>
+        </h2>
+        <p class="text-slate-400 mt-2 text-base font-light">
+          Select product, material grade, and volume below. Forward your configuration directly to our production desk on WhatsApp for instant pricing.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-5xl mx-auto">
+        
+        <!-- Calculator Inputs -->
+        <div class="lg:col-span-7 bg-[#121626] p-6 sm:p-9 rounded-3xl shadow-2xl border border-slate-800 space-y-6 w-full">
+          
+          <!-- Step 1: Select Product -->
+          <div>
+            <label class="block text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-2">
+              1. Choose Product Category
+            </label>
+            <div class="relative">
+              <select id="calcProduct" class="w-full bg-slate-900 border border-slate-750 rounded-xl px-4 py-3.5 text-sm font-semibold text-white focus:ring-2 focus:ring-brand-lime focus:border-transparent appearance-none">
+                <option value="visiting_cards">Visiting / Business Cards</option>
+                <option value="brochures">Brochures & Company Profiles</option>
+                <option value="flyers">Marketing Flyers & Leaflets</option>
+                <option value="signages">3D Glow Signboards & Storefronts</option>
+                <option value="standees">Roll-up Standees & Event Displays</option>
+                <option value="stickers">UV DTF Transfers & Custom Stickers</option>
+              </select>
+              <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                <i class="fa-solid fa-chevron-down text-xs"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Select Material & Finish -->
+          <div>
+            <label class="block text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-2">
+              2. Paper Stock, Material & Special Finish
+            </label>
+            <div class="relative">
+              <select id="calcMaterial" class="w-full bg-slate-900 border border-slate-750 rounded-xl px-4 py-3.5 text-sm font-semibold text-white focus:ring-2 focus:ring-brand-lime focus:border-transparent appearance-none">
+                <!-- Dynamically populated by js/main.js -->
+              </select>
+              <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                <i class="fa-solid fa-chevron-down text-xs"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Select Quantity / Volume -->
+          <div>
+            <label class="block text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-2">
+              3. Order Quantity / Dimensions
+            </label>
+            <div class="relative">
+              <select id="calcQuantity" class="w-full bg-slate-900 border border-slate-750 rounded-xl px-4 py-3.5 text-sm font-semibold text-white focus:ring-2 focus:ring-brand-lime focus:border-transparent appearance-none">
+                <!-- Dynamically populated by js/main.js -->
+              </select>
+              <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                <i class="fa-solid fa-chevron-down text-xs"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-400 font-medium">
+            <span class="flex items-center gap-1.5 text-slate-300">
+              <i class="fa-solid fa-truck-fast text-brand-lime"></i> Direct delivery in Thane, Mumbai & Navi Mumbai
+            </span>
+            <span class="text-brand-lime font-bold">GST Billing Included</span>
+          </div>
+
+        </div>
+
+        <!-- Live Summary & WhatsApp CTA -->
+        <div class="lg:col-span-5 bg-[#0A0C14] rounded-3xl p-6 sm:p-9 text-white shadow-2xl border border-slate-800 flex flex-col justify-between h-full w-full">
+          <div>
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+              <span class="text-xs uppercase font-mono font-bold text-brand-lime tracking-wider">Configured Specs</span>
+              <span class="px-2.5 py-1 rounded bg-brand-indigo/60 text-[11px] font-bold text-slate-200">Live Config</span>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <span class="text-[11px] text-slate-500 uppercase font-semibold">Selected Item:</span>
+                <p id="summaryProduct" class="text-base font-heading font-bold text-white mt-0.5">Visiting Cards</p>
+              </div>
+
+              <div>
+                <span class="text-[11px] text-slate-500 uppercase font-semibold">Stock / Finish:</span>
+                <p id="summaryMaterial" class="text-sm font-semibold text-brand-lime mt-0.5">350 GSM Premium Matte</p>
+              </div>
+
+              <div>
+                <span class="text-[11px] text-slate-500 uppercase font-semibold">Volume / Size:</span>
+                <p id="summaryQty" class="text-sm font-semibold text-slate-200 mt-0.5">500 Cards</p>
+              </div>
+
+              <div class="p-4 bg-slate-900/90 rounded-2xl border border-slate-800 text-xs text-slate-400 mt-6 space-y-1.5">
+                <p class="flex items-center gap-2 text-white font-semibold">
+                  <i class="fa-solid fa-shield-check text-brand-lime"></i> Free Artwork & Bleed Audit
+                </p>
+                <p>Our senior prepress engineers inspect bleed margins, resolution, and CMYK color profiles before running.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-slate-800">
+            <a id="whatsappQuoteBtn" href="https://wa.me/919820636646" target="_blank" class="w-full py-4 rounded-xl bg-brand-lime text-brand-dark font-heading font-black text-sm shadow-xl shadow-brand-lime/25 hover:bg-brand-limeHover transition-all flex items-center justify-center gap-2.5">
+              <i class="fa-brands fa-whatsapp text-xl"></i>
+              <span>Send Specs To WhatsApp</span>
+            </a>
+            <p class="text-[11px] text-slate-500 text-center mt-2.5 font-mono">
+              Instant quote with exact price & turnaround time in 15 minutes
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SPECIALTY TEXTURES & SENSORY EMBELLISHMENTS -->
+  <section id="finishes" class="py-24 bg-[#07090F] border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-indigo/30 border border-brand-indigo text-brand-lime text-xs font-bold uppercase tracking-wider mb-3 font-mono">
+          Tactile Craftsmanship Studio
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-black text-white tracking-tight">
+          Specialty Textures & Sensory <br>
+          <span class="brand-gradient-text font-black">Luxury Embellishments.</span>
+        </h2>
+        <p class="text-slate-400 mt-3 text-base font-light">
+          Elevate your corporate collateral from ordinary paper to physically memorable luxury objects. Experience how light and touch interact with each finish.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-6">
+        
+        <!-- Swatch 1: Velvet Soft-Touch -->
+        <div class="texture-card p-5 sm:p-6 flex flex-col justify-between group reveal-on-scroll stagger-1" data-cursor="SWATCH">
+          <div>
+            <div class="velvet-preview h-32 rounded-2xl border border-purple-500/30 p-4 flex flex-col justify-between mb-4 relative overflow-hidden">
+              <span class="px-2 py-0.5 rounded bg-purple-500/30 text-purple-200 font-mono text-[10px] font-bold self-start">
+                PEACH-SKIN MATTE
+              </span>
+              <div class="flex items-center justify-between text-white z-10">
+                <span class="text-xs font-heading font-black">Velvet Touch</span>
+                <i class="fa-solid fa-hand-sparkles text-purple-400"></i>
+              </div>
+            </div>
+            <h4 class="font-heading font-bold text-white text-base sm:text-lg mb-1.5 group-hover:text-brand-lime transition-colors zoom-text-hover">
+              Velvet Soft-Touch
+            </h4>
+            <p class="text-xs text-slate-300 font-light leading-relaxed mb-3">
+              Silky, suede-like tactile surface eliminating fingerprints with an ultra-luxurious, warm tactile hand-feel.
+            </p>
+          </div>
+          <div>
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span>350 GSM Stock</span>
+              <span class="text-purple-300 font-bold">Anti-Scuff</span>
+            </div>
+            <a href="https://wa.me/919820636646?text=Hi%20Imagine%20Printers,%20please%20send%20me%20a%20Velvet%20Soft-Touch%20physical%20sample%20swatch." target="_blank" class="mt-3 pt-2.5 border-t border-slate-800/60 text-[11px] font-bold text-brand-lime hover:text-white flex items-center justify-between transition-colors">
+              <span>Request Swatch</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Swatch 2: Raised 3D Spot UV -->
+        <div class="texture-card p-5 sm:p-6 flex flex-col justify-between group spot-uv-card reveal-on-scroll stagger-2" data-cursor="SWATCH">
+          <div>
+            <div class="spot-uv-preview h-32 rounded-2xl border border-cyan-500/30 p-4 flex flex-col justify-between mb-4 relative overflow-hidden">
+              <span class="px-2 py-0.5 rounded bg-cyan-500/30 text-cyan-200 font-mono text-[10px] font-bold self-start">
+                HIGH-BUILD GLOSS
+              </span>
+              <div class="flex items-center justify-between text-white z-10">
+                <span class="text-xs font-heading font-black">Spot UV 3D</span>
+                <i class="fa-solid fa-droplet text-cyan-400"></i>
+              </div>
+            </div>
+            <h4 class="font-heading font-bold text-white text-base sm:text-lg mb-1.5 group-hover:text-brand-lime transition-colors zoom-text-hover">
+              Raised Spot UV Gloss
+            </h4>
+            <p class="text-xs text-slate-300 font-light leading-relaxed mb-3">
+              High-build liquid polymer varnish creating high-gloss relief over key typography and brand logotypes.
+            </p>
+          </div>
+          <div>
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span>Gloss Relief</span>
+              <span class="text-cyan-300 font-bold">Reflective</span>
+            </div>
+            <a href="https://wa.me/919820636646?text=Hi%20Imagine%20Printers,%20please%20send%20me%20a%20Spot%20UV%20Gloss%20physical%20sample%20swatch." target="_blank" class="mt-3 pt-2.5 border-t border-slate-800/60 text-[11px] font-bold text-brand-lime hover:text-white flex items-center justify-between transition-colors">
+              <span>Request Swatch</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Swatch 3: Metallic Hot Foil -->
+        <div class="texture-card p-5 sm:p-6 flex flex-col justify-between group reveal-on-scroll stagger-3" data-cursor="SWATCH">
+          <div>
+            <div class="foil-gold-preview h-32 rounded-2xl border border-amber-400/40 p-4 flex flex-col justify-between mb-4 relative overflow-hidden shadow-lg">
+              <span class="px-2 py-0.5 rounded bg-black/60 backdrop-blur-sm text-amber-200 font-mono text-[10px] font-bold self-start">
+                MIRROR METALLIC
+              </span>
+              <div class="flex items-center justify-between text-white z-10 drop-shadow">
+                <span class="text-xs font-heading font-black">Gold / Copper Foil</span>
+                <i class="fa-solid fa-gem text-amber-200"></i>
+              </div>
+            </div>
+            <h4 class="font-heading font-bold text-white text-base sm:text-lg mb-1.5 group-hover:text-brand-lime transition-colors zoom-text-hover">
+              Metallic Hot Foil
+            </h4>
+            <p class="text-xs text-slate-300 font-light leading-relaxed mb-3">
+              Precision heated stamping applying genuine metallic foil (Gold, Silver, Copper) with mirror brilliance.
+            </p>
+          </div>
+          <div>
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span>Heated Press</span>
+              <span class="text-amber-300 font-bold">Prestige Class</span>
+            </div>
+            <a href="https://wa.me/919820636646?text=Hi%20Imagine%20Printers,%20please%20send%20me%20a%20Metallic%20Gold%20Foil%20physical%20sample%20swatch." target="_blank" class="mt-3 pt-2.5 border-t border-slate-800/60 text-[11px] font-bold text-brand-lime hover:text-white flex items-center justify-between transition-colors">
+              <span>Request Swatch</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Swatch 4: Blind Embossing & Deboss -->
+        <div class="texture-card p-5 sm:p-6 flex flex-col justify-between group reveal-on-scroll stagger-4" data-cursor="SWATCH">
+          <div>
+            <div class="emboss-preview h-32 rounded-2xl border border-lime-500/30 p-4 flex flex-col justify-between mb-4 relative overflow-hidden">
+              <span class="px-2 py-0.5 rounded bg-lime-500/20 text-brand-lime font-mono text-[10px] font-bold self-start">
+                3D SCULPTED RELIEF
+              </span>
+              <div class="flex items-center justify-between text-white z-10">
+                <span class="text-xs font-heading font-black">Emboss / Deboss</span>
+                <i class="fa-solid fa-stamp text-brand-lime"></i>
+              </div>
+            </div>
+            <h4 class="font-heading font-bold text-white text-base sm:text-lg mb-1.5 group-hover:text-brand-lime transition-colors zoom-text-hover">
+              Emboss & Deboss
+            </h4>
+            <p class="text-xs text-slate-300 font-light leading-relaxed mb-3">
+              Mechanical brass die pressing that elevates artwork into heavy cotton card stocks for sculpted luxury.
+            </p>
+          </div>
+          <div>
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span>Dimensional</span>
+              <span class="text-brand-lime font-bold">Pure Texture</span>
+            </div>
+            <a href="https://wa.me/919820636646?text=Hi%20Imagine%20Printers,%20please%20send%20me%20an%20Emboss%20Deboss%20physical%20sample%20swatch." target="_blank" class="mt-3 pt-2.5 border-t border-slate-800/60 text-[11px] font-bold text-brand-lime hover:text-white flex items-center justify-between transition-colors">
+              <span>Request Swatch</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Swatch 5: UV DTF 3D Transfers -->
+        <div class="texture-card p-5 sm:p-6 flex flex-col justify-between group reveal-on-scroll stagger-5" data-cursor="SWATCH">
+          <div>
+            <div class="uv-dtf-preview h-32 rounded-2xl border border-teal-500/30 p-4 flex flex-col justify-between mb-4 relative overflow-hidden">
+              <span class="px-2 py-0.5 rounded bg-teal-500/30 text-teal-200 font-mono text-[10px] font-bold self-start">
+                UNIVERSAL BOND
+              </span>
+              <div class="flex items-center justify-between text-white z-10">
+                <span class="text-xs font-heading font-black">UV DTF Decal</span>
+                <i class="fa-solid fa-layer-group text-teal-400"></i>
+              </div>
+            </div>
+            <h4 class="font-heading font-bold text-white text-base sm:text-lg mb-1.5 group-hover:text-brand-lime transition-colors zoom-text-hover">
+              UV DTF Transfers
+            </h4>
+            <p class="text-xs text-slate-300 font-light leading-relaxed mb-3">
+              Direct-to-Film UV printed decals with varnish layering. Permanent waterproof bond on glass, metal & plastic.
+            </p>
+          </div>
+          <div>
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span>Waterproof</span>
+              <span class="text-teal-300 font-bold">Any Surface</span>
+            </div>
+            <a href="https://wa.me/919820636646?text=Hi%20Imagine%20Printers,%20please%20send%20me%20a%20UV%20DTF%20Decal%20physical%20sample%20swatch." target="_blank" class="mt-3 pt-2.5 border-t border-slate-800/60 text-[11px] font-bold text-brand-lime hover:text-white flex items-center justify-between transition-colors">
+              <span>Request Swatch</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT IMAGINE PRINTERS (FULL PHRASE GRADIENT APPLIED) -->
+  <section id="about" class="py-24 bg-[#0A0D17] text-white relative overflow-hidden border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-5 relative">
+          <div class="rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-800 bg-slate-900">
+            <img src="images/temp_2.jpg" alt="Imagine Printers Profile" class="w-full h-auto object-cover">
+          </div>
+          <div class="absolute -bottom-6 -right-6 bg-brand-indigo text-white p-6 rounded-2xl shadow-2xl border border-brand-lime/30 hidden sm:block">
+            <p class="text-3xl font-heading font-black text-brand-lime">13+ Years</p>
+            <p class="text-xs text-slate-300 font-mono">Serving Thane & Mumbai Since 2011</p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-lime/20 text-brand-lime text-xs font-bold uppercase tracking-wider font-mono">
+            Our Journey & Heritage
+          </div>
+
+          <!-- Headline with complete phrase glowing gradient matching User Request -->
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-black tracking-tight leading-tight">
+            More Than Just A Print Shop. <br>
+            <span class="brand-gradient-text font-black">Your Strategic Creative Branding Atelier.</span>
+          </h2>
+
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
+            Established in <strong>2011</strong>, Imagine Printers has been delivering creative design and premium printing solutions to businesses across Thane and beyond. With years of experience and an unwavering commitment to quality, we provide complete <strong>branding, design, marketing, and printing solutions</strong> tailored for businesses of all sizes — from dynamic startups to established corporate giants.
+          </p>
+
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
+            We combine high-precision Japanese/German digital presses, heavy-gauge large format UV flatbeds, and skilled artisanal finishing to ensure every single visiting card, brochure, and outdoor sign stands out in the bustling Mumbai metropolitan market.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-xs sm:text-sm font-semibold text-slate-300">
+            <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+              <i class="fa-solid fa-eye text-brand-lime text-lg mb-2 block"></i>
+              <span>Visionary Graphic Design</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+              <i class="fa-solid fa-palette text-brand-lime text-lg mb-2 block"></i>
+              <span>Strict CMYK Calibration</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+              <i class="fa-solid fa-truck-fast text-brand-lime text-lg mb-2 block"></i>
+              <span>Swift Express Dispatch</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Direct Location Section -->
+  <section id="contact" class="py-24 bg-[#07090F] border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-indigo/30 border border-brand-indigo text-brand-lime text-xs font-bold uppercase tracking-wider mb-3 font-mono">
+          Connect With Production
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-black text-white tracking-tight">
+          Let’s Bring Your Vision To <br>
+          <span class="brand-gradient-text font-black">Tangible Life.</span>
+        </h2>
+        <p class="text-slate-400 mt-2 text-base font-light">
+          Visit our Thane facility, connect on WhatsApp, or send your print artwork directly to our production desk.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Contact Cards -->
+        <div class="lg:col-span-5 space-y-4">
+          
+          <div class="bg-[#0E121E] p-6 rounded-3xl border border-slate-800 flex items-start gap-4 glow-hover">
+            <div class="w-12 h-12 rounded-2xl bg-brand-indigo text-white flex items-center justify-center text-xl shrink-0 shadow-lg">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <div>
+              <h4 class="font-heading font-bold text-white text-sm sm:text-base">Direct Phone & WhatsApp</h4>
+              <p class="text-xs text-slate-400 mb-1">Mon - Sat: 9:30 AM to 8:00 PM</p>
+              <a href="tel:9820636646" class="text-base font-extrabold text-brand-lime hover:underline">
+                +91 98206 36646
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-[#0E121E] p-6 rounded-3xl border border-slate-800 flex items-start gap-4 glow-hover">
+            <div class="w-12 h-12 rounded-2xl bg-brand-lime text-brand-dark flex items-center justify-center text-xl shrink-0 shadow-lg">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div>
+              <h4 class="font-heading font-bold text-white text-sm sm:text-base">Official Production Email</h4>
+              <p class="text-xs text-slate-400 mb-1">Send high-res artwork, PDFs & tenders</p>
+              <a href="mailto:imaginestd@gmail.com" class="text-sm font-extrabold text-brand-lime hover:underline">
+                imaginestd@gmail.com
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-[#0E121E] p-6 rounded-3xl border border-slate-800 flex items-start gap-4 glow-hover">
+            <div class="w-12 h-12 rounded-2xl btn-instagram text-white flex items-center justify-center text-xl shrink-0 shadow-lg">
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div>
+              <h4 class="font-heading font-bold text-white text-sm sm:text-base">Instagram Showcase</h4>
+              <p class="text-xs text-slate-400 mb-1">Daily live print runs & BTS footage</p>
+              <a href="https://instagram.com/imagine_digital_print" target="_blank" class="text-sm font-extrabold text-pink-400 hover:underline">
+                @imagine_digital_print
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-[#0E121E] p-6 rounded-3xl border border-slate-800 flex items-start gap-4 glow-hover">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-950 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-xl shrink-0 shadow-lg">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <h4 class="font-heading font-bold text-white text-sm sm:text-base">Thane Facility Location</h4>
+              <p class="text-xs text-slate-400 mb-1">Thane West, Maharashtra, India</p>
+              <a href="https://g.page/r/CeP1FvGE_OIiEA0" target="_blank" class="text-xs font-bold text-brand-lime flex items-center gap-1.5 hover:underline">
+                <span>View Google Business Profile</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Quick Inquiry Form -->
+        <div class="lg:col-span-7 bg-[#0E121E] p-6 sm:p-9 rounded-3xl border border-slate-800 shadow-2xl">
+          <h3 class="text-xl sm:text-2xl font-heading font-bold text-white mb-2">
+            Send Quick Inquiry
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-400 mb-6">Our pre-press manager will reply with cost & mockups within 15 minutes.</p>
+
+          <form onsubmit="event.preventDefault(); window.open('https://wa.me/919820636646?text=Hi%20Imagine%20Printers,%20Name:%20' + encodeURIComponent(document.getElementById('formName').value) + '%20Phone:%20' + encodeURIComponent(document.getElementById('formPhone').value) + '%20Requirement:%20' + encodeURIComponent(document.getElementById('formMsg').value), '_blank');" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-mono font-bold text-slate-400 uppercase mb-1">Your Name</label>
+                <input id="formName" type="text" required placeholder="E.g., Vishwajeet Salunke" class="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-750 text-white text-sm focus:ring-2 focus:ring-brand-lime focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-xs font-mono font-bold text-slate-400 uppercase mb-1">Contact Phone</label>
+                <input id="formPhone" type="tel" required placeholder="+91 98206 36646" class="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-750 text-white text-sm focus:ring-2 focus:ring-brand-lime focus:border-transparent">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono font-bold text-slate-400 uppercase mb-1">Print Requirements</label>
+              <textarea id="formMsg" rows="3" required placeholder="E.g., 500 visiting cards with velvet touch and spot UV, or 3D LED glow signage for showroom" class="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-750 text-white text-sm focus:ring-2 focus:ring-brand-lime focus:border-transparent"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 rounded-xl bg-brand-lime text-brand-dark font-heading font-black text-sm hover:bg-brand-limeHover shadow-xl shadow-brand-lime/25 transition-all flex items-center justify-center gap-2.5">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Send Quick Inquiry on WhatsApp</span>
+            </button>
+          </form>
+
+          <div class="mt-6 pt-6 border-t border-slate-800 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl bg-brand-indigo/30 border border-brand-indigo flex items-center justify-center text-brand-lime text-sm">
+                <i class="fa-solid fa-map-pin"></i>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-white">Verified Google Business Listing</p>
+                <p class="text-[11px] text-slate-400 font-mono">Thane, Mumbai Metropolitan Region</p>
+              </div>
+            </div>
+            <a href="https://g.page/r/CeP1FvGE_OIiEA0" target="_blank" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs font-bold text-brand-lime hover:bg-brand-lime hover:text-brand-dark transition-all">
+              Open Map
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       WORLD-CLASS CREATIVE FOOTER WITH INFINITE MARQUEE & INTERACTIVE TOOLS
+       ========================================================================== -->
+  <footer class="bg-[#040508] text-slate-300 pt-16 pb-12 border-t border-white/10 relative overflow-hidden">
+    
+    <!-- Giant Infinite Running Marquee -->
+    <div class="w-full overflow-hidden border-b border-white/10 pb-8 mb-14 select-none">
+      <div class="animate-marquee-left flex items-center space-x-12">
+        <span class="footer-marquee-text text-5xl sm:text-7xl lg:text-8xl">
+          IMAGINE PRINTERS • COMMERCIAL ATELIER • THANE & MUMBAI • ESTD. 2011 • 2400 DPI MASTER PRINTING •&nbsp;
+        </span>
+        <span class="footer-marquee-text text-5xl sm:text-7xl lg:text-8xl">
+          IMAGINE PRINTERS • COMMERCIAL ATELIER • THANE & MUMBAI • ESTD. 2011 • 2400 DPI MASTER PRINTING •&nbsp;
+        </span>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Interactive Tool Grid in Footer -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+        
+        <!-- Pincode Delivery Availability Estimator -->
+        <div class="lg:col-span-6 bg-[#0B0E1A] p-6 sm:p-7 rounded-3xl border border-slate-800 shadow-xl">
+          <div class="flex items-center gap-2.5 mb-2">
+            <i class="fa-solid fa-truck-fast text-brand-lime"></i>
+            <h4 class="font-heading font-bold text-white text-base">Check Express Doorstep Dispatch</h4>
+          </div>
+          <p class="text-xs text-slate-400 mb-4 font-light">Enter your pincode to check same-day or 24-hour courier service availability.</p>
+          
+          <div class="flex items-center gap-2">
+            <input id="footerPincodeInput" type="text" maxlength="6" placeholder="E.g. 400601 (Thane)" class="px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-750 text-white text-xs font-mono w-48 focus:ring-2 focus:ring-brand-lime focus:border-transparent">
+            <button id="footerPincodeBtn" class="px-4 py-2.5 rounded-xl bg-brand-lime text-brand-dark font-heading font-bold text-xs hover:bg-brand-limeHover transition-all">
+              Verify Pin
+            </button>
+          </div>
+          <p id="footerPincodeResult" class="text-xs mt-3 hidden font-mono"></p>
+        </div>
+
+        <!-- Direct Prepress File Drop Prompt -->
+        <div class="lg:col-span-6 bg-[#0B0E1A] p-6 sm:p-7 rounded-3xl border border-slate-800 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2.5 mb-1.5">
+              <i class="fa-solid fa-cloud-arrow-up text-brand-lime"></i>
+              <h4 class="font-heading font-bold text-white text-base">Got Print Files Ready?</h4>
+            </div>
+            <p class="text-xs text-slate-400 font-light">Send your PDF, AI, CDR, or ZIP file straight to WhatsApp for immediate prepress review.</p>
+          </div>
+          <a href="https://wa.me/919820636646?text=Hi%20Imagine%20Printers,%20I%20have%20artwork%20files%20ready%20to%20send%20for%20printing." target="_blank" class="px-5 py-3 rounded-xl bg-[#25D366] text-white font-bold text-xs flex items-center gap-2 shadow-lg shrink-0 hover:scale-105 transition-transform">
+            <i class="fa-brands fa-whatsapp text-base"></i>
+            <span>Send Artwork</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Live Atelier Telemetry Bar -->
+      <div class="mb-14 p-5 sm:p-6 rounded-3xl bg-[#0B0E1A] border border-white/10 shadow-2xl flex flex-wrap items-center justify-between gap-6">
+        
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-brand-lime pulse-orb"></span>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono font-bold text-white uppercase tracking-wider">Thane Atelier Console</span>
+              <span class="px-2 py-0.5 rounded bg-brand-lime/20 text-brand-lime text-[10px] font-mono font-bold">ACTIVE</span>
+            </div>
+            <p class="text-[11px] text-slate-400 font-mono">19.2183° N, 72.9781° E • Local Time: <span id="studioLiveClock" class="text-brand-lime font-bold">--:--:-- IST</span></p>
+          </div>
+        </div>
+
+        <!-- Densitometer CMYK Swatches & Target -->
+        <div class="hidden md:flex items-center gap-4 text-xs font-mono text-slate-400">
+          <div class="flex items-center gap-1.5">
+            <span class="w-4 h-4 rounded bg-cmyk-cyan inline-block shadow-sm" title="Cyan 100%"></span>
+            <span class="w-4 h-4 rounded bg-cmyk-magenta inline-block shadow-sm" title="Magenta 100%"></span>
+            <span class="w-4 h-4 rounded bg-cmyk-yellow inline-block shadow-sm" title="Yellow 100%"></span>
+            <span class="w-4 h-4 rounded bg-brand-indigo inline-block shadow-sm" title="Key 100%"></span>
+          </div>
+          <span class="text-slate-600">|</span>
+          <div class="flex items-center gap-1.5">
+            <span class="prepress-target text-slate-400"></span>
+            <span>2400 DPI Pre-Press Calibrated</span>
+          </div>
+        </div>
+
+        <!-- Back To Top Button -->
+        <button id="backToTopBtn" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs font-mono font-bold text-slate-300 hover:text-brand-lime hover:border-brand-lime transition-all flex items-center gap-2">
+          <span>Back to Top</span>
+          <i class="fa-solid fa-arrow-up text-brand-lime"></i>
+        </button>
+
+      </div>
+
+      <!-- Fresh Deliveries Reel Strip -->
+      <div class="mb-16">
+        <div class="flex items-center justify-between mb-5">
+          <span class="text-xs font-mono uppercase tracking-widest text-slate-400 font-bold flex items-center gap-2">
+            <i class="fa-solid fa-camera-retro text-brand-lime"></i> Fresh Off Our Presses & CNC Beds:
+          </span>
+          <a href="https://instagram.com/imagine_digital_print" target="_blank" class="text-xs font-mono text-pink-400 hover:underline flex items-center gap-1">
+            <span>Follow @imagine_digital_print</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <a href="images/temp_4.jpg" target="_blank" class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-900 border border-slate-800/80 block">
+            <img src="images/temp_4.jpg" alt="Zoe & Fleurs Luxury Business Card" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-3 flex flex-col justify-end">
+              <span class="text-[10px] text-brand-lime font-mono">Zoe & Fleurs</span>
+              <span class="text-xs font-bold text-white">Velvet QR Card</span>
+            </div>
+          </a>
+
+          <a href="images/temp_35.jpg" target="_blank" class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-900 border border-slate-800/80 block">
+            <img src="images/temp_35.jpg" alt="Tech Mahindra Oracle Practice Booklet" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-3 flex flex-col justify-end">
+              <span class="text-[10px] text-brand-lime font-mono">Tech Mahindra</span>
+              <span class="text-xs font-bold text-white">Corporate E-Book</span>
+            </div>
+          </a>
+
+          <a href="images/temp_50.jpg" target="_blank" class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-900 border border-slate-800/80 block">
+            <img src="images/temp_50.jpg" alt="Style 5 Hair Studio 3D LED Signage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-3 flex flex-col justify-end">
+              <span class="text-[10px] text-brand-lime font-mono">Style 5 Salon</span>
+              <span class="text-xs font-bold text-white">3D Warm Backlit</span>
+            </div>
+          </a>
+
+          <a href="images/temp_45.jpg" target="_blank" class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-900 border border-slate-800/80 block">
+            <img src="images/temp_45.jpg" alt="Soft Spot Illuminated Cafe Menu Board" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-3 flex flex-col justify-end">
+              <span class="text-[10px] text-brand-lime font-mono">Soft Spot Cafe</span>
+              <span class="text-xs font-bold text-white">LED Glow Menu</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Interactive Quick Swatch & Action Bar (Zero Dead Space) -->
+      <div class="mb-12 p-4 sm:p-5 rounded-2xl bg-[#0B0E1A] border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2.5">
+          <i class="fa-solid fa-bolt text-brand-lime"></i>
+          <span class="text-xs font-mono font-bold text-white uppercase tracking-wider">Fast-Track Studio Desk:</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <a href="https://wa.me/919820636646?text=Hi%20Imagine%20Printers,%20I%20would%20like%20to%20request%20a%20Free%20Physical%20Swatch%20Sample%20Pack." target="_blank" class="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-brand-lime hover:text-brand-dark border border-slate-800 text-slate-300 text-xs font-bold transition-all flex items-center gap-1.5">
+            <span>📦 Free Sample Swatch Box</span>
+          </a>
+          <a href="#calculator" class="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-brand-lime hover:text-brand-dark border border-slate-800 text-slate-300 text-xs font-bold transition-all flex items-center gap-1.5">
+            <span>⚡ 30s Instant Estimator</span>
+          </a>
+          <a href="https://wa.me/919820636646?text=Hi%20Imagine%20Printers,%20I%20have%20artwork%20ready%20to%20send%20for%20printing." target="_blank" class="px-3.5 py-1.5 rounded-xl bg-brand-lime/15 hover:bg-brand-lime hover:text-brand-dark border border-brand-lime/40 text-brand-lime text-xs font-bold transition-all flex items-center gap-1.5">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Send Artwork Files</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Balanced 4-Column Navigation & Contacts Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pb-14 border-b border-white/10">
+        
+        <!-- Col 1: Brand Atelier Bio -->
+        <div class="space-y-4">
+          <div class="bg-white inline-block px-3 py-1.5 rounded-2xl">
+            <img src="logo/Imagine Logo.png" alt="Imagine Printers" class="h-10 w-auto">
+          </div>
+          <p class="text-xs leading-relaxed text-slate-300 font-light">
+            Founded in 2011, Imagine Printers delivers creative brand design, precision digital printing, heavy-duty outdoor signages, and luxury tactile corporate identity assets across Thane, Mumbai, and India.
+          </p>
+          
+          <div class="flex flex-wrap gap-2 text-[10px] font-mono font-bold text-slate-400">
+            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-brand-lime">ISO 12647-2</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">FSC Certified</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">Eco UV Inks</span>
+          </div>
+
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-mono font-bold">
+            <i class="fa-solid fa-star text-amber-400"></i>
+            <span>4.9 / 5.0 Rating (120+ Reviews)</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Commercial Printing Collateral -->
+        <div>
+          <h5 class="text-white text-xs font-mono font-bold uppercase tracking-wider mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+            <span>Print Collateral</span>
+          </h5>
+          <ul class="space-y-2.5 text-xs text-slate-300 font-light">
+            <li><a href="#portfolio" class="hover:text-brand-lime flex items-center justify-between group transition-colors"><span>Luxury Visiting Cards</span><i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:text-brand-lime transition-colors"></i></a></li>
+            <li><a href="#portfolio" class="hover:text-brand-lime flex items-center justify-between group transition-colors"><span>Tri-Fold & Bi-Fold Brochures</span><i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:text-brand-lime transition-colors"></i></a></li>
+            <li><a href="#portfolio" class="hover:text-brand-lime flex items-center justify-between group transition-colors"><span>Executive Letterheads & Envelopes</span><i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:text-brand-lime transition-colors"></i></a></li>
+            <li><a href="#portfolio" class="hover:text-brand-lime flex items-center justify-between group transition-colors"><span>Custom Packaging & Sleeves</span><i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:text-brand-lime transition-colors"></i></a></li>
+            <li><a href="#portfolio" class="hover:text-brand-lime flex items-center justify-between group transition-colors"><span>Gloss & Matte Promotional Flyers</span><i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:text-brand-lime transition-colors"></i></a></li>
+            <li><a href="#portfolio" class="hover:text-brand-lime flex items-center justify-between group transition-colors"><span>Tax Invoices & Bill Books</span><i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:text-brand-lime transition-colors"></i></a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: 3D Signages & Specialty Displays -->
+        <div>
+          <h5 class="text-white text-xs font-mono font-bold uppercase tracking-wider mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+            <span>3D Signages & Outdoor</span>
+          </h5>
+          <ul class="space-y-2.5 text-xs text-slate-300 font-light">
+            <li><a href="#portfolio" class="hover:text-brand-lime flex items-center justify-between group transition-colors"><span>3D LED Glow Signboards</span><i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:text-brand-lime transition-colors"></i></a></li>
+            <li><a href="#portfolio" class="hover:text-brand-lime flex items-center justify-between group transition-colors"><span>Warm Backlit Channel Letters</span><i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:text-brand-lime transition-colors"></i></a></li>
+            <li><a href="#portfolio" class="hover:text-brand-lime flex items-center justify-between group transition-colors"><span>Highway Flex Billboards</span><i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:text-brand-lime transition-colors"></i></a></li>
+            <li><a href="#portfolio" class="hover:text-brand-lime flex items-center justify-between group transition-colors"><span>Aluminum Roll-up Standees</span><i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:text-brand-lime transition-colors"></i></a></li>
+            <li><a href="#portfolio" class="hover:text-brand-lime flex items-center justify-between group transition-colors"><span>UV DTF Permanent Decals</span><i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:text-brand-lime transition-colors"></i></a></li>
+            <li><a href="#portfolio" class="hover:text-brand-lime flex items-center justify-between group transition-colors"><span>Sunboard Mounting & Vinyl</span><i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:text-brand-lime transition-colors"></i></a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Pre-Press Desk & Facility Location (Unwrapped Hours) -->
+        <div>
+          <h5 class="text-white text-xs font-mono font-bold uppercase tracking-wider mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-lime"></span>
+            <span>Hours & Facility</span>
+          </h5>
+          <p class="text-xs text-slate-300 leading-relaxed mb-3 font-light">
+            Thane West, Maharashtra 400601.<br>
+            Hotline: <a href="tel:9820636646" class="text-white font-bold hover:text-brand-lime">+91 98206 36646</a><br>
+            Email: <a href="mailto:imaginestd@gmail.com" class="text-white font-bold hover:text-brand-lime">imaginestd@gmail.com</a>
+          </p>
+
+          <!-- Working Hours Badge (Clean Single-Line Format) -->
+          <div class="p-3 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-lime pulse-orb shrink-0"></span>
+              <div class="min-w-0">
+                <p class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Production Shift</p>
+                <p class="text-xs font-mono font-bold text-white truncate">Mon - Sat: 9:30 AM – 8:00 PM</p>
+              </div>
+            </div>
+            <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-brand-lime/20 text-brand-lime shrink-0">OPEN</span>
+          </div>
+
+          <!-- Direct Google Maps Facility Link Button -->
+          <a href="https://g.page/r/CeP1FvGE_OIiEA0" target="_blank" class="mt-2.5 w-full py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-bold text-slate-300 hover:text-brand-lime flex items-center justify-center gap-2 transition-all">
+            <i class="fa-solid fa-map-location-dot text-brand-lime"></i>
+            <span>Get Google Maps Directions</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Bottom Registration Strip -->
+      <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4 font-mono">
+        <p>© 2026 Imagine Printers. All Rights Reserved. Domain: <a href="https://imagineprint.co.in/" class="text-slate-400 hover:text-brand-lime">imagineprint.co.in</a></p>
+        <div class="flex items-center space-x-2">
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-cmyk-cyan"></span>
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-cmyk-magenta"></span>
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-cmyk-yellow"></span>
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-brand-indigo"></span>
+          <span class="text-[11px] ml-2 text-slate-400 font-sans">"More than your imagination"</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal for Full-Res Portfolio Inspection -->
+  <div id="imageModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4 sm:p-8">
+    <div class="relative max-w-4xl w-full bg-[#0B0E1A] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl">
+      <button id="closeModal" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 text-white hover:bg-brand-lime hover:text-brand-dark flex items-center justify-center text-xl transition-all">
+        &times;
+      </button>
+      <div class="max-h-[70vh] overflow-hidden bg-black flex items-center justify-center">
+        <img id="modalImage" src="" alt="Print Preview" class="w-full h-auto max-h-[70vh] object-contain">
+      </div>
+      <div class="p-5 sm:p-6 bg-[#0B0E1A] border-t border-slate-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <span id="modalClient" class="text-xs font-mono font-bold text-brand-lime uppercase tracking-wider">Client</span>
+          <h3 id="modalTitle" class="text-lg font-heading font-extrabold text-white mt-0.5">Project Title</h3>
+          <p id="modalSpec" class="text-xs text-slate-400 mt-1">Specification details</p>
+        </div>
+        <a href="https://wa.me/919820636646?text=Hello%20Imagine%20Printers,%20I%20am%20interested%20in%20a%20print%20similar%20to%20this%20portfolio%20item." target="_blank" class="px-5 py-2.5 rounded-xl bg-brand-lime text-brand-dark font-bold text-xs hover:bg-brand-limeHover transition-all flex items-center gap-2">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span>Ask For Similar Quote</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Multi-Channel Interactive Floating Dock (Responsive Bottom Right) -->
+  <div class="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-40 flex items-center gap-2">
+    <div class="floating-dock px-3 py-2 sm:px-4 sm:py-2.5 rounded-2xl flex items-center gap-2.5 sm:gap-3">
+      
+      <!-- Live Status Indicator (Desktop) -->
+      <div class="hidden md:flex items-center gap-2 pr-2 border-r border-slate-700 text-xs font-mono">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#25D366] pulse-orb"></span>
+        <span class="text-white font-bold">Online</span>
+      </div>
+
+      <!-- Call Button -->
+      <a href="tel:9820636646" class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-brand-indigo hover:bg-brand-indigoLight text-white flex items-center justify-center text-sm sm:text-base shadow-lg transition-transform hover:scale-110" title="Direct Phone Call">
+        <i class="fa-solid fa-phone"></i>
+      </a>
+
+      <!-- Instagram Button -->
+      <a href="https://instagram.com/imagine_digital_print" target="_blank" class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl btn-instagram text-white flex items-center justify-center text-base sm:text-lg shadow-lg transition-transform hover:scale-110" title="View Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+
+      <!-- WhatsApp Button (Prominent) -->
+      <a href="https://wa.me/919820636646?text=Hello%20Imagine%20Printers%20team,%20I%20would%20like%20to%20inquire%20about%20printing%20services." target="_blank" class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#25D366] text-white flex items-center justify-center text-xl sm:text-2xl shadow-xl transition-transform hover:scale-110" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
