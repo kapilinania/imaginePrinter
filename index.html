@@ -8,6 +8,46 @@
   <meta name="keywords" content="Imagine Printers, printing thane, luxury visiting cards, brochure printing mumbai, 3d led signboard thane, uv dtf stickers, flex banner printing">
   <link rel="icon" type="image/png" href="logo/Imagine Logo.png">
 
+  <!-- Google Fonts for Accessibility & Creative Studio -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Pre-Paint Enterprise Accessibility & Theme Loader -->
+  <script>
+    (function() {
+      try {
+        const saved = localStorage.getItem('imagine_a11y_state') || localStorage.getItem('imagine_custom_theme');
+        if (saved) {
+          const state = JSON.parse(saved);
+          const root = document.documentElement;
+          if (state.vars) {
+            Object.entries(state.vars).forEach(([k, v]) => root.style.setProperty(k, v));
+          }
+          if (state.typography) {
+            if (state.typography.scale) root.style.setProperty('--theme-font-scale', state.typography.scale / 100);
+            if (state.typography.headingFont) root.style.setProperty('--theme-font-heading', state.typography.headingFont);
+            if (state.typography.bodyFont) root.style.setProperty('--theme-font-body', state.typography.bodyFont);
+            if (state.typography.lineHeight) root.style.setProperty('--theme-line-height', state.typography.lineHeight);
+            if (state.typography.letterSpacing) root.style.setProperty('--theme-letter-spacing', state.typography.letterSpacing);
+          }
+          if (state.isLight) root.classList.add('theme-light');
+          const vis = state.vision || {};
+          if (vis.highContrast || state.highContrast) root.classList.add('a11y-high-contrast');
+          if (vis.grayscale || state.grayscale) root.classList.add('a11y-grayscale');
+          if (vis.invert || state.invert) root.classList.add('a11y-invert');
+          if (vis.highlightLinks || state.highlightLinks) root.classList.add('a11y-highlight-links');
+          if (vis.bigCursor || state.bigCursor) root.classList.add('a11y-big-cursor');
+          if (vis.daltonism && vis.daltonism !== 'none') root.classList.add('a11y-filter-' + vis.daltonism);
+          const mot = state.motion || {};
+          if (mot.pauseAnimations || state.pauseAnimations) root.classList.add('a11y-pause-animations');
+          if (mot.focusRadar) root.classList.add('a11y-focus-radar');
+          if (mot.hitboxMagnifier) root.classList.add('a11y-hitbox-magnifier');
+        }
+      } catch(e) {}
+    })();
+  </script>
+
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -58,6 +98,39 @@
     <span id="cursorText"></span>
   </div>
 
+  <!-- Medical-Grade Daltonism Color Matrix Filters (Protanopia, Deuteranopia, Tritanopia, Achromatopsia) -->
+  <svg id="daltonismSvgFilters" class="absolute w-0 h-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <defs>
+      <filter id="protanopia">
+        <feColorMatrix type="matrix" values="0.567, 0.433, 0, 0, 0  0.558, 0.442, 0, 0, 0  0, 0.242, 0.758, 0, 0  0, 0, 0, 1, 0"/>
+      </filter>
+      <filter id="deuteranopia">
+        <feColorMatrix type="matrix" values="0.625, 0.375, 0, 0, 0  0.70, 0.30, 0, 0, 0  0, 0.30, 0.70, 0, 0  0, 0, 0, 1, 0"/>
+      </filter>
+      <filter id="tritanopia">
+        <feColorMatrix type="matrix" values="0.95, 0.05, 0, 0, 0  0, 0.433, 0.567, 0, 0  0, 0.475, 0.525, 0, 0  0, 0, 0, 1, 0"/>
+      </filter>
+      <filter id="achromatopsia">
+        <feColorMatrix type="matrix" values="0.299, 0.587, 0.114, 0, 0  0.299, 0.587, 0.114, 0, 0  0.299, 0.587, 0.114, 0, 0  0, 0, 0, 1, 0"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- Reading Focus Spotlight Mask (ADHD & Cognitive Blinder) -->
+  <div id="accessibilityReadingMask" class="reading-mask fixed inset-0 pointer-events-none hidden z-[999980]"></div>
+
+  <!-- Circadian Warm Hue / Blue-Light Shield -->
+  <div id="accessibilityWarmShield" class="warm-shield fixed inset-0 pointer-events-none hidden z-[999970]"></div>
+
+  <!-- Image Alt-Text Inspector Floating Badge -->
+  <div id="accessibilityImageTooltip" class="fixed pointer-events-none hidden z-[999999] max-w-sm bg-[#0A0D18]/95 backdrop-blur-xl border border-brand-lime/40 rounded-xl p-3 shadow-2xl text-xs text-white">
+    <div class="flex items-center gap-2 mb-1">
+      <i class="fa-solid fa-image text-brand-lime text-xs"></i>
+      <span class="font-heading font-bold text-white uppercase text-[10px] tracking-wider">Image Alt Description</span>
+      <span id="tooltipGsmBadge" class="ml-auto px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-brand-lime/20 text-brand-lime">Showcase</span>
+    </div>
+    <p id="accessibilityTooltipText" class="text-slate-200 text-[11px] leading-relaxed font-sans"></p>
+  </div>
   <!-- CMYK Top Registration Ribbon -->
   <div class="cmyk-bar">
     <span class="cmyk-c"></span>
@@ -101,24 +174,27 @@
         
         <!-- Brand Logo -->
         <a href="index.html" class="flex items-center gap-3 group">
-          <div class="p-1.5 bg-white/95 rounded-2xl backdrop-blur-md shadow-lg border border-white/20 transition-transform duration-300 group-hover:scale-105">
+          <div class="brand-logo-container p-1.5 bg-white/95 rounded-2xl backdrop-blur-md shadow-lg border border-white/20 transition-transform duration-300 group-hover:scale-105">
             <img src="logo/Imagine Logo.png" alt="Imagine Printers Logo" class="h-10 sm:h-11 w-auto object-contain">
           </div>
         </a>
 
-        <!-- Desktop Navigation -->
+        <!-- Desktop Navigation (Exactly 6 Nav Menu Items) -->
         <nav class="hidden lg:flex items-center space-x-8 font-semibold text-sm text-slate-300">
-          <a href="#home" class="text-brand-lime font-bold hover:text-white transition-colors">Home</a>
-          <a href="#services" class="hover:text-brand-lime transition-colors">Services</a>
-          <a href="#portfolio" class="hover:text-brand-lime transition-colors">Portfolio</a>
-          <a href="#finishes" class="hover:text-brand-lime transition-colors">Luxury Finishes</a>
-          <a href="#calculator" class="hover:text-brand-lime transition-colors">Spec Calculator</a>
-          <a href="#about" class="hover:text-brand-lime transition-colors">About</a>
-          <a href="#contact" class="hover:text-brand-lime transition-colors">Contact</a>
+          <a href="#home" class="nav-item-link text-brand-lime font-bold hover:text-white transition-colors">Home</a>
+          <a href="#services" class="nav-item-link hover:text-brand-lime transition-colors">Services</a>
+          <a href="#portfolio" class="nav-item-link hover:text-brand-lime transition-colors">Portfolio</a>
+          <a href="#finishes" class="nav-item-link hover:text-brand-lime transition-colors">Luxury Finishes</a>
+          <a href="#about" class="nav-item-link hover:text-brand-lime transition-colors">About</a>
+          <a href="#contact" class="nav-item-link hover:text-brand-lime transition-colors">Contact</a>
         </nav>
 
         <!-- Header Action Hub -->
         <div class="hidden sm:flex items-center space-x-3">
+          <!-- Accessibility & Color Studio Trigger (Desktop) -->
+          <button id="accessibilityBtn" class="accessibility-trigger-btn w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 hover:border-brand-lime text-slate-300 hover:text-white flex items-center justify-center text-sm transition-all focus:outline-none group relative" aria-label="Open Accessibility & Color Studio" title="Accessibility & Color Studio">
+            <i class="fa-solid fa-universal-access text-base text-brand-lime group-hover:scale-110 transition-transform"></i>
+          </button>
           <a href="https://instagram.com/imagine_digital_print" target="_blank" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500 text-slate-300 hover:text-pink-400 flex items-center justify-center text-sm transition-all" title="Follow us on Instagram">
             <i class="fa-brands fa-instagram text-base"></i>
           </a>
@@ -132,10 +208,15 @@
           </a>
         </div>
 
-        <!-- Mobile Hamburger Button -->
-        <button id="mobileMenuBtn" class="lg:hidden p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white focus:outline-none">
-          <i class="fa-solid fa-bars-staggered text-lg text-brand-lime"></i>
-        </button>
+        <!-- Mobile Controls (Accessibility Studio + Hamburger Button) -->
+        <div class="flex lg:hidden items-center space-x-2">
+          <button id="accessibilityMobileHeaderBtn" class="accessibility-trigger-btn p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-brand-lime hover:text-white focus:outline-none" aria-label="Open Accessibility & Color Studio" title="Accessibility & Color Studio">
+            <i class="fa-solid fa-universal-access text-base"></i>
+          </button>
+          <button id="mobileMenuBtn" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white focus:outline-none">
+            <i class="fa-solid fa-bars-staggered text-lg text-brand-lime"></i>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -151,12 +232,15 @@
       <div class="prepress-grid-pattern absolute inset-0 opacity-20"></div>
     </div>
 
-    <!-- Header: Logo + Live Badge + Close Button -->
+    <!-- Header: Logo + Live Badge + Theme Toggle + Close Button -->
     <div class="relative z-10 flex justify-between items-center border-b border-white/10 pb-3 shrink-0">
-      <div class="bg-white px-2.5 py-1 rounded-xl shadow-md">
+      <div class="brand-logo-container bg-white px-2.5 py-1 rounded-xl shadow-md">
         <img src="logo/Imagine Logo.png" alt="Imagine Printers" class="h-8 w-auto">
       </div>
       <div class="flex items-center gap-2">
+        <button id="accessibilityMobileBtn" class="accessibility-trigger-btn w-9 h-9 rounded-full bg-slate-900/80 border border-slate-700 text-brand-lime hover:text-white hover:border-brand-lime flex items-center justify-center text-sm transition-all" aria-label="Open Accessibility & Color Studio" title="Accessibility & Color Studio">
+          <i class="fa-solid fa-universal-access"></i>
+        </button>
         <span class="px-2 py-0.5 rounded-full bg-brand-lime/20 border border-brand-lime/40 text-brand-lime text-[10px] font-mono font-bold">
           LIVE ATELIER
         </span>
@@ -166,35 +250,31 @@
       </div>
     </div>
 
-    <!-- Staggered Numbered Nav Links (No Scroll - Perfectly proportioned for all mobile viewports) -->
+    <!-- Staggered Numbered Nav Links (Exactly 6 Nav Menu Items) -->
     <div class="relative z-10 flex flex-col justify-center flex-1 my-auto py-2 space-y-1 sm:space-y-1.5 font-heading text-lg sm:text-xl font-bold">
-      <a href="#home" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
+      <a href="#home" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
         <span class="group-hover:translate-x-1.5 transition-transform">Home</span>
         <span class="text-[11px] font-mono text-slate-500 group-hover:text-brand-lime font-normal">01</span>
       </a>
-      <a href="#services" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
+      <a href="#services" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
         <span class="group-hover:translate-x-1.5 transition-transform">Printing Services</span>
         <span class="text-[11px] font-mono text-slate-500 group-hover:text-brand-lime font-normal">02</span>
       </a>
-      <a href="#portfolio" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
+      <a href="#portfolio" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
         <span class="group-hover:translate-x-1.5 transition-transform">Client Showcase</span>
         <span class="text-[11px] font-mono text-slate-500 group-hover:text-brand-lime font-normal">03</span>
       </a>
-      <a href="#finishes" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
+      <a href="#finishes" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
         <span class="group-hover:translate-x-1.5 transition-transform">Luxury Finishes</span>
         <span class="text-[11px] font-mono text-slate-500 group-hover:text-brand-lime font-normal">04</span>
       </a>
-      <a href="#calculator" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
-        <span class="group-hover:translate-x-1.5 transition-transform">Quote Estimator</span>
+      <a href="#about" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
+        <span class="group-hover:translate-x-1.5 transition-transform">About Our Atelier</span>
         <span class="text-[11px] font-mono text-slate-500 group-hover:text-brand-lime font-normal">05</span>
       </a>
-      <a href="#about" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
-        <span class="group-hover:translate-x-1.5 transition-transform">About Our Atelier</span>
-        <span class="text-[11px] font-mono text-slate-500 group-hover:text-brand-lime font-normal">06</span>
-      </a>
-      <a href="#contact" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
+      <a href="#contact" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-white/5 border-b border-white/5 hover:text-brand-lime group transition-all">
         <span class="group-hover:translate-x-1.5 transition-transform">Thane Facility</span>
-        <span class="text-[11px] font-mono text-slate-500 group-hover:text-brand-lime font-normal">07</span>
+        <span class="text-[11px] font-mono text-slate-500 group-hover:text-brand-lime font-normal">06</span>
       </a>
     </div>
 
@@ -1529,7 +1609,7 @@
         
         <!-- Col 1: Brand Atelier Bio -->
         <div class="space-y-4">
-          <div class="bg-white inline-block px-3 py-1.5 rounded-2xl">
+          <div class="brand-logo-container bg-white inline-block px-3 py-1.5 rounded-2xl shadow-md">
             <img src="logo/Imagine Logo.png" alt="Imagine Printers" class="h-10 w-auto">
           </div>
           <p class="text-xs leading-relaxed text-slate-300 font-light">
@@ -1679,6 +1759,976 @@
 
     </div>
   </div>
+
+  <!-- Reading Ruler Element (For Dyslexia / Focus line-by-line reading) -->
+  <div id="accessibilityReadingRuler" class="reading-ruler fixed left-0 right-0 h-8 pointer-events-none hidden z-[99990]"></div>
+
+  <!-- Hands-Free Voice Command Floating Wave Pill -->
+  <div id="accessibilityVoicePill" class="fixed top-20 left-1/2 -translate-x-1/2 z-[99995] hidden items-center gap-3 px-4 py-2.5 rounded-full bg-[#0A0D18]/95 backdrop-blur-xl border border-cyan-500/40 shadow-2xl shadow-cyan-500/20 text-white font-mono text-xs">
+    <div class="flex items-center gap-1 h-4">
+      <span class="w-1 bg-cyan-400 rounded-full h-full voice-wave-bar"></span>
+      <span class="w-1 bg-cyan-400 rounded-full h-full voice-wave-bar"></span>
+      <span class="w-1 bg-cyan-400 rounded-full h-full voice-wave-bar"></span>
+    </div>
+    <span class="text-cyan-400 font-bold uppercase text-[10px] tracking-wider">Listening:</span>
+    <span id="voiceCommandTranscript" class="text-slate-200 font-sans italic max-w-[200px] sm:max-w-xs truncate">Say "Services", "Portfolio", "Scroll Down"...</span>
+    <button id="closeVoiceCommanderBtn" class="w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-[10px] transition-all ml-1" title="Close Voice Command">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <!-- Virtual Landmark Navigator Modal -->
+  <div id="accessibilityLandmarksModal" class="fixed inset-0 z-[99996] hidden items-center justify-center p-4 bg-black/75 backdrop-blur-md">
+    <div class="relative w-full max-w-lg bg-[#0E121E] border border-indigo-500/30 rounded-3xl p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-sm font-bold">
+            <i class="fa-solid fa-map-location-dot"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-extrabold text-white text-sm">Page Structure & Landmark Navigator</h3>
+            <p class="text-[11px] text-slate-400">Jump directly to any key landmark across Imagine Studio</p>
+          </div>
+        </div>
+        <button id="closeLandmarksModalBtn" class="w-8 h-8 rounded-xl bg-slate-900 border border-slate-750 text-slate-300 hover:text-white flex items-center justify-center text-xs">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2" id="landmarkLinksList">
+        <a href="#hero" class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500 text-left transition-all hover:scale-[1.02] flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xs font-bold font-mono">01</span>
+          <div>
+            <span class="block text-xs font-bold text-white">Hero Showcase</span>
+            <span class="text-[10px] font-mono text-slate-400">Headline & CTA</span>
+          </div>
+        </a>
+        <a href="#services" class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500 text-left transition-all hover:scale-[1.02] flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-lime-500/10 text-lime-400 flex items-center justify-center text-xs font-bold font-mono">02</span>
+          <div>
+            <span class="block text-xs font-bold text-white">Services Suite</span>
+            <span class="text-[10px] font-mono text-slate-400">6 Core Capabilities</span>
+          </div>
+        </a>
+        <a href="#portfolio" class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500 text-left transition-all hover:scale-[1.02] flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center text-xs font-bold font-mono">03</span>
+          <div>
+            <span class="block text-xs font-bold text-white">Live Portfolio</span>
+            <span class="text-[10px] font-mono text-slate-400">Gallery & Proofs</span>
+          </div>
+        </a>
+        <a href="#calculator" class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500 text-left transition-all hover:scale-[1.02] flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-xs font-bold font-mono">04</span>
+          <div>
+            <span class="block text-xs font-bold text-white">Cost Estimator</span>
+            <span class="text-[10px] font-mono text-slate-400">Live Quote Engine</span>
+          </div>
+        </a>
+        <a href="#finishes" class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500 text-left transition-all hover:scale-[1.02] flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center text-xs font-bold font-mono">05</span>
+          <div>
+            <span class="block text-xs font-bold text-white">Tactile Finishes</span>
+            <span class="text-[10px] font-mono text-slate-400">Foil, Spot UV, Velvet</span>
+          </div>
+        </a>
+        <a href="#about" class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500 text-left transition-all hover:scale-[1.02] flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xs font-bold font-mono">06</span>
+          <div>
+            <span class="block text-xs font-bold text-white">About & Machinery</span>
+            <span class="text-[10px] font-mono text-slate-400">Thane Facility</span>
+          </div>
+        </a>
+        <a href="#contact" class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500 text-left transition-all hover:scale-[1.02] flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center text-xs font-bold font-mono">07</span>
+          <div>
+            <span class="block text-xs font-bold text-white">Contact & WhatsApp</span>
+            <span class="text-[10px] font-mono text-slate-400">Direct Inquiries</span>
+          </div>
+        </a>
+        <a href="#footer" class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500 text-left transition-all hover:scale-[1.02] flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xs font-bold font-mono">08</span>
+          <div>
+            <span class="block text-xs font-bold text-white">Footer & Timings</span>
+            <span class="text-[10px] font-mono text-slate-400">Map & Copyright</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Print Jargon Plain-Language Tooltip -->
+  <div id="accessibilityJargonTooltip" class="fixed z-[99997] hidden max-w-xs p-3.5 rounded-2xl bg-[#0F1424]/95 backdrop-blur-xl border border-teal-500/40 shadow-2xl shadow-teal-500/20 text-white pointer-events-auto">
+    <div class="flex items-center justify-between gap-2 mb-1.5">
+      <span id="jargonTermTitle" class="text-xs font-heading font-black text-teal-300">GSM</span>
+      <button id="speakJargonBtn" class="w-5 h-5 rounded-full bg-teal-500/20 hover:bg-teal-500/40 text-teal-300 flex items-center justify-center text-[10px] transition-all" title="Listen pronunciation">
+        <i class="fa-solid fa-volume-high"></i>
+      </button>
+    </div>
+    <p id="jargonTermDesc" class="text-[11px] text-slate-200 leading-relaxed font-sans">Grams per Square Meter: Industry measurement of paper weight and thickness.</p>
+  </div>
+
+  <!-- =========================================================================
+       ENTERPRISE ACCESSIBILITY & COLOR STUDIO SLIDE-OUT DRAWER
+       ========================================================================= -->
+  <div id="accessibilityBackdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[90] hidden opacity-0 transition-opacity duration-300"></div>
+
+  <aside id="accessibilityDrawer" class="fixed top-0 right-0 h-full w-full sm:w-[480px] max-w-full bg-[#0A0D18]/95 backdrop-blur-2xl border-l border-white/10 shadow-2xl z-[95] transform translate-x-full transition-transform duration-300 ease-out flex flex-col text-slate-100 overflow-hidden" role="dialog" aria-modal="true" aria-label="Accessibility and Design Studio">
+    
+    <!-- Drawer Header -->
+    <div class="px-5 py-3.5 border-b border-white/10 flex items-center justify-between bg-black/30 shrink-0">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-brand-lime/10 border border-brand-lime/30 text-brand-lime flex items-center justify-center text-base">
+          <i class="fa-solid fa-universal-access"></i>
+        </div>
+        <div>
+          <h3 class="text-sm font-heading font-extrabold text-white tracking-wide flex items-center gap-2">
+            <span>Accessibility & Design Suite</span>
+            <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-brand-lime/20 text-brand-lime">WCAG 2.1</span>
+          </h3>
+          <p class="text-[11px] text-slate-400 font-sans">Colors, Typography, Vision Aids & Motion Control</p>
+        </div>
+      </div>
+      <button id="closeAccessibilityBtn" class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-750 text-slate-300 hover:text-white hover:border-brand-lime flex items-center justify-center text-sm transition-all" aria-label="Close Studio">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- 1-Click WCAG Accessibility Profiles Quick Selector -->
+    <div class="px-4 py-3 border-b border-white/10 bg-slate-950/70 shrink-0">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-[10px] font-mono uppercase font-bold text-slate-400 flex items-center gap-1.5">
+          <i class="fa-solid fa-wand-magic-sparkles text-brand-lime"></i>
+          <span>1-Click WCAG Profiles</span>
+        </span>
+        <span class="text-[9px] font-mono text-brand-lime bg-brand-lime/10 px-1.5 py-0.5 rounded">Smart Presets</span>
+      </div>
+      <div class="grid grid-cols-3 gap-1.5" id="profilesGrid">
+        <button class="a11y-profile-btn p-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-brand-lime text-left transition-all hover:scale-[1.02]" data-profile="adhd" title="ADHD Focus: Bionic reading + reading spotlight mask + pause motion">
+          <span class="block text-xs font-bold text-white">🧠 ADHD</span>
+          <span class="text-[9px] text-slate-400 font-normal">Focus Mode</span>
+        </button>
+        <button class="a11y-profile-btn p-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-brand-lime text-left transition-all hover:scale-[1.02]" data-profile="vision" title="Low Vision: 125% typography scale + high contrast + illuminated cursor">
+          <span class="block text-xs font-bold text-white">👁️ Low Vision</span>
+          <span class="text-[9px] text-slate-400 font-normal">125% Zoom</span>
+        </button>
+        <button class="a11y-profile-btn p-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-brand-lime text-left transition-all hover:scale-[1.02]" data-profile="dyslexia" title="Dyslexia: Lexend font + 1.7x line spacing + reading ruler">
+          <span class="block text-xs font-bold text-white">📖 Dyslexia</span>
+          <span class="text-[9px] text-slate-400 font-normal">Lexend + Ruler</span>
+        </button>
+        <button class="a11y-profile-btn p-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-brand-lime text-left transition-all hover:scale-[1.02]" data-profile="motor" title="Motor Impaired: 48px hitbox magnifier + keyboard focus radar + big cursor">
+          <span class="block text-xs font-bold text-white">♿ Motor Aid</span>
+          <span class="text-[9px] text-slate-400 font-normal">Hitbox + Radar</span>
+        </button>
+        <button class="a11y-profile-btn p-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-brand-lime text-left transition-all hover:scale-[1.02]" data-profile="calm" title="Calm Migraine: Amber blue-light shield + stop motion + monochrome palette">
+          <span class="block text-xs font-bold text-white">🌙 Calm Light</span>
+          <span class="text-[9px] text-slate-400 font-normal">Warm Shield</span>
+        </button>
+        <button class="a11y-profile-btn p-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-brand-lime text-left transition-all hover:scale-[1.02]" data-profile="colorblind" title="Color Blind: Deuteranopia matrix + highlight links">
+          <span class="block text-xs font-bold text-white">🎨 Color Blind</span>
+          <span class="text-[9px] text-slate-400 font-normal">Deuteranopia</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Tabs Navigation -->
+    <div class="flex items-center border-b border-white/10 bg-slate-900/60 p-1.5 gap-1 shrink-0 overflow-x-auto no-scrollbar">
+      <button class="a11y-tab-btn active flex-1 py-2 px-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-brand-lime bg-slate-800" data-tab="colors">
+        <i class="fa-solid fa-palette text-xs"></i>
+        <span>Colors</span>
+      </button>
+      <button class="a11y-tab-btn flex-1 py-2 px-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-white" data-tab="typography">
+        <i class="fa-solid fa-font text-xs"></i>
+        <span>Typography</span>
+      </button>
+      <button class="a11y-tab-btn flex-1 py-2 px-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-white" data-tab="vision">
+        <i class="fa-solid fa-eye text-xs"></i>
+        <span>Vision Aids</span>
+      </button>
+      <button class="a11y-tab-btn flex-1 py-2 px-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-white" data-tab="motion">
+        <i class="fa-solid fa-sliders text-xs"></i>
+        <span>Motion & Motor</span>
+      </button>
+    </div>
+
+    <!-- Tab Panels Container (Scrollable) -->
+    <div class="flex-1 overflow-y-auto p-5 space-y-6 custom-scrollbar text-xs">
+      
+      <!-- TAB 1: COLORS & PALETTES -->
+      <div id="tab-colors" class="a11y-tab-content space-y-5">
+        <!-- 10 Curated Palettes -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-swatchbook text-brand-lime"></i>
+              <span>10 Curated Studio Palettes</span>
+            </h4>
+            <span class="text-[10px] font-mono text-slate-400">1-Click Apply</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2" id="paletteGrid">
+            <!-- 1. Imagine Signature (Default) -->
+            <button class="palette-btn active p-2.5 rounded-xl bg-slate-900 border border-brand-lime text-left transition-all hover:scale-[1.02] flex flex-col justify-between h-18 relative group" data-palette="signature">
+              <div class="flex items-center justify-between w-full">
+                <span class="font-bold text-[11px] text-white">Imagine Signature</span>
+                <span class="palette-check w-4 h-4 rounded-full bg-brand-lime text-brand-dark flex items-center justify-center text-[9px] font-black"><i class="fa-solid fa-check"></i></span>
+              </div>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="w-3.5 h-3.5 rounded-md bg-[#07090F] border border-white/20"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#94C120]"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#3B2C85]"></span>
+                <span class="text-[9px] font-mono text-slate-400 ml-auto">Obsidian</span>
+              </div>
+            </button>
+
+            <!-- 2. Cyberpunk Neon -->
+            <button class="palette-btn p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-left transition-all hover:scale-[1.02] flex flex-col justify-between h-18 relative group" data-palette="cyberpunk">
+              <div class="flex items-center justify-between w-full">
+                <span class="font-bold text-[11px] text-white">Cyberpunk Neon</span>
+                <span class="palette-check hidden w-4 h-4 rounded-full bg-cyan-400 text-black items-center justify-center text-[9px] font-black"><i class="fa-solid fa-check"></i></span>
+              </div>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="w-3.5 h-3.5 rounded-md bg-[#050814] border border-white/20"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#00E5FF]"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#EC008C]"></span>
+                <span class="text-[9px] font-mono text-slate-400 ml-auto">Electric</span>
+              </div>
+            </button>
+
+            <!-- 3. Royal Gold & Onyx -->
+            <button class="palette-btn p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-left transition-all hover:scale-[1.02] flex flex-col justify-between h-18 relative group" data-palette="royalgold">
+              <div class="flex items-center justify-between w-full">
+                <span class="font-bold text-[11px] text-white">Royal Gold & Onyx</span>
+                <span class="palette-check hidden w-4 h-4 rounded-full bg-[#D4AF37] text-black items-center justify-center text-[9px] font-black"><i class="fa-solid fa-check"></i></span>
+              </div>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="w-3.5 h-3.5 rounded-md bg-[#0B0B0E] border border-white/20"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#D4AF37]"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#FFB800]"></span>
+                <span class="text-[9px] font-mono text-slate-400 ml-auto">Luxury</span>
+              </div>
+            </button>
+
+            <!-- 4. Emerald Atelier -->
+            <button class="palette-btn p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-left transition-all hover:scale-[1.02] flex flex-col justify-between h-18 relative group" data-palette="emerald">
+              <div class="flex items-center justify-between w-full">
+                <span class="font-bold text-[11px] text-white">Emerald Atelier</span>
+                <span class="palette-check hidden w-4 h-4 rounded-full bg-emerald-400 text-black items-center justify-center text-[9px] font-black"><i class="fa-solid fa-check"></i></span>
+              </div>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="w-3.5 h-3.5 rounded-md bg-[#06120E] border border-white/20"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#10B981]"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#84CC16]"></span>
+                <span class="text-[9px] font-mono text-slate-400 ml-auto">Forest</span>
+              </div>
+            </button>
+
+            <!-- 5. Electric Violet -->
+            <button class="palette-btn p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-left transition-all hover:scale-[1.02] flex flex-col justify-between h-18 relative group" data-palette="violet">
+              <div class="flex items-center justify-between w-full">
+                <span class="font-bold text-[11px] text-white">Electric Violet</span>
+                <span class="palette-check hidden w-4 h-4 rounded-full bg-purple-400 text-black items-center justify-center text-[9px] font-black"><i class="fa-solid fa-check"></i></span>
+              </div>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="w-3.5 h-3.5 rounded-md bg-[#0D081F] border border-white/20"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#8B5CF6]"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#C084FC]"></span>
+                <span class="text-[9px] font-mono text-slate-400 ml-auto">Velvet</span>
+              </div>
+            </button>
+
+            <!-- 6. Sunset Ember -->
+            <button class="palette-btn p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-left transition-all hover:scale-[1.02] flex flex-col justify-between h-18 relative group" data-palette="sunset">
+              <div class="flex items-center justify-between w-full">
+                <span class="font-bold text-[11px] text-white">Sunset Ember</span>
+                <span class="palette-check hidden w-4 h-4 rounded-full bg-orange-500 text-black items-center justify-center text-[9px] font-black"><i class="fa-solid fa-check"></i></span>
+              </div>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="w-3.5 h-3.5 rounded-md bg-[#100B0B] border border-white/20"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#FF6B35]"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#FF3366]"></span>
+                <span class="text-[9px] font-mono text-slate-400 ml-auto">Flame</span>
+              </div>
+            </button>
+
+            <!-- 7. Oceanic Sapphire -->
+            <button class="palette-btn p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-left transition-all hover:scale-[1.02] flex flex-col justify-between h-18 relative group" data-palette="sapphire">
+              <div class="flex items-center justify-between w-full">
+                <span class="font-bold text-[11px] text-white">Oceanic Sapphire</span>
+                <span class="palette-check hidden w-4 h-4 rounded-full bg-sky-400 text-black items-center justify-center text-[9px] font-black"><i class="fa-solid fa-check"></i></span>
+              </div>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="w-3.5 h-3.5 rounded-md bg-[#06101E] border border-white/20"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#0284C7]"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#38BDF8]"></span>
+                <span class="text-[9px] font-mono text-slate-400 ml-auto">Marine</span>
+              </div>
+            </button>
+
+            <!-- 8. Crimson Luxury -->
+            <button class="palette-btn p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-left transition-all hover:scale-[1.02] flex flex-col justify-between h-18 relative group" data-palette="crimson">
+              <div class="flex items-center justify-between w-full">
+                <span class="font-bold text-[11px] text-white">Crimson Luxury</span>
+                <span class="palette-check hidden w-4 h-4 rounded-full bg-rose-500 text-white items-center justify-center text-[9px] font-black"><i class="fa-solid fa-check"></i></span>
+              </div>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="w-3.5 h-3.5 rounded-md bg-[#14070A] border border-white/20"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#E11D48]"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#FB7185]"></span>
+                <span class="text-[9px] font-mono text-slate-400 ml-auto">Ruby</span>
+              </div>
+            </button>
+
+            <!-- 9. Titanium Monochrome -->
+            <button class="palette-btn p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-left transition-all hover:scale-[1.02] flex flex-col justify-between h-18 relative group" data-palette="monochrome">
+              <div class="flex items-center justify-between w-full">
+                <span class="font-bold text-[11px] text-white">Titanium Mono</span>
+                <span class="palette-check hidden w-4 h-4 rounded-full bg-white text-black items-center justify-center text-[9px] font-black"><i class="fa-solid fa-check"></i></span>
+              </div>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="w-3.5 h-3.5 rounded-md bg-[#08090C] border border-white/20"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#F8FAFC]"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#94A3B8]"></span>
+                <span class="text-[9px] font-mono text-slate-400 ml-auto">Mono</span>
+              </div>
+            </button>
+
+            <!-- 10. Studio Paper Slate -->
+            <button class="palette-btn p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-left transition-all hover:scale-[1.02] flex flex-col justify-between h-18 relative group" data-palette="paper">
+              <div class="flex items-center justify-between w-full">
+                <span class="font-bold text-[11px] text-white">Studio Paper Slate</span>
+                <span class="palette-check hidden w-4 h-4 rounded-full bg-lime-500 text-black items-center justify-center text-[9px] font-black"><i class="fa-solid fa-check"></i></span>
+              </div>
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="w-3.5 h-3.5 rounded-md bg-[#F1F1F2] border border-black/20"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#1E293B]"></span>
+                <span class="w-3.5 h-3.5 rounded-md bg-[#65A30D]"></span>
+                <span class="text-[9px] font-mono text-slate-400 ml-auto">Matte</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Advance Custom Color Suite -->
+        <div class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-sliders text-cyan-400"></i>
+              <span>Advance Brand & Text Colors</span>
+            </h4>
+            <span class="text-[10px] font-mono text-brand-lime">Live Sync</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5">
+            <!-- Primary Accent -->
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-750 flex items-center justify-between">
+              <div>
+                <span class="block text-[9px] uppercase font-mono font-bold text-slate-400">Primary Accent</span>
+                <span id="labelColorPrimary" class="text-xs font-mono font-bold text-white">#94C120</span>
+              </div>
+              <input type="color" id="pickerAccentPrimary" value="#94C120" class="w-7 h-7 rounded-lg cursor-pointer bg-transparent border-0 p-0 overflow-hidden">
+            </div>
+            <!-- Secondary Accent -->
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-750 flex items-center justify-between">
+              <div>
+                <span class="block text-[9px] uppercase font-mono font-bold text-slate-400">Secondary Accent</span>
+                <span id="labelColorSecondary" class="text-xs font-mono font-bold text-white">#3B2C85</span>
+              </div>
+              <input type="color" id="pickerAccentSecondary" value="#3B2C85" class="w-7 h-7 rounded-lg cursor-pointer bg-transparent border-0 p-0 overflow-hidden">
+            </div>
+            <!-- Heading Text Color -->
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-750 flex items-center justify-between">
+              <div>
+                <span class="block text-[9px] uppercase font-mono font-bold text-slate-400">Headings Color</span>
+                <span id="labelColorHeading" class="text-xs font-mono font-bold text-white">#FFFFFF</span>
+              </div>
+              <input type="color" id="pickerColorHeading" value="#FFFFFF" class="w-7 h-7 rounded-lg cursor-pointer bg-transparent border-0 p-0 overflow-hidden">
+            </div>
+            <!-- Body Text Color -->
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-750 flex items-center justify-between">
+              <div>
+                <span class="block text-[9px] uppercase font-mono font-bold text-slate-400">Body Text Color</span>
+                <span id="labelColorBody" class="text-xs font-mono font-bold text-white">#F1F5F9</span>
+              </div>
+              <input type="color" id="pickerColorBody" value="#F1F5F9" class="w-7 h-7 rounded-lg cursor-pointer bg-transparent border-0 p-0 overflow-hidden">
+            </div>
+            <!-- Card Surface -->
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-750 flex items-center justify-between">
+              <div>
+                <span class="block text-[9px] uppercase font-mono font-bold text-slate-400">Cards Surface</span>
+                <span id="labelColorCard" class="text-xs font-mono font-bold text-white">#0E121E</span>
+              </div>
+              <input type="color" id="pickerColorCard" value="#0E121E" class="w-7 h-7 rounded-lg cursor-pointer bg-transparent border-0 p-0 overflow-hidden">
+            </div>
+            <!-- Card Border -->
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-750 flex items-center justify-between">
+              <div>
+                <span class="block text-[9px] uppercase font-mono font-bold text-slate-400">Card Borders</span>
+                <span id="labelBorderCard" class="text-xs font-mono font-bold text-white">#263048</span>
+              </div>
+              <input type="color" id="pickerBorderCard" value="#263048" class="w-7 h-7 rounded-lg cursor-pointer bg-transparent border-0 p-0 overflow-hidden">
+            </div>
+          </div>
+        </div>
+
+        <!-- Section-Wise Background Customizer -->
+        <div class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-layer-group text-amber-400"></i>
+              <span>Section-Wise Backgrounds</span>
+            </h4>
+            <span class="text-[10px] font-mono text-amber-400 font-bold">8 Sections</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2" id="sectionPickersList">
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-750 flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-200">Hero</span>
+              <input type="color" id="pickerBgHero" data-section="hero" value="#07090F" class="w-6 h-6 rounded-md cursor-pointer bg-transparent border-0 p-0">
+            </div>
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-750 flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-200">Services</span>
+              <input type="color" id="pickerBgServices" data-section="services" value="#0A0D17" class="w-6 h-6 rounded-md cursor-pointer bg-transparent border-0 p-0">
+            </div>
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-750 flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-200">Portfolio</span>
+              <input type="color" id="pickerBgPortfolio" data-section="portfolio" value="#07090F" class="w-6 h-6 rounded-md cursor-pointer bg-transparent border-0 p-0">
+            </div>
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-750 flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-200">Calculator</span>
+              <input type="color" id="pickerBgCalculator" data-section="calculator" value="#0A0D17" class="w-6 h-6 rounded-md cursor-pointer bg-transparent border-0 p-0">
+            </div>
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-750 flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-200">Finishes</span>
+              <input type="color" id="pickerBgFinishes" data-section="finishes" value="#07090F" class="w-6 h-6 rounded-md cursor-pointer bg-transparent border-0 p-0">
+            </div>
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-750 flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-200">About</span>
+              <input type="color" id="pickerBgAbout" data-section="about" value="#0A0D17" class="w-6 h-6 rounded-md cursor-pointer bg-transparent border-0 p-0">
+            </div>
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-750 flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-200">Contact</span>
+              <input type="color" id="pickerBgContact" data-section="contact" value="#07090F" class="w-6 h-6 rounded-md cursor-pointer bg-transparent border-0 p-0">
+            </div>
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-750 flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-slate-200">Footer</span>
+              <input type="color" id="pickerBgFooter" data-section="footer" value="#05060A" class="w-6 h-6 rounded-md cursor-pointer bg-transparent border-0 p-0">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: TYPOGRAPHY & TEXT -->
+      <div id="tab-typography" class="a11y-tab-content hidden space-y-5">
+        <!-- Font Size Scaling -->
+        <div class="p-4 rounded-2xl bg-[#121626] border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-text-height text-brand-lime"></i>
+              <span>Font Size Scaling</span>
+            </h4>
+            <span id="fontSizeScaleLabel" class="text-xs font-mono font-bold text-brand-lime bg-brand-lime/10 px-2 py-0.5 rounded">100%</span>
+          </div>
+          <p class="text-[11px] text-slate-400">Scale the entire website typography up or down cleanly.</p>
+          
+          <div class="space-y-2">
+            <input type="range" id="fontSizeSlider" min="80" max="150" step="5" value="100" class="w-full accent-[#94C120] cursor-pointer">
+            <div class="flex justify-between text-[10px] font-mono text-slate-500">
+              <span>80% Small</span>
+              <span>100% Default</span>
+              <span>150% Huge</span>
+            </div>
+          </div>
+
+          <!-- Quick Scale Presets -->
+          <div class="grid grid-cols-4 gap-1.5 pt-1">
+            <button class="font-scale-preset py-1.5 rounded-lg bg-slate-900 border border-slate-750 text-[11px] font-bold text-slate-300 hover:text-white hover:border-brand-lime" data-scale="90">90%</button>
+            <button class="font-scale-preset active py-1.5 rounded-lg bg-slate-900 border border-brand-lime text-[11px] font-bold text-brand-lime" data-scale="100">100%</button>
+            <button class="font-scale-preset py-1.5 rounded-lg bg-slate-900 border border-slate-750 text-[11px] font-bold text-slate-300 hover:text-white hover:border-brand-lime" data-scale="120">120%</button>
+            <button class="font-scale-preset py-1.5 rounded-lg bg-slate-900 border border-slate-750 text-[11px] font-bold text-slate-300 hover:text-white hover:border-brand-lime" data-scale="140">140%</button>
+          </div>
+        </div>
+
+        <!-- Heading Font Family Selector -->
+        <div class="p-4 rounded-2xl bg-[#121626] border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-heading text-cyan-400"></i>
+              <span>Headings Font Family</span>
+            </h4>
+            <span class="text-[10px] font-mono text-cyan-400">Live Switch</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2" id="headingFontGrid">
+            <button class="font-heading-btn active p-2 rounded-xl bg-slate-900 border border-brand-lime text-left text-xs font-bold text-white transition-all hover:scale-[1.02]" data-font="'Outfit', sans-serif">
+              <span class="block text-sm" style="font-family: 'Outfit', sans-serif;">Outfit</span>
+              <span class="text-[10px] font-mono text-slate-400 font-normal">Modern Display (Default)</span>
+            </button>
+            <button class="font-heading-btn p-2 rounded-xl bg-slate-900 border border-slate-800 text-left text-xs font-bold text-slate-300 transition-all hover:scale-[1.02]" data-font="'Lexend', sans-serif">
+              <span class="block text-sm" style="font-family: 'Lexend', sans-serif;">Lexend</span>
+              <span class="text-[10px] font-mono text-emerald-400 font-normal">Dyslexia Certified</span>
+            </button>
+            <button class="font-heading-btn p-2 rounded-xl bg-slate-900 border border-slate-800 text-left text-xs font-bold text-slate-300 transition-all hover:scale-[1.02]" data-font="'Space Grotesk', sans-serif">
+              <span class="block text-sm" style="font-family: 'Space Grotesk', sans-serif;">Space Grotesk</span>
+              <span class="text-[10px] font-mono text-slate-400 font-normal">Tech Atelier</span>
+            </button>
+            <button class="font-heading-btn p-2 rounded-xl bg-slate-900 border border-slate-800 text-left text-xs font-bold text-slate-300 transition-all hover:scale-[1.02]" data-font="'Playfair Display', serif">
+              <span class="block text-sm italic" style="font-family: 'Playfair Display', serif;">Playfair</span>
+              <span class="text-[10px] font-mono text-amber-400 font-normal">Luxury Serif</span>
+            </button>
+            <button class="font-heading-btn p-2 rounded-xl bg-slate-900 border border-slate-800 text-left text-xs font-bold text-slate-300 transition-all hover:scale-[1.02]" data-font="'Inter', sans-serif">
+              <span class="block text-sm" style="font-family: 'Inter', sans-serif;">Inter</span>
+              <span class="text-[10px] font-mono text-slate-400 font-normal">Ultra Clean</span>
+            </button>
+            <button class="font-heading-btn p-2 rounded-xl bg-slate-900 border border-slate-800 text-left text-xs font-bold text-slate-300 transition-all hover:scale-[1.02]" data-font="system-ui, sans-serif">
+              <span class="block text-sm" style="font-family: system-ui, sans-serif;">System UI</span>
+              <span class="text-[10px] font-mono text-slate-400 font-normal">OS Native</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Body Font Family Selector -->
+        <div class="p-4 rounded-2xl bg-[#121626] border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-paragraph text-purple-400"></i>
+              <span>Body Font Family</span>
+            </h4>
+            <span class="text-[10px] font-mono text-purple-400">Readability</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2" id="bodyFontGrid">
+            <button class="font-body-btn active p-2 rounded-xl bg-slate-900 border border-brand-lime text-left text-xs font-bold text-white transition-all hover:scale-[1.02]" data-font="'Plus Jakarta Sans', sans-serif">
+              <span class="block text-sm" style="font-family: 'Plus Jakarta Sans', sans-serif;">Jakarta Sans</span>
+              <span class="text-[10px] font-mono text-slate-400 font-normal">Default Sans</span>
+            </button>
+            <button class="font-body-btn p-2 rounded-xl bg-slate-900 border border-slate-800 text-left text-xs font-bold text-slate-300 transition-all hover:scale-[1.02]" data-font="'Lexend', sans-serif">
+              <span class="block text-sm" style="font-family: 'Lexend', sans-serif;">Lexend</span>
+              <span class="text-[10px] font-mono text-emerald-400 font-normal">Dyslexia Fluent</span>
+            </button>
+            <button class="font-body-btn p-2 rounded-xl bg-slate-900 border border-slate-800 text-left text-xs font-bold text-slate-300 transition-all hover:scale-[1.02]" data-font="'Inter', sans-serif">
+              <span class="block text-sm" style="font-family: 'Inter', sans-serif;">Inter</span>
+              <span class="text-[10px] font-mono text-slate-400 font-normal">Standard UI</span>
+            </button>
+            <button class="font-body-btn p-2 rounded-xl bg-slate-900 border border-slate-800 text-left text-xs font-bold text-slate-300 transition-all hover:scale-[1.02]" data-font="'Roboto', sans-serif">
+              <span class="block text-sm" style="font-family: 'Roboto', sans-serif;">Roboto</span>
+              <span class="text-[10px] font-mono text-slate-400 font-normal">Universal</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Line Height & Letter Spacing -->
+        <div class="p-4 rounded-2xl bg-[#121626] border border-slate-800 space-y-3">
+          <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider flex items-center gap-1.5">
+            <i class="fa-solid fa-arrows-up-down text-amber-400"></i>
+            <span>Line Spacing & Letter Spacing</span>
+          </h4>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <span class="block text-[10px] font-mono text-slate-400 mb-1.5">Line Spacing</span>
+              <div class="flex gap-1">
+                <button class="line-height-btn active flex-1 py-1.5 rounded-lg bg-slate-900 border border-brand-lime text-xs font-bold text-brand-lime" data-lh="normal">1x</button>
+                <button class="line-height-btn flex-1 py-1.5 rounded-lg bg-slate-900 border border-slate-750 text-xs font-bold text-slate-300" data-lh="1.7">1.7x</button>
+                <button class="line-height-btn flex-1 py-1.5 rounded-lg bg-slate-900 border border-slate-750 text-xs font-bold text-slate-300" data-lh="2.0">2.0x</button>
+              </div>
+            </div>
+            <div>
+              <span class="block text-[10px] font-mono text-slate-400 mb-1.5">Letter Spacing</span>
+              <div class="flex gap-1">
+                <button class="letter-spacing-btn active flex-1 py-1.5 rounded-lg bg-slate-900 border border-brand-lime text-xs font-bold text-brand-lime" data-ls="normal">Normal</button>
+                <button class="letter-spacing-btn flex-1 py-1.5 rounded-lg bg-slate-900 border border-slate-750 text-xs font-bold text-slate-300" data-ls="0.05em">Wide</button>
+                <button class="letter-spacing-btn flex-1 py-1.5 rounded-lg bg-slate-900 border border-slate-750 text-xs font-bold text-slate-300" data-ls="0.1em">Extra</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text Alignment Suite (Dyslexia / Cognitive Aid) -->
+        <div class="p-4 rounded-2xl bg-[#121626] border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-align-left text-cyan-400"></i>
+              <span>Text Alignment</span>
+            </h4>
+            <span class="text-[10px] font-mono text-cyan-400">WCAG River Reducer</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2" id="textAlignGrid">
+            <button class="text-align-btn active py-2 rounded-xl bg-slate-900 border border-brand-lime text-xs font-bold text-brand-lime flex items-center justify-center gap-2 hover:border-brand-lime transition-all" data-align="left">
+              <i class="fa-solid fa-align-left"></i>
+              <span>Left</span>
+            </button>
+            <button class="text-align-btn py-2 rounded-xl bg-slate-900 border border-slate-750 text-xs font-bold text-slate-300 flex items-center justify-center gap-2 hover:text-white hover:border-slate-600 transition-all" data-align="center">
+              <i class="fa-solid fa-align-center"></i>
+              <span>Center</span>
+            </button>
+            <button class="text-align-btn py-2 rounded-xl bg-slate-900 border border-slate-750 text-xs font-bold text-slate-300 flex items-center justify-center gap-2 hover:text-white hover:border-slate-600 transition-all" data-align="right">
+              <i class="fa-solid fa-align-right"></i>
+              <span>Right</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Feature 1: Bionic Reading (Saccadic Eye Fixation for ADHD / Dyslexia) -->
+        <label class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-brand-lime/10 border border-brand-lime/30 text-brand-lime flex items-center justify-center text-xs font-black font-mono">
+              Bi
+            </div>
+            <div>
+              <span class="text-xs font-bold text-white block flex items-center gap-1.5">
+                <span>Bionic Reading Mode</span>
+                <span class="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-brand-lime/20 text-brand-lime">ADHD / Speed</span>
+              </span>
+              <span class="text-[10px] text-slate-400">Bolds word anchors to guide eyes & double reading speed</span>
+            </div>
+          </div>
+          <input type="checkbox" id="toggleBionicReading" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+        </label>
+      </div>
+
+      <!-- TAB 3: VISION & FOCUS AIDS -->
+      <div id="tab-vision" class="a11y-tab-content hidden space-y-3">
+        
+        <!-- High Contrast Mode (Dark) -->
+        <label class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-circle-half-stroke"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-white block">Dark High-Contrast Mode</span>
+              <span class="text-[10px] text-slate-400">Extreme contrast borders and sharp outlines (Dark)</span>
+            </div>
+          </div>
+          <input type="checkbox" id="toggleHighContrast" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+        </label>
+
+        <!-- Light High-Contrast Mode (WCAG AAA 21:1) -->
+        <label class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-white/10 border border-white/40 text-white flex items-center justify-center text-sm">
+              <i class="fa-regular fa-sun"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-white block flex items-center gap-1.5">
+                <span>Light High-Contrast (AAA)</span>
+                <span class="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-white/20 text-white">21:1 Ratio</span>
+              </span>
+              <span class="text-[10px] text-slate-400">Pure white background, bold black text & solid borders</span>
+            </div>
+          </div>
+          <input type="checkbox" id="toggleHighContrastLight" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+        </label>
+
+        <!-- Grayscale / Monochrome Mode -->
+        <label class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-slate-700/20 border border-slate-600/30 text-slate-300 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-droplet-slash"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-white block">Monochrome / Grayscale</span>
+              <span class="text-[10px] text-slate-400">Removes colors for color vision deficiency</span>
+            </div>
+          </div>
+          <input type="checkbox" id="toggleGrayscale" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+        </label>
+
+        <!-- Invert Colors -->
+        <label class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-circle-notch"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-white block">Invert Colors</span>
+              <span class="text-[10px] text-slate-400">Inverted high-visibility palette</span>
+            </div>
+          </div>
+          <input type="checkbox" id="toggleInvert" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+        </label>
+
+        <!-- Highlight Interactive Links & Buttons -->
+        <label class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-link"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-white block">Highlight Interactive Links</span>
+              <span class="text-[10px] text-slate-400">Adds bold underlines and button badges</span>
+            </div>
+          </div>
+          <input type="checkbox" id="toggleHighlightLinks" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+        </label>
+
+        <!-- Reading Guide Ruler (Dyslexia / ADHD) -->
+        <label class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-brand-lime/10 border border-brand-lime/30 text-brand-lime flex items-center justify-center text-sm">
+              <i class="fa-solid fa-ruler-horizontal"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-white block">Reading Guide Ruler</span>
+              <span class="text-[10px] text-slate-400">Horizontal guide follows cursor for line focus</span>
+            </div>
+          </div>
+          <input type="checkbox" id="toggleReadingRuler" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+        </label>
+
+        <!-- Big High-Contrast Cursor -->
+        <label class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-pink-500/10 border border-pink-500/30 text-pink-400 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-arrow-pointer"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-white block">Enlarged High-Contrast Cursor</span>
+              <span class="text-[10px] text-slate-400">High-visibility target for easy mouse tracking</span>
+            </div>
+          </div>
+          <input type="checkbox" id="toggleBigCursor" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+        </label>
+
+        <!-- Feature 2: Reading Mask / Focus Spotlight (ADHD & Cognitive Blinder) -->
+        <label class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-violet-500/10 border border-violet-500/30 text-violet-400 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-mask"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-white block flex items-center gap-1.5">
+                <span>Reading Focus Mask</span>
+                <span class="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-violet-500/20 text-violet-300">Spotlight</span>
+              </span>
+              <span class="text-[10px] text-slate-400">Dims peripheral screen to eliminate sensory distractions</span>
+            </div>
+          </div>
+          <input type="checkbox" id="toggleReadingMask" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+        </label>
+
+        <!-- Feature 3: Daltonism / Color Blindness Filter Engine -->
+        <div class="p-4 rounded-2xl bg-[#121626] border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-eye-dropper text-cyan-400"></i>
+              <span>Daltonism Color Blindness Engine</span>
+            </h4>
+            <span class="text-[10px] font-mono text-cyan-400">SVG Matrices</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2" id="daltonismGrid">
+            <button class="daltonism-btn active p-2 rounded-xl bg-slate-900 border border-brand-lime text-left text-xs font-bold text-white transition-all hover:scale-[1.02]" data-filter="none">
+              <span class="block text-xs">Standard Vision</span>
+              <span class="text-[9px] font-mono text-slate-400 font-normal">Full Color Spectrum</span>
+            </button>
+            <button class="daltonism-btn p-2 rounded-xl bg-slate-900 border border-slate-800 text-left text-xs font-bold text-slate-300 transition-all hover:scale-[1.02]" data-filter="protanopia">
+              <span class="block text-xs">Protanopia</span>
+              <span class="text-[9px] font-mono text-rose-400 font-normal">Red-Weak / Blind</span>
+            </button>
+            <button class="daltonism-btn p-2 rounded-xl bg-slate-900 border border-slate-800 text-left text-xs font-bold text-slate-300 transition-all hover:scale-[1.02]" data-filter="deuteranopia">
+              <span class="block text-xs">Deuteranopia</span>
+              <span class="text-[9px] font-mono text-emerald-400 font-normal">Green-Weak / Blind</span>
+            </button>
+            <button class="daltonism-btn p-2 rounded-xl bg-slate-900 border border-slate-800 text-left text-xs font-bold text-slate-300 transition-all hover:scale-[1.02]" data-filter="tritanopia">
+              <span class="block text-xs">Tritanopia</span>
+              <span class="text-[9px] font-mono text-sky-400 font-normal">Blue-Weak / Blind</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Feature 4: Circadian Warm Hue / Blue-Light Night Shield -->
+        <div class="p-4 rounded-2xl bg-[#121626] border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-xs">
+                <i class="fa-solid fa-moon"></i>
+              </div>
+              <div>
+                <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider">Blue-Light Night Shield</h4>
+                <span class="text-[10px] text-slate-400 block">Amber tint reduces 400nm eye strain</span>
+              </div>
+            </div>
+            <input type="checkbox" id="toggleWarmShield" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+          </div>
+          <div class="space-y-1.5 pt-1">
+            <div class="flex justify-between items-center text-[10px] font-mono">
+              <span class="text-slate-400">Warmth Temperature</span>
+              <span id="warmShieldLabel" class="font-bold text-amber-400">25% Warmth</span>
+            </div>
+            <input type="range" id="warmShieldSlider" min="10" max="65" step="5" value="25" class="w-full accent-amber-500 cursor-pointer">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAB 4: MOTION & MOTOR AIDS -->
+      <div id="tab-motion" class="a11y-tab-content hidden space-y-3">
+        
+        <!-- Pause All Animations -->
+        <label class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/30 text-orange-400 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-pause"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-white block">Pause All Motion & Animations</span>
+              <span class="text-[10px] text-slate-400">Halts floating orbs, marquee tickers & smooth spin</span>
+            </div>
+          </div>
+          <input type="checkbox" id="togglePauseAnimations" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+        </label>
+
+        <!-- Read Aloud (Text-to-Speech) -->
+        <div class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 space-y-3">
+          <label class="flex items-center justify-between cursor-pointer">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-sm">
+                <i class="fa-solid fa-volume-high"></i>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-white block">Screen Read Aloud (Text-to-Speech)</span>
+                <span class="text-[10px] text-slate-400">Hover or click any text to hear it spoken</span>
+              </div>
+            </div>
+            <input type="checkbox" id="toggleReadAloud" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+          </label>
+          <div id="readAloudStatus" class="hidden p-2 rounded-xl bg-slate-900 border border-slate-750 text-[11px] text-emerald-300 font-mono flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>Hover over headings or paragraphs to listen!</span>
+          </div>
+        </div>
+
+        <!-- Feature 5a: Click Target Magnifier (Motor Aid) -->
+        <label class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-sky-500/10 border border-sky-500/30 text-sky-400 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-white block flex items-center gap-1.5">
+                <span>Click Target Magnifier</span>
+                <span class="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-sky-500/20 text-sky-400">WCAG AAA</span>
+              </span>
+              <span class="text-[10px] text-slate-400">Expands interactive buttons & links to 48px hitbox</span>
+            </div>
+          </div>
+          <input type="checkbox" id="toggleHitboxMagnifier" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+        </label>
+
+        <!-- Feature 5b: Keyboard Navigation Focus Radar -->
+        <label class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-lime-500/10 border border-lime-500/30 text-lime-400 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-crosshairs"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-white block flex items-center gap-1.5">
+                <span>Keyboard Focus Radar</span>
+                <span class="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-lime-500/20 text-lime-400">Tab Nav</span>
+              </span>
+              <span class="text-[10px] text-slate-400">Pulsating glowing halo follows active keyboard focus</span>
+            </div>
+          </div>
+          <input type="checkbox" id="toggleFocusRadar" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+        </label>
+
+        <!-- Feature 6: Image Alt-Text Inspector & Content Tooltips -->
+        <label class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-pink-500/10 border border-pink-500/30 text-pink-400 flex items-center justify-center text-sm">
+              <i class="fa-regular fa-image"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-white block flex items-center gap-1.5">
+                <span>Image Alt-Text Inspector</span>
+                <span class="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-pink-500/20 text-pink-400">Vision Aid</span>
+              </span>
+              <span class="text-[10px] text-slate-400">Hover any image to preview rich Alt description badge</span>
+            </div>
+          </div>
+          <input type="checkbox" id="toggleImageAltInspector" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+        </label>
+
+        <!-- Feature 7: Hands-Free Voice Command Navigator -->
+        <div class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 space-y-3">
+          <label class="flex items-center justify-between cursor-pointer">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center text-sm">
+                <i class="fa-solid fa-microphone-lines"></i>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-white block flex items-center gap-1.5">
+                  <span>Voice Command Navigator</span>
+                  <span class="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-cyan-500/20 text-cyan-400">Hands-Free</span>
+                </span>
+                <span class="text-[10px] text-slate-400">Control page with voice ("Services", "Scroll Down", etc.)</span>
+              </div>
+            </div>
+            <input type="checkbox" id="toggleVoiceCommander" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+          </label>
+          <div class="text-[10px] font-mono text-slate-400 bg-slate-900/80 p-2.5 rounded-xl border border-slate-750 flex flex-wrap gap-1.5">
+            <span class="text-cyan-400 font-bold">Commands:</span>
+            <span class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-300">"Services"</span>
+            <span class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-300">"Portfolio"</span>
+            <span class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-300">"Calculator"</span>
+            <span class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-300">"Finishes"</span>
+            <span class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-300">"About"</span>
+            <span class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-300">"Contact"</span>
+            <span class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-300">"Scroll Down"</span>
+            <span class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-300">"Scroll Up"</span>
+          </div>
+        </div>
+
+        <!-- Feature 8: Page Structure & Landmark Navigator -->
+        <div class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-list-check"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-white block flex items-center gap-1.5">
+                <span>Landmark Navigator</span>
+                <span class="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-indigo-500/20 text-indigo-400">Virtual TOC</span>
+              </span>
+              <span class="text-[10px] text-slate-400">Instant jump menu to any landmark section</span>
+            </div>
+          </div>
+          <button id="openLandmarkNavigatorBtn" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all shadow-md flex items-center gap-1.5">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Open</span>
+          </button>
+        </div>
+
+        <!-- Feature 9: Print Jargon & Cognitive Plain-Language Assistant -->
+        <label class="p-3.5 rounded-2xl bg-[#121626] border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-book-open-reader"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-white block flex items-center gap-1.5">
+                <span>Print Jargon Explainer</span>
+                <span class="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-teal-500/20 text-teal-400">Cognitive</span>
+              </span>
+              <span class="text-[10px] text-slate-400">Hover industry terms (GSM, Spot UV, Bleed) for simple explanations</span>
+            </div>
+          </div>
+          <input type="checkbox" id="toggleJargonExplainer" class="w-4 h-4 accent-[#94C120] cursor-pointer">
+        </label>
+
+      </div>
+
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div class="p-4 border-t border-white/10 bg-black/40 flex items-center justify-between gap-3 shrink-0">
+      <button id="resetA11yBtn" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-750 text-slate-300 hover:text-white text-xs font-bold transition-all flex items-center gap-2">
+        <i class="fa-solid fa-rotate-left text-brand-lime"></i>
+        <span>Reset All</span>
+      </button>
+      <button id="applyCloseA11yBtn" class="px-5 py-2.5 rounded-xl bg-brand-lime text-brand-dark font-heading font-black text-xs shadow-lg shadow-brand-lime/20 hover:bg-brand-limeHover transition-all flex items-center gap-2">
+        <i class="fa-solid fa-check"></i>
+        <span>Done & Save</span>
+      </button>
+    </div>
+
+  </aside>
 
   <!-- Scripts -->
   <script src="js/main.js"></script>

@@ -28,17 +28,24 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  color: #f1f5f9;
-  background-color: #07090F;
-  overflow-x: hidden;
-  width: 100%;
+html {
+  font-size: calc(16px * var(--theme-font-scale, 1));
 }
 
-h1, h2, h3, h4, .font-heading {
-  font-family: 'Outfit', sans-serif;
-  letter-spacing: -0.025em;
+body {
+  font-family: var(--theme-font-body, 'Plus Jakarta Sans', sans-serif);
+  color: var(--theme-color-body, #f1f5f9);
+  background-color: var(--theme-bg-body, #07090F);
+  overflow-x: hidden;
+  width: 100%;
+  line-height: var(--theme-line-height, 1.6);
+  letter-spacing: var(--theme-letter-spacing, normal);
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--theme-font-heading, 'Outfit', sans-serif);
+  letter-spacing: var(--theme-letter-spacing, -0.025em);
+  color: var(--theme-color-heading, inherit);
 }
 
 /* Custom Scrollbar */
@@ -771,13 +778,636 @@ h1, h2, h3, h4, .font-heading {
 .mobile-menu-active .mobile-nav-link:nth-child(4) { animation-delay: 0.16s; }
 .mobile-menu-active .mobile-nav-link:nth-child(5) { animation-delay: 0.20s; }
 .mobile-menu-active .mobile-nav-link:nth-child(6) { animation-delay: 0.24s; }
-.mobile-menu-active .mobile-nav-link:nth-child(7) { animation-delay: 0.28s; }
 
 .mobile-menu-active .mobile-dock-enter {
-  animation: mobileLinkSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.32s forwards;
+  animation: mobileLinkSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.28s forwards;
   opacity: 0;
 }
 
+/* ==========================================================================
+   DYNAMIC ACCESSIBILITY & COLOR STUDIO ARCHITECTURE
+   10 Popular Palettes, Custom Brand Accents & Section-Wise Background Engine
+   ========================================================================== */
 
+:root {
+  --theme-accent-primary: #94C120;
+  --theme-accent-secondary: #3B2C85;
+  --theme-bg-hero: #07090F;
+  --theme-bg-services: #0A0D17;
+  --theme-bg-portfolio: #07090F;
+  --theme-bg-calculator: #0A0D17;
+  --theme-bg-finishes: #07090F;
+  --theme-bg-about: #0A0D17;
+  --theme-bg-contact: #07090F;
+  --theme-bg-footer: #05060A;
+}
 
+/* Dynamic Section Background Engine (Section-Wise Live Overrides) */
+#home {
+  background-color: var(--theme-bg-hero, #07090F) !important;
+}
+#services {
+  background-color: var(--theme-bg-services, #0A0D17) !important;
+}
+#portfolio {
+  background-color: var(--theme-bg-portfolio, #07090F) !important;
+}
+#calculator {
+  background-color: var(--theme-bg-calculator, #0A0D17) !important;
+}
+#finishes {
+  background-color: var(--theme-bg-finishes, #07090F) !important;
+}
+#about {
+  background-color: var(--theme-bg-about, #0A0D17) !important;
+}
+#contact {
+  background-color: var(--theme-bg-contact, #07090F) !important;
+}
+footer {
+  background-color: var(--theme-bg-footer, #05060A) !important;
+}
 
+/* Dynamic Primary Accent Bindings */
+.text-brand-lime {
+  color: var(--theme-accent-primary, #94C120) !important;
+}
+.bg-brand-lime {
+  background-color: var(--theme-accent-primary, #94C120) !important;
+}
+.border-brand-lime {
+  border-color: var(--theme-accent-primary, #94C120) !important;
+}
+.hover\:text-brand-lime:hover {
+  color: var(--theme-accent-primary, #94C120) !important;
+}
+.hover\:border-brand-lime:hover {
+  border-color: var(--theme-accent-primary, #94C120) !important;
+}
+.hover\:bg-brand-limeHover:hover,
+.hover\:bg-brand-lime:hover {
+  filter: brightness(0.92);
+}
+.filter-btn.active {
+  background-color: var(--theme-accent-primary, #94C120) !important;
+  color: #07090F !important;
+  font-weight: 800 !important;
+}
+.hero-tab-btn.active {
+  background-color: var(--theme-accent-primary, #94C120) !important;
+  color: #07090F !important;
+  font-weight: 800 !important;
+}
+#cursorDot {
+  background: var(--theme-accent-primary, #94C120) !important;
+  box-shadow: 0 0 10px var(--theme-accent-primary, #94C120) !important;
+}
+#cursorRing {
+  border-color: var(--theme-accent-primary, #94C120) !important;
+}
+#cursorText {
+  color: var(--theme-accent-primary, #94C120) !important;
+}
+
+/* Accessibility Drawer Trigger Buttons */
+.accessibility-trigger-btn {
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+.accessibility-trigger-btn:hover {
+  transform: scale(1.08);
+}
+.accessibility-trigger-btn:active {
+  transform: scale(0.92);
+}
+
+/* Accessibility & Color Studio Slide-Out Drawer Styles */
+#accessibilityDrawer {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -12px 0 50px rgba(0, 0, 0, 0.7);
+}
+#accessibilityDrawer.drawer-open {
+  transform: translateX(0) !important;
+}
+#accessibilityBackdrop.backdrop-open {
+  display: block !important;
+  opacity: 1 !important;
+}
+
+/* Palette Preset Card Interactions */
+.palette-btn {
+  border-width: 1.5px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.palette-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.palette-btn.active {
+  border-color: var(--theme-accent-primary, #94C120) !important;
+  box-shadow: 0 0 20px -3px var(--theme-accent-primary, rgba(148, 193, 32, 0.35));
+}
+.palette-btn.active .palette-check {
+  display: flex !important;
+}
+
+/* Drawer Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.25);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-accent-primary, #94C120);
+}
+
+/* Color Input Element Polish */
+input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 8px;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+}
+
+/* Studio Paper Slate Light Mode support (Active when palette 10 is chosen) */
+html.theme-light,
+html.theme-light body {
+  background-color: #F1F1F2 !important;
+  color: #1E293B !important;
+}
+html.theme-light .glass-nav {
+  background: rgba(241, 241, 242, 0.94) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05) !important;
+}
+html.theme-light .brand-logo-container {
+  background-color: #F1F1F2 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05) !important;
+}
+html.theme-light nav .nav-item-link {
+  color: #334155 !important;
+}
+html.theme-light nav .nav-item-link:hover {
+  color: var(--theme-accent-primary, #94C120) !important;
+}
+html.theme-light .service-card,
+html.theme-light .portfolio-card-inner,
+html.theme-light .texture-card,
+html.theme-light #calculator .lg\:col-span-7 {
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05) !important;
+}
+html.theme-light .service-card h3,
+html.theme-light .portfolio-card h4,
+html.theme-light .texture-card h4,
+html.theme-light #calculator h2,
+html.theme-light #portfolio h2,
+html.theme-light #services h2,
+html.theme-light #home h1,
+html.theme-light #about h2,
+html.theme-light #contact h2 {
+  color: #0F172A !important;
+}
+html.theme-light p,
+html.theme-light .text-slate-300,
+html.theme-light .text-slate-400 {
+  color: #475569 !important;
+}
+html.theme-light header .bg-slate-900,
+html.theme-light .accessibility-trigger-btn {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  color: #1E293B !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Dynamic Section Backgrounds from Accessibility Studio */
+#home {
+  background-color: var(--theme-bg-hero, #07090F) !important;
+}
+#services {
+  background-color: var(--theme-bg-services, #0A0D17) !important;
+}
+#portfolio {
+  background-color: var(--theme-bg-portfolio, #07090F) !important;
+}
+#calculator {
+  background-color: var(--theme-bg-calculator, #0A0D17) !important;
+}
+#finishes {
+  background-color: var(--theme-bg-finishes, #07090F) !important;
+}
+#about {
+  background-color: var(--theme-bg-about, #0A0D17) !important;
+}
+#contact {
+  background-color: var(--theme-bg-contact, #07090F) !important;
+}
+footer, #footer {
+  background-color: var(--theme-bg-footer, #05060A) !important;
+}
+
+/* Dynamic Cards and Accents from Accessibility Studio */
+.service-card,
+.portfolio-card-inner,
+.texture-card,
+#calculator .lg\:col-span-7 {
+  background-color: var(--theme-color-card, #131728) !important;
+  border-color: var(--theme-border-card, rgba(255, 255, 255, 0.08)) !important;
+}
+
+:root {
+  --theme-accent-primary: #94C120;
+  --theme-accent-secondary: #3B2C85;
+}
+.text-brand-lime {
+  color: var(--theme-accent-primary, #94C120) !important;
+}
+.bg-brand-lime {
+  background-color: var(--theme-accent-primary, #94C120) !important;
+}
+.border-brand-lime {
+  border-color: var(--theme-accent-primary, #94C120) !important;
+}
+.hover\:bg-brand-limeHover:hover,
+.hover\:bg-brand-lime:hover {
+  filter: brightness(0.92);
+}
+
+/* ==========================================================================
+   WCAG 2.1 VISION & ACCESSIBILITY MODES
+   ========================================================================== */
+
+/* High Contrast Mode */
+html.a11y-high-contrast {
+  filter: contrast(130%);
+}
+html.a11y-high-contrast body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+html.a11y-high-contrast h1,
+html.a11y-high-contrast h2,
+html.a11y-high-contrast h3,
+html.a11y-high-contrast h4 {
+  color: #ffff00 !important;
+}
+html.a11y-high-contrast a,
+html.a11y-high-contrast button {
+  border-color: #ffffff !important;
+}
+
+/* Grayscale Mode */
+html.a11y-grayscale {
+  filter: grayscale(100%) !important;
+}
+
+/* Invert Colors Mode */
+html.a11y-invert {
+  filter: invert(100%) hue-rotate(180deg) !important;
+}
+html.a11y-invert img,
+html.a11y-invert video,
+html.a11y-invert canvas,
+html.a11y-invert .canvas-container {
+  filter: invert(100%) hue-rotate(180deg) !important;
+}
+
+/* Highlight Links & Buttons */
+html.a11y-highlight-links a:not(.a11y-tab-btn),
+html.a11y-highlight-links button:not(.a11y-tab-btn):not(#closeAccessibilityBtn):not(#resetA11yBtn):not(#applyCloseA11yBtn):not(.font-heading-btn):not(.font-body-btn):not(.font-scale-preset):not(.line-height-btn):not(.letter-spacing-btn):not(.palette-btn) {
+  outline: 2px solid #FFEE00 !important;
+  outline-offset: 3px !important;
+  text-decoration: underline !important;
+}
+
+/* Big High-Contrast Cursor */
+html.a11y-big-cursor,
+html.a11y-big-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' viewBox='0 0 24 24' fill='%2394C120' stroke='%23000000' stroke-width='1.5'%3E%3Cpath d='M3 3l7 18 3-7 7-3L3 3z'/%3E%3C/svg%3E"), auto !important;
+}
+
+/* Pause All Motion & Animations */
+html.a11y-pause-animations *,
+html.a11y-pause-animations *::before,
+html.a11y-pause-animations *::after {
+  animation-play-state: paused !important;
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+/* Reading Guide Ruler */
+#accessibilityReadingRuler {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 46px;
+  background: rgba(255, 238, 0, 0.12);
+  border-top: 2px solid rgba(255, 238, 0, 0.85);
+  border-bottom: 2px solid rgba(255, 238, 0, 0.85);
+  pointer-events: none;
+  z-index: 999999;
+  transform: translateY(-50%);
+  box-shadow: 0 0 25px rgba(255, 238, 0, 0.25);
+  display: none;
+  transition: top 0.03s linear;
+}
+#accessibilityReadingRuler.active {
+  display: block;
+}
+
+/* Accessibility Drawer & Backdrops */
+#accessibilityDrawer {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#accessibilityDrawer.open {
+  transform: translateX(0) !important;
+}
+#accessibilityBackdrop.open {
+  display: block !important;
+  opacity: 1 !important;
+}
+
+.a11y-tab-btn.active {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: var(--theme-accent-primary, #94C120) !important;
+  border-bottom: 2px solid var(--theme-accent-primary, #94C120) !important;
+}
+
+#accessibilityDrawer .custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+#accessibilityDrawer .custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+#accessibilityDrawer .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+#accessibilityDrawer .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-accent-primary, #94C120);
+}
+
+/* Mobile Responsiveness for Accessibility Drawer */
+@media (max-width: 640px) {
+  #accessibilityDrawer {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    border-left: none !important;
+  }
+}
+
+/* ==========================================================================
+   ADVANCED ACCESSIBILITY ENGINE (LATEST ENTERPRISE SUITE)
+   ========================================================================== */
+
+/* 1. Bionic Reading Fixation Bolding */
+b.bionic-fixation {
+  font-weight: 800 !important;
+  color: inherit !important;
+  display: inline !important;
+}
+
+/* 2. Reading Focus Mask (ADHD Spotlight) */
+#accessibilityReadingMask {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999980;
+  display: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(3, 5, 10, 0.78) 0%,
+    rgba(3, 5, 10, 0.78) calc(var(--mask-y, 50%) - 60px),
+    transparent calc(var(--mask-y, 50%) - 45px),
+    transparent calc(var(--mask-y, 50%) + 45px),
+    rgba(3, 5, 10, 0.78) calc(var(--mask-y, 50%) + 60px),
+    rgba(3, 5, 10, 0.78) 100%
+  );
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+}
+#accessibilityReadingMask.active {
+  display: block;
+}
+
+/* 3. Circadian Warm Hue / Blue-Light Night Shield */
+#accessibilityWarmShield {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999970;
+  display: none;
+  background-color: #FF9800;
+  mix-blend-mode: multiply;
+  opacity: var(--warmth-opacity, 0.25);
+  transition: opacity 0.2s ease;
+}
+#accessibilityWarmShield.active {
+  display: block;
+}
+
+/* 4. Daltonism / Color Blindness Medical Matrices */
+html.a11y-filter-protanopia {
+  filter: url(#protanopia) !important;
+}
+html.a11y-filter-deuteranopia {
+  filter: url(#deuteranopia) !important;
+}
+html.a11y-filter-tritanopia {
+  filter: url(#tritanopia) !important;
+}
+html.a11y-filter-achromatopsia {
+  filter: url(#achromatopsia) !important;
+}
+
+.daltonism-btn.active {
+  border-color: var(--theme-accent-primary, #94C120) !important;
+  background-color: rgba(148, 193, 32, 0.1) !important;
+  color: #FFFFFF !important;
+}
+
+/* 5. Keyboard Navigation Focus Radar */
+html.a11y-focus-radar *:focus-visible {
+  outline: 3px solid #FFEE00 !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 0 0 6px rgba(255, 238, 0, 0.4), 0 0 25px rgba(255, 238, 0, 0.7) !important;
+  animation: a11yRadarPulse 1.2s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate !important;
+}
+@keyframes a11yRadarPulse {
+  0% {
+    box-shadow: 0 0 0 4px rgba(255, 238, 0, 0.3), 0 0 10px rgba(255, 238, 0, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(255, 238, 0, 0.6), 0 0 25px rgba(255, 238, 0, 0.8);
+  }
+}
+
+/* 6. Motor Target Magnifier (WCAG AAA Touch targets) */
+html.a11y-hitbox-magnifier a,
+html.a11y-hitbox-magnifier button:not(.palette-btn):not(.daltonism-btn):not(.font-scale-preset):not(.line-height-btn):not(.letter-spacing-btn) {
+  min-height: 48px !important;
+  min-width: 48px !important;
+}
+
+/* 7. Image Alt-Text Tooltip */
+#accessibilityImageTooltip {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  pointer-events: none;
+}
+#accessibilityImageTooltip.visible {
+  display: block !important;
+}
+
+/* ==========================================================================
+   NEXT-GEN WCAG ACCESSIBILITY SUITE (6 ADVANCED FEATURES)
+   ========================================================================== */
+
+/* 1. One-Click Profile Buttons */
+.a11y-profile-btn {
+  position: relative;
+  overflow: hidden;
+}
+.a11y-profile-btn.active {
+  border-color: var(--theme-accent-primary, #94C120) !important;
+  background: linear-gradient(135deg, rgba(148, 193, 32, 0.18), rgba(15, 23, 42, 0.95)) !important;
+  box-shadow: 0 0 15px -3px rgba(148, 193, 32, 0.35);
+}
+.a11y-profile-btn.active span.text-white {
+  color: var(--theme-accent-primary, #94C120) !important;
+}
+
+/* 2. Light High-Contrast Mode (WCAG AAA 21:1 Ratio) */
+html.a11y-high-contrast-light {
+  filter: none !important;
+}
+html.a11y-high-contrast-light body,
+html.a11y-high-contrast-light section,
+html.a11y-high-contrast-light div,
+html.a11y-high-contrast-light header,
+html.a11y-high-contrast-light footer,
+html.a11y-high-contrast-light nav {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+html.a11y-high-contrast-light h1,
+html.a11y-high-contrast-light h2,
+html.a11y-high-contrast-light h3,
+html.a11y-high-contrast-light h4,
+html.a11y-high-contrast-light h5,
+html.a11y-high-contrast-light h6,
+html.a11y-high-contrast-light p,
+html.a11y-high-contrast-light span,
+html.a11y-high-contrast-light li,
+html.a11y-high-contrast-light label {
+  color: #000000 !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+html.a11y-high-contrast-light a,
+html.a11y-high-contrast-light button {
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+}
+html.a11y-high-contrast-light .service-card,
+html.a11y-high-contrast-light .texture-card,
+html.a11y-high-contrast-light .portfolio-card,
+html.a11y-high-contrast-light .glass-card {
+  background: #FFFFFF !important;
+  border: 2.5px solid #000000 !important;
+  box-shadow: none !important;
+}
+html.a11y-high-contrast-light #accessibilityDrawer,
+html.a11y-high-contrast-light #accessibilityLandmarksModal {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  border: 3px solid #000000 !important;
+}
+html.a11y-high-contrast-light #accessibilityDrawer * {
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+/* 3. Text Alignment Suite */
+html.a11y-align-left p,
+html.a11y-align-left h1,
+html.a11y-align-left h2,
+html.a11y-align-left h3,
+html.a11y-align-left h4,
+html.a11y-align-left span {
+  text-align: left !important;
+}
+html.a11y-align-center p,
+html.a11y-align-center h1,
+html.a11y-align-center h2,
+html.a11y-align-center h3,
+html.a11y-align-center h4 {
+  text-align: center !important;
+}
+html.a11y-align-right p,
+html.a11y-align-right h1,
+html.a11y-align-right h2,
+html.a11y-align-right h3,
+html.a11y-align-right h4 {
+  text-align: right !important;
+}
+.text-align-btn.active {
+  border-color: var(--theme-accent-primary, #94C120) !important;
+  color: var(--theme-accent-primary, #94C120) !important;
+}
+
+/* 4. Voice Commander Audio Wave Pulse */
+@keyframes voiceWavePulse {
+  0% { transform: scaleY(0.4); opacity: 0.5; }
+  50% { transform: scaleY(1.3); opacity: 1; }
+  100% { transform: scaleY(0.4); opacity: 0.5; }
+}
+.voice-wave-bar {
+  animation: voiceWavePulse 0.9s ease-in-out infinite alternate;
+}
+.voice-wave-bar:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.voice-wave-bar:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* 5. Print Jargon Assistant Highlighting */
+.jargon-term {
+  border-bottom: 2px dashed #00C896;
+  text-decoration-skip-ink: none;
+  cursor: help;
+  position: relative;
+  transition: all 0.2s ease;
+  background: rgba(0, 200, 150, 0.08);
+  border-radius: 2px;
+  padding: 0 2px;
+}
+.jargon-term:hover {
+  background: rgba(0, 200, 150, 0.25);
+  color: #00FFBB !important;
+  border-bottom-style: solid;
+}
