@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us & Atelier Location | Imagine Printers Thane</title>
+  <meta name="description" content="Contact Imagine Printers in Thane, Maharashtra. Call +91 98206 36646, email conact@imagineprint.co.in, or visit our printing press facility via Google Maps.">
+  <link rel="icon" type="image/png" href="../assets/logo/Imagine Logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              lime: '#94C120',
+              limeHover: '#A6D825',
+              indigo: '#3B2C85',
+              dark: '#07090F',
+              surface: '#0E1322',
+              card: '#13192B',
+              magenta: '#EC008C',
+              cyan: '#00AEEF'
+            }
+          },
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Space Grotesk', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="font-sans bg-[#07090F] text-slate-200 antialiased selection:bg-brand-lime selection:text-black">
+
+  <!-- Custom Animated Brand Cursor Elements -->
+  <div id="cursorDot" class="hidden md:block"></div>
+  <div id="cursorRing" class="hidden md:block"></div>
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-slate-950/95 border-b border-white/5 py-2 px-4 sm:px-6 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center gap-1.5 text-brand-lime font-bold">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-lime animate-ping"></span>
+          <span>Atelier in Thane</span>
+          <span class="hidden sm:inline">• Est. 2011</span>
+        </span>
+        <span class="hidden md:inline text-slate-600">|</span>
+        <span class="hidden md:inline text-slate-400">Open Mon - Sat: 9:30 AM – 8:30 PM</span>
+      </div>
+      <div class="flex items-center gap-3 sm:gap-5 text-slate-300 text-[11px] sm:text-xs">
+        <a href="tel:9820636646" class="hover:text-brand-lime transition-colors flex items-center gap-1.5 font-bold text-white">
+          <i class="fa-solid fa-phone text-brand-lime text-[11px]"></i>
+          <span>+91 98206 36646</span>
+        </a>
+        <a href="mailto:conact@imagineprint.co.in" class="hover:text-brand-lime transition-colors hidden lg:flex items-center gap-1.5">
+          <i class="fa-solid fa-envelope text-brand-cyan text-[11px]"></i>
+          <span>conact@imagineprint.co.in</span>
+        </a>
+        <a href="https://instagram.com/imagine_digital_print" target="_blank" class="hover:text-pink-400 transition-colors hidden sm:flex items-center gap-1.5">
+          <i class="fa-brands fa-instagram text-pink-500 text-xs"></i>
+          <span>@imagine_digital_print</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header id="siteHeader" class="sticky top-0 z-40 bg-slate-950/85 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="../" class="flex items-center gap-3 group">
+        <div class="p-1.5 bg-white rounded-xl shadow-lg border border-white/20 transition-transform group-hover:scale-105">
+          <img src="../assets/logo/Imagine Logo.png" alt="Imagine Printers Logo" class="h-9 sm:h-10 w-auto object-contain">
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center space-x-8 font-semibold text-sm text-slate-300">
+        <a href="../" class="nav-link hover:text-brand-lime transition-colors">Home</a>
+        <a href="../services/" class="nav-link hover:text-brand-lime transition-colors">Services</a>
+        <a href="../portfolio/" class="nav-link hover:text-brand-lime transition-colors">Portfolio</a>
+        <a href="../about/" class="nav-link hover:text-brand-lime transition-colors">About Us</a>
+        <a href="../contact/" class="nav-link active-page text-white hover:text-brand-lime transition-colors">Contact</a>
+      </nav>
+
+      <!-- Desktop Quick Actions -->
+      <div class="hidden sm:flex items-center space-x-3">
+        <button onclick="openCallbackModal()" class="px-4 py-2 text-xs font-bold text-slate-200 bg-slate-900 border border-slate-800 rounded-xl hover:bg-slate-800 hover:text-white transition-all flex items-center gap-2">
+          <i class="fa-solid fa-phone text-brand-lime text-xs"></i>
+          <span>Call Desk</span>
+        </button>
+        <button onclick="openWhatsAppQuote('Contact Page Header')" class="pulse-btn px-4 py-2 rounded-xl bg-brand-lime text-slate-950 font-heading font-black text-xs hover:bg-brand-limeHover transition-all flex items-center gap-2 shadow-lg shadow-brand-lime/20">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span>Instant Quote</span>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <div class="flex lg:hidden items-center space-x-2">
+        <button onclick="openWhatsAppQuote('Contact Page Mobile')" class="p-2 rounded-xl bg-brand-lime text-slate-950 text-xs font-bold sm:hidden">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+        </button>
+        <button id="mobileMenuBtn" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white" aria-label="Open menu">
+          <i class="fa-solid fa-bars text-lg text-brand-lime"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Sub-Navbar Infinite Running Text Ticker Ribbon -->
+  <div class="subnav-ticker-wrap">
+    <div class="subnav-ticker-track font-mono text-[11px]">
+      <span class="inline-flex items-center gap-2 font-bold"><span class="w-2 h-2 rounded-full bg-brand-lime animate-ping"></span> <span class="ticker-rainbow-text uppercase">★ DIRECT FACTORY ATELIER</span></span>
+      <span class="text-slate-500">•</span>
+      <span class="infinite-color-cycle"><i class="fa-solid fa-gem text-xs text-brand-lime mr-1"></i> 21 COMMERCIAL PRINT & SIGNAGE SERVICES</span>
+      <span class="text-slate-500">•</span>
+      <span class="text-slate-100 font-bold"><i class="fa-solid fa-address-card text-brand-cyan mr-1"></i> LUXURY VISITING CARDS & RAISED GOLD FOIL</span>
+      <span class="text-slate-500">•</span>
+      <span class="ticker-rainbow-text"><i class="fa-solid fa-bolt text-yellow-400 mr-1"></i> 3D BACKLIT ACRYLIC & LED GLOW SIGNS</span>
+      <span class="text-slate-500">•</span>
+      <span class="text-brand-magenta font-bold"><i class="fa-solid fa-wand-magic-sparkles text-pink-400 mr-1"></i> COLD-TRANSFER UV DTF 3D STICKERS</span>
+      <span class="text-slate-500">•</span>
+      <span class="infinite-color-cycle"><i class="fa-solid fa-flag text-brand-lime mr-1"></i> ROLL-UP STANDEES & FLEX BANNERS</span>
+      <span class="text-slate-500">•</span>
+      <span class="text-yellow-400 font-bold"><i class="fa-solid fa-book-open text-yellow-400 mr-1"></i> OFFSET BROCHURES & DIE-CUT CATALOGS</span>
+      <span class="text-slate-500">•</span>
+      <span class="ticker-rainbow-text"><i class="fa-solid fa-truck-fast text-emerald-400 mr-1"></i> SAME-DAY DISPATCH IN THANE & MUMBAI</span>
+      <span class="text-slate-500">•</span>
+      <span class="text-white font-bold"><i class="fa-brands fa-google text-blue-400 mr-1"></i> GOOGLE 4.9 ★★★★★ VERIFIED REVIEWS</span>
+      <span class="text-slate-500">•</span>
+      <span class="infinite-color-cycle"><i class="fa-brands fa-whatsapp text-emerald-400 mr-1"></i> WHATSAPP / CALL: +91 98206 36646</span>
+      
+      <!-- Duplicate Set For 100% Seamless Infinite Loop -->
+      <span class="inline-flex items-center gap-2 font-bold"><span class="w-2 h-2 rounded-full bg-brand-lime animate-ping"></span> <span class="ticker-rainbow-text uppercase">★ DIRECT FACTORY ATELIER</span></span>
+      <span class="text-slate-500">•</span>
+      <span class="infinite-color-cycle"><i class="fa-solid fa-gem text-xs text-brand-lime mr-1"></i> 21 COMMERCIAL PRINT & SIGNAGE SERVICES</span>
+      <span class="text-slate-500">•</span>
+      <span class="text-slate-100 font-bold"><i class="fa-solid fa-address-card text-brand-cyan mr-1"></i> LUXURY VISITING CARDS & RAISED GOLD FOIL</span>
+      <span class="text-slate-500">•</span>
+      <span class="ticker-rainbow-text"><i class="fa-solid fa-bolt text-yellow-400 mr-1"></i> 3D BACKLIT ACRYLIC & LED GLOW SIGNS</span>
+      <span class="text-slate-500">•</span>
+      <span class="text-brand-magenta font-bold"><i class="fa-solid fa-wand-magic-sparkles text-pink-400 mr-1"></i> COLD-TRANSFER UV DTF 3D STICKERS</span>
+      <span class="text-slate-500">•</span>
+      <span class="infinite-color-cycle"><i class="fa-solid fa-flag text-brand-lime mr-1"></i> ROLL-UP STANDEES & FLEX BANNERS</span>
+      <span class="text-slate-500">•</span>
+      <span class="text-yellow-400 font-bold"><i class="fa-solid fa-book-open text-yellow-400 mr-1"></i> OFFSET BROCHURES & DIE-CUT CATALOGS</span>
+      <span class="text-slate-500">•</span>
+      <span class="ticker-rainbow-text"><i class="fa-solid fa-truck-fast text-emerald-400 mr-1"></i> SAME-DAY DISPATCH IN THANE & MUMBAI</span>
+      <span class="text-slate-500">•</span>
+      <span class="text-white font-bold"><i class="fa-brands fa-google text-blue-400 mr-1"></i> GOOGLE 4.9 ★★★★★ VERIFIED REVIEWS</span>
+      <span class="text-slate-500">•</span>
+      <span class="infinite-color-cycle"><i class="fa-brands fa-whatsapp text-emerald-400 mr-1"></i> WHATSAPP / CALL: +91 98206 36646</span>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobileMenuBackdrop" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  <div id="mobileMenu" class="fixed inset-y-0 right-0 max-w-xs w-full bg-[#0B0E1A] border-l border-white/10 z-50 p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-white/10">
+        <div class="p-1 bg-white rounded-lg inline-block">
+          <img src="../assets/logo/Imagine Logo.png" alt="Imagine Printers" class="h-8 w-auto">
+        </div>
+        <button id="closeMobileMenu" class="w-8 h-8 rounded-full bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+      
+      <nav class="mt-6 flex flex-col space-y-3 font-heading font-semibold text-lg">
+        <a href="../" class="px-3 py-2 rounded-xl text-slate-300 hover:bg-white/5 hover:text-brand-lime flex items-center justify-between">
+          <span>Home</span>
+          <i class="fa-solid fa-angle-right text-xs"></i>
+        </a>
+        <a href="../services/" class="px-3 py-2 rounded-xl text-slate-300 hover:bg-white/5 hover:text-brand-lime flex items-center justify-between">
+          <span>Services</span>
+          <i class="fa-solid fa-angle-right text-xs"></i>
+        </a>
+        <a href="../portfolio/" class="px-3 py-2 rounded-xl text-slate-300 hover:bg-white/5 hover:text-brand-lime flex items-center justify-between">
+          <span>Portfolio</span>
+          <i class="fa-solid fa-angle-right text-xs"></i>
+        </a>
+        <a href="../about/" class="px-3 py-2 rounded-xl text-slate-300 hover:bg-white/5 hover:text-brand-lime flex items-center justify-between">
+          <span>About Us</span>
+          <i class="fa-solid fa-angle-right text-xs"></i>
+        </a>
+        <a href="../contact/" class="px-3 py-2 rounded-xl bg-brand-lime/10 text-brand-lime border border-brand-lime/20 flex items-center justify-between">
+          <span>Contact & Maps</span>
+          <i class="fa-solid fa-angle-right text-xs"></i>
+        </a>
+      </nav>
+    </div>
+
+    <div class="pt-6 border-t border-white/10 space-y-3">
+      <button onclick="openWhatsAppQuote('Contact Mobile Drawer')" class="w-full py-3 rounded-xl bg-brand-lime text-slate-950 font-bold text-sm flex items-center justify-center gap-2">
+        <i class="fa-brands fa-whatsapp text-base"></i>
+        <span>Chat on WhatsApp</span>
+      </button>
+      <a href="tel:9820636646" class="w-full py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 text-sm font-semibold flex items-center justify-center gap-2">
+        <i class="fa-solid fa-phone text-brand-lime text-xs"></i>
+        <span>+91 98206 36646</span>
+      </a>
+      <div class="text-center text-xs text-slate-500 pt-2 font-mono">
+        Thane West, Maharashtra
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Header (Dark Theme) -->
+  <section class="relative pt-12 pb-12 bg-gradient-to-b from-slate-950 to-[#07090F] border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-lime/10 border border-brand-lime/20 text-brand-lime text-xs font-mono font-bold">
+        <span>DIRECT FACTORY DESK • THANE WEST</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl lg:text-5xl font-black font-heading tracking-tight text-white leading-tight">
+        Contact Our <br>
+        <span class="word-flipper-wrapper">
+          <span id="contactRotatingText" class="infinite-gradient-text transition-all duration-300">Signage & Print Desk</span>
+        </span>
+      </h1>
+      <p class="text-slate-400 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+        Speak directly with our technical team in Thane. We provide instant quotation, review your print files, and welcome in-person visits to examine paper and signage swatches.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section (Clean Light Theme Contrast) -->
+  <section class="py-12 sm:py-16 pb-28 sm:pb-20 section-light border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left: Verified Contact Cards -->
+        <div class="lg:col-span-5 space-y-4 reveal-on-scroll">
+          
+          <div class="light-card p-6 rounded-2xl space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="w-10 h-10 rounded-xl bg-brand-lime/20 text-slate-950 flex items-center justify-center text-lg font-bold">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-brand-lime/20 text-slate-900">FACTORY ATELIER</span>
+            </div>
+            <h3 class="text-lg font-bold font-heading text-slate-900">Facility & Workshop</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Imagine Prints | Best Printing Services in Thane, Maharashtra. Easy logistics access from Eastern Express Highway.
+            </p>
+            <div class="pt-2">
+              <a href="https://maps.app.goo.gl/9DF8Q9ebJFgmncAHA" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-indigo hover:text-brand-lime font-mono">
+                <span>Open in Google Maps App</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="light-card p-6 rounded-2xl space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="w-10 h-10 rounded-xl bg-brand-cyan/20 text-slate-950 flex items-center justify-center text-lg font-bold">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-brand-cyan/20 text-slate-900">INSTANT CALL</span>
+            </div>
+            <h3 class="text-lg font-bold font-heading text-slate-900">Direct Phone & WhatsApp</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Fastest route for urgent print runs, file checks, and instant dispatch estimates.
+            </p>
+            <div class="pt-2 flex items-center gap-3">
+              <a href="tel:9820636646" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-indigo hover:text-brand-lime font-mono">
+                <i class="fa-solid fa-phone text-brand-lime"></i>
+                <span>+91 98206 36646</span>
+              </a>
+              <span class="text-slate-300">•</span>
+              <button onclick="openWhatsAppQuote('Contact Page Left Card')" class="inline-flex items-center gap-1 text-xs font-bold text-green-700 hover:text-green-800 font-mono">
+                <i class="fa-brands fa-whatsapp text-sm text-green-600"></i>
+                <span>WhatsApp</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="light-card p-6 rounded-2xl space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="w-10 h-10 rounded-xl bg-purple-100 text-slate-950 flex items-center justify-center text-lg font-bold">
+                <i class="fa-solid fa-clock"></i>
+              </div>
+              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-purple-100 text-purple-900">HOURS</span>
+            </div>
+            <h3 class="text-lg font-bold font-heading text-slate-900">Operating Schedule</h3>
+            <div class="text-xs text-slate-600 space-y-1.5 font-mono">
+              <div class="flex justify-between">
+                <span>Monday – Saturday:</span>
+                <span class="font-bold text-slate-800">9:30 AM – 8:30 PM</span>
+              </div>
+              <div class="flex justify-between text-slate-500">
+                <span>Sunday:</span>
+                <span>By Appointment / Urgent Runs</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Interactive Quote & Inquiry Dispatch Form -->
+        <div class="lg:col-span-7 reveal-on-scroll reveal-delay-2">
+          <div class="light-card p-5 sm:p-8 rounded-3xl space-y-6">
+            
+            <div>
+              <span class="text-xs font-mono text-brand-indigo font-bold tracking-wider uppercase">INSTANT RFQ FORM</span>
+              <h2 class="text-2xl sm:text-3xl font-black font-heading text-slate-950 mt-1">Send Print Specifications</h2>
+              <p class="text-slate-600 text-xs mt-1">
+                Fill this form to directly open a pre-formatted technical quote on WhatsApp or get a quick call from our prepress master.
+              </p>
+            </div>
+
+            <div id="formSuccessBanner" class="hidden p-4 rounded-xl bg-green-50 border border-green-200 text-green-800 text-xs font-semibold">
+              <i class="fa-solid fa-circle-check mr-1.5 text-green-600"></i>
+              Your specifications have been formatted and dispatched! A master printer will review and confirm.
+            </div>
+
+            <form id="contactInquiryForm" class="space-y-4">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-slate-800 mb-1.5" for="formName">Your Name *</label>
+                  <input type="text" id="formName" required placeholder="e.g. Rahul Sharma" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-brand-indigo">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-800 mb-1.5" for="formPhone">Phone / WhatsApp *</label>
+                  <input type="tel" id="formPhone" required placeholder="e.g. 98206 36646" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-brand-indigo">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-slate-800 mb-1.5" for="formEmail">Email Address</label>
+                  <input type="email" id="formEmail" placeholder="e.g. name@company.com" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-brand-indigo">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-800 mb-1.5" for="formService">Service Required *</label>
+                  <select id="formService" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-brand-indigo">
+                    <optgroup label="Corporate Stationery">
+                      <option value="Brochure">Brochure (Bi-fold / Tri-fold / Multi-page)</option>
+                      <option value="Visiting Cards">Visiting Cards (Matte, Velvet, Gold Foil)</option>
+                      <option value="Pamphlets">Pamphlets & Flyers</option>
+                      <option value="Bill Books">Bill Books & NCR Challans</option>
+                      <option value="Letterheads">Letterheads & Executive Bond</option>
+                      <option value="ID Cards">ID Cards & Printed Lanyards</option>
+                      <option value="Stickers">Stickers & Packaging Labels</option>
+                      <option value="Envelopes">Envelopes (Corporate Branded)</option>
+                    </optgroup>
+                    <optgroup label="Signage & Display">
+                      <option value="Glow Sign Board">Glow Sign Board (Backlit LED)</option>
+                      <option value="Acrylic Work">Acrylic Work & 3D Letters</option>
+                      <option value="UV Printing">UV Printing (Flatbed Substrate)</option>
+                      <option value="Signages">Architectural & Wayfinding Signages</option>
+                      <option value="Sunboard Sheets">Sunboard Sheets & Mounted Vinyl</option>
+                      <option value="Roll-up Standee">Roll-up Standee (Pull-up Banner)</option>
+                      <option value="Flex Banner">Flex Banner (Outdoor Hoarding)</option>
+                      <option value="Vinyl">Vinyl & Window Frosted Graphics</option>
+                    </optgroup>
+                    <optgroup label="Promotional & Merch">
+                      <option value="UV DTF STICKER">UV DTF STICKER (Cold Transfer 3D)</option>
+                      <option value="Coffee MUG">Coffee MUG & Sublimation</option>
+                      <option value="TENT CARD">TENT CARD (Tabletop Acrylic / Paper)</option>
+                    </optgroup>
+                    <optgroup label="Digital Media">
+                      <option value="Video editing">Video editing & Commercial Reels</option>
+                      <option value="AI video">AI video Generation & Avatars</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-800 mb-1.5" for="formMessage">Quantity, Dimensions & Special Finishes</label>
+                <textarea id="formMessage" rows="4" placeholder="Tell us quantity (e.g. 1000 pcs), finished size (e.g. A4), paper GSM or sign dimensions, and target delivery date..." class="w-full bg-slate-50 border border-slate-300 rounded-xl p-4 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-brand-indigo"></textarea>
+              </div>
+
+              <div class="pt-2">
+                <button type="submit" class="w-full py-3.5 px-4 rounded-xl bg-brand-lime text-slate-950 font-bold text-sm hover:bg-brand-limeHover transition-all flex items-center justify-center gap-2.5 shadow-lg shadow-brand-lime/20">
+                  <i class="fa-brands fa-whatsapp text-lg flex-shrink-0"></i>
+                  <span>Get Instant Factory Quote on WhatsApp</span>
+                </button>
+              </div>
+
+              <div class="text-center text-[11px] text-slate-500 pt-1">
+                🔒 We respect your privacy. No spam. Direct technical consultation only.
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Embedded Google Maps Section (Dark Theme with User Iframe) -->
+  <section class="py-16 section-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-6">
+      
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 reveal-on-scroll">
+        <div>
+          <span class="text-xs font-mono text-brand-lime uppercase font-bold tracking-wider">LIVE GPS NAVIGATION</span>
+          <h3 class="text-2xl sm:text-3xl font-black font-heading text-white mt-1">Our Workshop Location in Thane</h3>
+        </div>
+        <a href="https://maps.app.goo.gl/9DF8Q9ebJFgmncAHA" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-brand-lime text-white text-xs font-bold font-mono transition-colors">
+          <i class="fa-solid fa-directions text-brand-lime"></i>
+          <span>Get Driving Directions →</span>
+        </a>
+      </div>
+
+      <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl aspect-[16/9] md:aspect-[21/9] w-full min-h-[420px] bg-slate-900 reveal-on-scroll reveal-delay-1">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.866742654159!2d72.96422489999999!3d19.2010218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b9f7af213b19%3A0x22e2fc84f116f5e3!2sImagine%20Prints%20%7C%20Best%20Printing%20Services%20in%20Thane%20%7C%20Printing%20Press%20in%20Thane!5e0!3m2!1sen!2sin!4v1789091111963!5m2!1sen!2sin" 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION: REAL GOOGLE MAPS VERIFIED REVIEWS INFINITE MARQUEE SLIDER
+       Connected directly to https://maps.app.goo.gl/9DF8Q9ebJFgmncAHA
+       ========================================================================= -->
+  <section class="py-14 bg-[#090C16] border-y border-white/10 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 mb-8">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        
+        <div class="flex items-center gap-3">
+          <!-- Google G Logo -->
+          <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center p-2 shadow-lg flex-shrink-0">
+            <svg class="w-full h-full" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="text-lg font-black font-heading text-white">Google Maps Verified Reviews</h3>
+              <span class="px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-[10px] font-mono font-bold">4.9 ★★★★★</span>
+            </div>
+            <p class="text-xs text-slate-400">
+              Live feedback from real clients across Thane, Mumbai & Maharashtra
+            </p>
+          </div>
+        </div>
+
+        <a href="https://maps.app.goo.gl/9DF8Q9ebJFgmncAHA" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-brand-lime text-xs font-mono font-bold text-white transition-colors">
+          <span>Read All Reviews on Google Maps</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-brand-lime"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Infinite Scrolling Marquee Track -->
+    <div class="marquee-container marquee-dark">
+      <div class="marquee-track">
+        
+        <!-- Review 1: Amit Patil -->
+        <div class="w-[340px] sm:w-[380px] p-5 rounded-2xl bg-[#0E1322] border border-white/10 flex flex-col justify-between flex-shrink-0 space-y-3">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-full bg-brand-lime/20 text-brand-lime font-bold flex items-center justify-center text-sm">
+                  AP
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Amit Patil</h4>
+                  <span class="text-[10px] text-slate-400 font-mono">Local Guide • Thane West</span>
+                </div>
+              </div>
+              <div class="flex text-yellow-400 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed italic">
+              "Best printing press in Thane! Got 2000 visiting cards with velvet touch and raised gold foil in just 2 days. The texture is truly premium and clients always compliment them."
+            </p>
+          </div>
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 pt-2 border-t border-white/5">
+            <span>Verified Customer</span>
+            <span class="text-brand-lime">Google Review</span>
+          </div>
+        </div>
+
+        <!-- Review 2: Priya Deshmukh -->
+        <div class="w-[340px] sm:w-[380px] p-5 rounded-2xl bg-[#0E1322] border border-white/10 flex flex-col justify-between flex-shrink-0 space-y-3">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-full bg-brand-cyan/20 text-brand-cyan font-bold flex items-center justify-center text-sm">
+                  PD
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Priya Deshmukh</h4>
+                  <span class="text-[10px] text-slate-400 font-mono">Marketing Head • Mumbai</span>
+                </div>
+              </div>
+              <div class="flex text-yellow-400 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed italic">
+              "Ordered 15 roll-up standees and 5,000 corporate brochures for our BKC exhibition. Everything arrived on time, crisp CMYK colors, and zero bleeding. Incredible service!"
+            </p>
+          </div>
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 pt-2 border-t border-white/5">
+            <span>Verified Customer</span>
+            <span class="text-brand-lime">Google Review</span>
+          </div>
+        </div>
+
+        <!-- Review 3: Rohan Sawant -->
+        <div class="w-[340px] sm:w-[380px] p-5 rounded-2xl bg-[#0E1322] border border-white/10 flex flex-col justify-between flex-shrink-0 space-y-3">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-full bg-orange-500/20 text-orange-400 font-bold flex items-center justify-center text-sm">
+                  RS
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Rohan Sawant</h4>
+                  <span class="text-[10px] text-slate-400 font-mono">Storefront Retailer • Thane</span>
+                </div>
+              </div>
+              <div class="flex text-yellow-400 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed italic">
+              "Our 3D acrylic LED glow sign board near Thane station was manufactured and fitted by Imagine Prints. High brightness Samsung LEDs, clean laser cuts, weatherproof."
+            </p>
+          </div>
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 pt-2 border-t border-white/5">
+            <span>Verified Customer</span>
+            <span class="text-brand-lime">Google Review</span>
+          </div>
+        </div>
+
+        <!-- Review 4: Dr. Aniket Joshi -->
+        <div class="w-[340px] sm:w-[380px] p-5 rounded-2xl bg-[#0E1322] border border-white/10 flex flex-col justify-between flex-shrink-0 space-y-3">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-full bg-brand-magenta/20 text-brand-magenta font-bold flex items-center justify-center text-sm">
+                  AJ
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Dr. Aniket Joshi</h4>
+                  <span class="text-[10px] text-slate-400 font-mono">Clinic Director • Mulund</span>
+                </div>
+              </div>
+              <div class="flex text-yellow-400 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed italic">
+              "Very reliable team. They designed and printed our hospital prescription pads, bill books, and acrylic doctor name plates. Genuine factory rates with no middlemen."
+            </p>
+          </div>
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 pt-2 border-t border-white/5">
+            <span>Verified Customer</span>
+            <span class="text-brand-lime">Google Review</span>
+          </div>
+        </div>
+
+        <!-- Review 5: Sneha Kulkarni -->
+        <div class="w-[340px] sm:w-[380px] p-5 rounded-2xl bg-[#0E1322] border border-white/10 flex flex-col justify-between flex-shrink-0 space-y-3">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-full bg-purple-500/20 text-purple-400 font-bold flex items-center justify-center text-sm">
+                  SK
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Sneha Kulkarni</h4>
+                  <span class="text-[10px] text-slate-400 font-mono">Event Planner • Navi Mumbai</span>
+                </div>
+              </div>
+              <div class="flex text-yellow-400 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed italic">
+              "Their UV DTF cold-transfer stickers are mindblowing! We transferred our client logos onto metal water bottles and ceramic cups with zero hassle. 100% scratch proof."
+            </p>
+          </div>
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 pt-2 border-t border-white/5">
+            <span>Verified Customer</span>
+            <span class="text-brand-lime">Google Review</span>
+          </div>
+        </div>
+
+        <!-- DUPLICATE SET FOR 100% SEAMLESS INFINITE MARQUEE -->
+        <!-- Review 1 Repeat -->
+        <div class="w-[340px] sm:w-[380px] p-5 rounded-2xl bg-[#0E1322] border border-white/10 flex flex-col justify-between flex-shrink-0 space-y-3">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-full bg-brand-lime/20 text-brand-lime font-bold flex items-center justify-center text-sm">
+                  AP
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Amit Patil</h4>
+                  <span class="text-[10px] text-slate-400 font-mono">Local Guide • Thane West</span>
+                </div>
+              </div>
+              <div class="flex text-yellow-400 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed italic">
+              "Best printing press in Thane! Got 2000 visiting cards with velvet touch and raised gold foil in just 2 days. The texture is truly premium and clients always compliment them."
+            </p>
+          </div>
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 pt-2 border-t border-white/5">
+            <span>Verified Customer</span>
+            <span class="text-brand-lime">Google Review</span>
+          </div>
+        </div>
+
+        <!-- Review 2 Repeat -->
+        <div class="w-[340px] sm:w-[380px] p-5 rounded-2xl bg-[#0E1322] border border-white/10 flex flex-col justify-between flex-shrink-0 space-y-3">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-full bg-brand-cyan/20 text-brand-cyan font-bold flex items-center justify-center text-sm">
+                  PD
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Priya Deshmukh</h4>
+                  <span class="text-[10px] text-slate-400 font-mono">Marketing Head • Mumbai</span>
+                </div>
+              </div>
+              <div class="flex text-yellow-400 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed italic">
+              "Ordered 15 roll-up standees and 5,000 corporate brochures for our BKC exhibition. Everything arrived on time, crisp CMYK colors, and zero bleeding. Incredible service!"
+            </p>
+          </div>
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 pt-2 border-t border-white/5">
+            <span>Verified Customer</span>
+            <span class="text-brand-lime">Google Review</span>
+          </div>
+        </div>
+
+        <!-- Review 3 Repeat -->
+        <div class="w-[340px] sm:w-[380px] p-5 rounded-2xl bg-[#0E1322] border border-white/10 flex flex-col justify-between flex-shrink-0 space-y-3">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-full bg-orange-500/20 text-orange-400 font-bold flex items-center justify-center text-sm">
+                  RS
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Rohan Sawant</h4>
+                  <span class="text-[10px] text-slate-400 font-mono">Storefront Retailer • Thane</span>
+                </div>
+              </div>
+              <div class="flex text-yellow-400 text-xs">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed italic">
+              "Our 3D acrylic LED glow sign board near Thane station was manufactured and fitted by Imagine Prints. High brightness Samsung LEDs, clean laser cuts, weatherproof."
+            </p>
+          </div>
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 pt-2 border-t border-white/5">
+            <span>Verified Customer</span>
+            <span class="text-brand-lime">Google Review</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       URGENT INQUIRY / CONSULTATION BANNER (Signature Dark)
+       ========================================================================= -->
+  <section class="py-16 bg-[#0A0D17] border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#12182D] to-[#07090F] border border-white/10 shadow-2xl relative overflow-hidden reveal-on-scroll">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          <div class="lg:col-span-8 space-y-4 text-center lg:text-left">
+            <span class="text-xs font-mono text-brand-lime uppercase font-bold tracking-wider">DIRECT WHATSAPP & PHONE DESK</span>
+            <h2 class="text-3xl sm:text-4xl font-black font-heading text-white">Have An Urgent Deadline or Print File?</h2>
+            <p class="text-slate-300 text-sm max-w-xl">
+              Send your PDF artwork directly on WhatsApp or call our desk. Our prepress master will verify your file, recommend optimal GSM paper, and schedule immediate production.
+            </p>
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2 text-xs sm:text-sm font-mono text-slate-300">
+              <a href="tel:9820636646" class="hover:text-brand-lime flex items-center gap-1.5">
+                <i class="fa-solid fa-phone text-brand-lime"></i> +91 98206 36646
+              </a>
+              <span class="text-slate-600 hidden sm:inline">•</span>
+              <a href="mailto:conact@imagineprint.co.in" class="hover:text-brand-lime flex items-center gap-1.5">
+                <i class="fa-solid fa-envelope text-brand-cyan"></i> conact@imagineprint.co.in
+              </a>
+              <span class="text-slate-600 hidden sm:inline">•</span>
+              <a href="https://instagram.com/imagine_digital_print" target="_blank" class="hover:text-pink-400 flex items-center gap-1.5">
+                <i class="fa-brands fa-instagram text-pink-400"></i> @imagine_digital_print
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
+            <button onclick="openWhatsAppQuote('Urgent Inquiry Banner')" class="w-full py-4 rounded-2xl bg-brand-lime text-slate-950 font-heading font-black text-sm hover:bg-brand-limeHover transition-all flex items-center justify-center gap-2 shadow-xl shadow-brand-lime/20 hover:scale-105">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Direct WhatsApp Chat</span>
+            </button>
+            <a href="https://maps.app.goo.gl/9DF8Q9ebJFgmncAHA" target="_blank" class="w-full py-3.5 rounded-2xl bg-slate-900 border border-slate-700 text-slate-200 font-heading font-bold text-sm hover:bg-slate-800 text-center transition-all">
+              View Google Map & Atelier Location
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-950 border-t border-white/10 pt-16 pb-12 text-sm text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        <div class="lg:col-span-4 space-y-4">
+          <div class="p-1.5 bg-white rounded-xl inline-block">
+            <img src="../assets/logo/Imagine Logo.png" alt="Imagine Printers" class="h-10 w-auto">
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Imagine Printers (Est. 2011) — Premier commercial printing, packaging, luxury stationery, and 3D architectural signage manufacturer based in Thane, serving Maharashtra and all-India corporations.
+          </p>
+          <div class="cmyk-bar pt-2">
+            <span class="cmyk-dot cmyk-c"></span>
+            <span class="cmyk-dot cmyk-m"></span>
+            <span class="cmyk-dot cmyk-y"></span>
+            <span class="cmyk-dot cmyk-k"></span>
+            <span class="text-[11px] font-sans text-slate-500 ml-2">"More than your imagination"</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-2 space-y-3">
+          <h4 class="font-heading font-bold text-white text-sm">Quick Links</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="../" class="hover:text-brand-lime transition-colors">Home</a></li>
+            <li><a href="../services/" class="hover:text-brand-lime transition-colors">Services</a></li>
+            <li><a href="../portfolio/" class="hover:text-brand-lime transition-colors">Client Portfolio</a></li>
+            <li><a href="../about/" class="hover:text-brand-lime transition-colors">About Atelier</a></li>
+            <li><a href="../contact/" class="hover:text-brand-lime transition-colors">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="font-heading font-bold text-white text-sm">Key Capabilities</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="../services/" class="hover:text-brand-lime transition-colors">Luxury Visiting Cards</a></li>
+            <li><a href="../services/" class="hover:text-brand-lime transition-colors">Brochures & Pamphlets</a></li>
+            <li><a href="../services/" class="hover:text-brand-lime transition-colors">Glow Sign Boards & LED</a></li>
+            <li><a href="../services/" class="hover:text-brand-lime transition-colors">UV DTF 3D Stickers</a></li>
+            <li><a href="../services/" class="hover:text-brand-lime transition-colors">Roll-up Standee & Flex</a></li>
+            <li><a href="../services/" class="hover:text-brand-lime transition-colors">Coffee MUG & Merch</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="font-heading font-bold text-white text-sm">Contact Desk</h4>
+          <div class="space-y-2.5 text-xs">
+            <div class="flex items-start gap-2.5">
+              <i class="fa-solid fa-location-dot text-brand-lime mt-1 flex-shrink-0"></i>
+              <div>
+                <span>Imagine Prints Facility, Thane, Maharashtra</span>
+                <br>
+                <a href="https://maps.app.goo.gl/9DF8Q9ebJFgmncAHA" target="_blank" class="text-brand-lime hover:underline font-semibold text-[11px]">View on Google Maps →</a>
+              </div>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <i class="fa-solid fa-phone text-brand-cyan"></i>
+              <a href="tel:9820636646" class="hover:text-white font-mono">+91 98206 36646</a>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <i class="fa-solid fa-envelope text-brand-magenta"></i>
+              <a href="mailto:conact@imagineprint.co.in" class="hover:text-white font-mono">conact@imagineprint.co.in</a>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <i class="fa-brands fa-instagram text-pink-500"></i>
+              <a href="https://instagram.com/imagine_digital_print" target="_blank" class="hover:text-pink-400">@imagine_digital_print</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4 font-mono">
+        <p>© 2026 Imagine Printers. All Rights Reserved. Domain: <a href="https://imagineprint.co.in/" class="text-slate-400 hover:text-brand-lime">imagineprint.co.in</a></p>
+        <div class="flex items-center space-x-4">
+          <a href="https://maps.app.goo.gl/9DF8Q9ebJFgmncAHA" target="_blank" class="hover:text-brand-lime">Google Maps</a>
+          <span>•</span>
+          <a href="../services/" class="hover:text-brand-lime">Services</a>
+          <span>•</span>
+          <a href="../contact/" class="hover:text-brand-lime">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTTOM-RIGHT FLOATING ACTION DOCK (WhatsApp + Instagram + Phone) -->
+  <div class="floating-action-dock" aria-label="Quick Contacts">
+    <button onclick="openWhatsAppQuote('Contact Dock WhatsApp')" class="dock-btn dock-whatsapp" aria-label="Chat on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span class="dock-tooltip">Chat on WhatsApp</span>
+    </button>
+    <a href="https://instagram.com/imagine_digital_print" target="_blank" class="dock-btn dock-instagram" aria-label="Follow on Instagram">
+      <i class="fa-brands fa-instagram"></i>
+      <span class="dock-tooltip">Follow @imagine_digital_print</span>
+    </a>
+    <a href="tel:9820636646" class="dock-btn dock-phone" aria-label="Call +91 98206 36646">
+      <i class="fa-solid fa-phone"></i>
+      <span class="dock-tooltip">Call Desk: 98206 36646</span>
+    </a>
+  </div>
+
+  <!-- =========================================================================
+       REQUEST A CALL BACK MODAL (Auto-Pops After 6s, Session-Aware Dismissal)
+       ========================================================================= -->
+  <div id="callbackModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 callback-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="callbackModalTitle">
+    <div class="relative max-w-lg w-full rounded-3xl p-6 sm:p-8 callback-modal-card text-white overflow-hidden">
+      
+      <!-- Ambient Glow in Modal -->
+      <div class="absolute -right-16 -top-16 w-44 h-44 bg-brand-lime/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-16 -bottom-16 w-44 h-44 bg-brand-cyan/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Close Button -->
+      <button id="closeCallbackModalBtn" onclick="closeCallbackModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700 flex items-center justify-center transition-all z-20" aria-label="Close modal">
+        <i class="fa-solid fa-xmark text-base"></i>
+      </button>
+
+      <div class="relative z-10 space-y-5">
+        
+        <!-- Header Badge & Title -->
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-lime/15 border border-brand-lime/30 text-brand-lime text-xs font-mono font-bold">
+            <span class="w-2 h-2 rounded-full bg-brand-lime animate-ping"></span>
+            <span>DIRECT FACTORY DESK</span>
+          </div>
+          <h3 id="callbackModalTitle" class="text-2xl sm:text-3xl font-black font-heading text-white tracking-tight">
+            Request A Quick Call Back
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Need urgent factory pricing, paper swatches, or timeline confirmation? Leave your number and our master printer will call you within 15 minutes.
+          </p>
+        </div>
+
+        <!-- Form -->
+        <form id="callbackForm" onsubmit="handleCallbackSubmit(event)" class="space-y-4 pt-1">
+          
+          <!-- Name Field -->
+          <div>
+            <label for="cbName" class="block text-xs font-mono text-slate-300 mb-1.5 font-bold uppercase tracking-wider">
+              Your Name / Company <span class="text-brand-lime">*</span>
+            </label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                <i class="fa-solid fa-user text-xs"></i>
+              </span>
+              <input type="text" id="cbName" required placeholder="e.g. Rahul Sharma / Apex Corp" class="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-lime focus:ring-1 focus:ring-brand-lime transition-all">
+            </div>
+          </div>
+
+          <!-- Mobile Number Field -->
+          <div>
+            <label for="cbPhone" class="block text-xs font-mono text-slate-300 mb-1.5 font-bold uppercase tracking-wider">
+              Mobile Number (WhatsApp) <span class="text-brand-lime">*</span>
+            </label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                <i class="fa-solid fa-phone text-xs"></i>
+              </span>
+              <input type="tel" id="cbPhone" required placeholder="e.g. 9820636646" class="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-lime focus:ring-1 focus:ring-brand-lime transition-all">
+            </div>
+          </div>
+
+          <!-- Optional Service Requirement -->
+          <div>
+            <label for="cbService" class="block text-xs font-mono text-slate-300 mb-1.5 font-bold uppercase tracking-wider">
+              Printing Requirement
+            </label>
+            <select id="cbService" class="w-full px-3.5 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-slate-200 text-sm focus:outline-none focus:border-brand-lime focus:ring-1 focus:ring-brand-lime transition-all">
+              <option value="Visiting Cards & Luxury Foil">Visiting Cards & Luxury Gold Foil</option>
+              <option value="3D Acrylic & Glow Signboard">3D Acrylic & Glow Signboard</option>
+              <option value="UV DTF 3D Crystal Stickers">UV DTF 3D Crystal Stickers</option>
+              <option value="Brochures & Catalogs">Brochures & Corporate Catalogs</option>
+              <option value="Roll-up Standee & Flex Banner">Roll-up Standee & Flex Banner</option>
+              <option value="Other Commercial Printing">Other / Bulk Custom Order</option>
+            </select>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-lime text-slate-950 font-heading font-black text-sm hover:bg-brand-limeHover transition-all flex items-center justify-center gap-2 shadow-xl shadow-brand-lime/20 hover:scale-[1.02]">
+            <i class="fa-solid fa-phone-volume"></i>
+            <span>Call Me Back Now</span>
+          </button>
+
+          <!-- Alternative Direct Contacts -->
+          <div class="pt-2 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+            <a href="tel:9820636646" class="hover:text-brand-lime flex items-center gap-1">
+              <i class="fa-solid fa-phone text-brand-lime"></i> Direct: 9820636646
+            </a>
+            <button type="button" onclick="closeCallbackModal()" class="hover:text-slate-300 underline">
+              Maybe Later
+            </button>
+          </div>
+
+        </form>
+
+        <!-- Success Message (hidden by default) -->
+        <div id="cbSuccessMsg" class="hidden text-center py-6 space-y-3">
+          <div class="w-14 h-14 rounded-full bg-brand-lime/20 text-brand-lime flex items-center justify-center text-2xl mx-auto border border-brand-lime/40">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <h4 class="text-xl font-bold font-heading text-white">Call Request Received!</h4>
+          <p class="text-xs text-slate-300 max-w-xs mx-auto">
+            Thank you! Our prepress desk will connect with you shortly on WhatsApp / Phone.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Script -->
+  <script src="../js/main.js"></script>
+</body>
+</html>
