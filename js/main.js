@@ -534,7 +534,7 @@ function initPortfolioLightbox() {
    -------------------------------------------------------------------------- */
 // Configurable Google Apps Script Web App Endpoint URL
 // Users can set window.IMAGINE_SCRIPT_URL or replace this string directly
-const GOOGLE_SHEETS_SCRIPT_URL = window.IMAGINE_SCRIPT_URL || '';
+const GOOGLE_SHEETS_SCRIPT_URL = window.IMAGINE_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbz5NU0N5CX48CZGW4POYhAcZGv2mL--PER0wEJaCH-NXFuZI42DvcpP9SKRKEiJ1ORJ/exec';
 
 /**
  * Ultra-fast, non-blocking background dispatcher to Google Sheets
