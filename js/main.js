@@ -530,8 +530,41 @@ function initPortfolioLightbox() {
 }
 
 /* --------------------------------------------------------------------------
-   11. Contact Form Dispatcher (contact.html)
+   11. Google Sheets Background Integration & Form Dispatchers
    -------------------------------------------------------------------------- */
+// Configurable Google Apps Script Web App Endpoint URL
+// Users can set window.IMAGINE_SCRIPT_URL or replace this string directly
+const GOOGLE_SHEETS_SCRIPT_URL = window.IMAGINE_SCRIPT_URL || '';
+
+/**
+ * Ultra-fast, non-blocking background dispatcher to Google Sheets
+ * - Uses mode: 'no-cors' so browser executes immediately without preflight delay
+ * - Uses keepalive: true so browser delivers payload even if user jumps to WhatsApp
+ */
+function sendToGoogleSheet(payload) {
+  if (!GOOGLE_SHEETS_SCRIPT_URL || GOOGLE_SHEETS_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL') {
+    // Soft log in developer console so page never errors or delays
+    console.info('[Imagine Sync] Sheet URL not configured yet. Form payload:', payload);
+    return;
+  }
+
+  try {
+    fetch(GOOGLE_SHEETS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify(payload),
+      keepalive: true
+    }).catch(function(err) {
+      console.warn('[Imagine Sync] Background sync warning:', err);
+    });
+  } catch (err) {
+    console.warn('[Imagine Sync] Dispatch error:', err);
+  }
+}
+
 function initContactForm() {
   const form = document.getElementById('contactInquiryForm');
   if (!form) return;
@@ -550,6 +583,19 @@ function initContactForm() {
       return;
     }
 
+    // 1. Send to Google Sheets instantly in background (non-blocking)
+    sendToGoogleSheet({
+      formType: 'Contact Inquiries',
+      name: name,
+      phone: phone,
+      email: email,
+      service: service,
+      message: message,
+      sourcePage: 'Contact Page',
+      status: 'New Lead'
+    });
+
+    // 2. Pre-fill WhatsApp message
     const targetPhone = '919820636646';
     const formattedText = encodeURIComponent(
       `*New Inquiry via Imagine Printers Website*\n` +
@@ -634,7 +680,17 @@ function handleCallbackSubmit(e) {
     return;
   }
 
-  // Pre-fill WhatsApp message
+  // 1. Send to Google Sheets instantly in background (non-blocking)
+  sendToGoogleSheet({
+    formType: 'Callback Requests',
+    name: name,
+    phone: phone,
+    service: service,
+    sourcePage: document.title || window.location.pathname,
+    status: 'New Lead'
+  });
+
+  // 2. Pre-fill WhatsApp message
   const targetPhone = '919820636646';
   const text = encodeURIComponent(
     `*Request A Quick Call Back - Imagine Prints*\n` +
