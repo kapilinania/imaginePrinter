@@ -93,6 +93,47 @@
 
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+    <!-- Universal Instant Brand Image Loader & Fail-Safe Fallback -->
+  <script>
+    window.onImagineImgLoaded = function(img) {
+      if (!img) return;
+      img.classList.add("is-loaded");
+      var parent = img.closest(".img-loader-box") || img.parentElement;
+      if (parent) {
+        var placeholder = parent.querySelector(".img-logo-placeholder");
+        if (placeholder) {
+          placeholder.classList.add("is-hidden");
+          placeholder.style.display = "none";
+        }
+      }
+    };
+
+    window.onImagineImgError = function(img) {
+      if (!img) return;
+      if (img.src && img.src.includes(".webp") && !img.dataset.pngTried) {
+        img.dataset.pngTried = "true";
+        img.src = img.src.replace(/\.webp(\?.*)?$/, ".png$1");
+        return;
+      }
+      img.onerror = null;
+      var isSub = window.location.pathname.includes("/portfolio/") ||
+                  window.location.pathname.includes("/services/") ||
+                  window.location.pathname.includes("/about/") ||
+                  window.location.pathname.includes("/contact/");
+      img.src = isSub ? "../assets/logo/Imagine%20Logo.png" : "assets/logo/Imagine%20Logo.png";
+      img.classList.add("is-loaded", "is-fallback-logo");
+      img.style.objectFit = "contain";
+      img.style.padding = "2.5rem";
+      img.style.backgroundColor = "#0B0E1A";
+      var parent = img.closest(".img-loader-box") || img.parentElement;
+      if (parent) {
+        var placeholder = parent.querySelector(".img-logo-placeholder");
+        if (placeholder) {
+          placeholder.style.display = "none";
+        }
+      }
+    };
+  </script>
 </head>
 <body class="font-sans bg-[#07090F] text-slate-200 antialiased selection:bg-brand-lime selection:text-black">
 
@@ -136,7 +177,7 @@
       <!-- Logo -->
       <a href="./" class="flex items-center gap-3 group">
         <div class="p-1.5 bg-white rounded-xl shadow-lg border border-white/20 transition-transform group-hover:scale-105">
-          <img src="assets/logo/Imagine Logo.png" alt="Imagine Printers Logo" class="h-9 sm:h-10 w-auto object-contain">
+          <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers Logo" class="h-9 sm:h-10 w-auto object-contain">
         </div>
       </a>
 
@@ -226,7 +267,7 @@
     <div>
       <div class="flex items-center justify-between pb-6 border-b border-white/10">
         <div class="p-1 bg-white rounded-lg inline-block">
-          <img src="assets/logo/Imagine Logo.png" alt="Imagine Printers" class="h-8 w-auto">
+          <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="h-8 w-auto">
         </div>
         <button id="closeMobileMenu" class="w-8 h-8 rounded-full bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center">
           <i class="fa-solid fa-xmark text-lg"></i>
@@ -285,7 +326,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         <!-- Left Hero Content with Infinite Dynamic Text Animation -->
-        <div class="lg:col-span-6 text-center lg:text-left space-y-6 reveal-on-scroll">
+        <div class="lg:col-span-6 text-center lg:text-left space-y-6">
           
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-brand-lime/30 text-xs font-semibold shimmer-badge animate-float">
             <span class="w-2 h-2 rounded-full bg-brand-lime animate-ping"></span>
@@ -344,7 +385,7 @@
         </div>
 
         <!-- Right Hero Visual Showcase: Highly Interactive Multi-Slide Production Carousel -->
-        <div class="lg:col-span-6 relative reveal-on-scroll reveal-delay-2 flex items-center justify-center">
+        <div class="lg:col-span-6 relative flex items-center justify-center">
           
           <!-- Ambient Background Glow Halo -->
           <div class="absolute -inset-2 bg-gradient-to-r from-brand-lime/20 via-brand-cyan/20 to-brand-magenta/20 rounded-[2.5rem] blur-2xl opacity-40 group-hover:opacity-65 transition duration-700 pointer-events-none"></div>
@@ -387,14 +428,20 @@
               </div>
             </div>
 
-            <!-- Main Interactive Slide Viewport -->
+                                    <!-- Main Interactive Slide Viewport -->
             <div class="hero-slider-viewport relative">
               
               <!-- Slide 1: Luxury Cards & Foil -->
-              <div class="hero-slide active" data-index="0">
-                <img src="assets/images/temp_1.jpg" alt="Velvet Visiting Cards with Raised Gold Foil" class="hero-slide-img">
-                <div class="hero-slide-overlay"></div>
-                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10">
+              <div class="hero-slide active img-loader-box" data-index="0">
+                <img src="assets/images/Visiting%20Card/Visiting%20Card%20-%201.webp" alt="Velvet Visiting Cards with Raised Gold Foil" class="hero-slide-img imagine-lazy-img" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+                <div class="img-logo-placeholder">
+                  <div class="placeholder-logo-badge">
+                    <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                  </div>
+                  <span class="placeholder-text"><span class="placeholder-dot"></span> IMAGINE ATELIER PRODUCTION</span>
+                </div>
+                <div class="hero-slide-overlay z-10"></div>
+                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between z-20">
                   <div class="space-y-1">
                     <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-brand-lime text-slate-950 uppercase">
                       ROYAL FOIL FINISH
@@ -413,10 +460,16 @@
               </div>
 
               <!-- Slide 2: Glow Sign & 3D Acrylic -->
-              <div class="hero-slide" data-index="1">
-                <img src="assets/images/temp_4.jpg" alt="Backlit 3D Acrylic Glow Signboard" class="hero-slide-img">
-                <div class="hero-slide-overlay"></div>
-                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10">
+              <div class="hero-slide img-loader-box" data-index="1">
+                <img src="assets/images/Sign%20Board%20Acrylic%20WOrk/Signboard%20-%201.webp" alt="Backlit 3D Acrylic Glow Signboard" class="hero-slide-img imagine-lazy-img" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+                <div class="img-logo-placeholder">
+                  <div class="placeholder-logo-badge">
+                    <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                  </div>
+                  <span class="placeholder-text"><span class="placeholder-dot"></span> IMAGINE ATELIER PRODUCTION</span>
+                </div>
+                <div class="hero-slide-overlay z-10"></div>
+                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between z-20">
                   <div class="space-y-1">
                     <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-brand-cyan text-slate-950 uppercase">
                       ARCHITECTURAL SIGNAGE
@@ -435,10 +488,16 @@
               </div>
 
               <!-- Slide 3: UV DTF 3D Crystal Stickers -->
-              <div class="hero-slide" data-index="2">
-                <img src="assets/images/temp_12.jpg" alt="UV DTF Cold Transfer 3D Crystal Stickers" class="hero-slide-img">
-                <div class="hero-slide-overlay"></div>
-                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10">
+              <div class="hero-slide img-loader-box" data-index="2">
+                <img src="assets/images/Sticker%20Print/Sticker%20Print.webp" alt="UV DTF Cold Transfer 3D Crystal Stickers" class="hero-slide-img imagine-lazy-img" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+                <div class="img-logo-placeholder">
+                  <div class="placeholder-logo-badge">
+                    <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                  </div>
+                  <span class="placeholder-text"><span class="placeholder-dot"></span> IMAGINE ATELIER PRODUCTION</span>
+                </div>
+                <div class="hero-slide-overlay z-10"></div>
+                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between z-20">
                   <div class="space-y-1">
                     <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-brand-magenta text-white uppercase">
                       COLD-TRANSFER TECH
@@ -456,33 +515,45 @@
                 </div>
               </div>
 
-              <!-- Slide 4: Standees & Flex Banners -->
-              <div class="hero-slide" data-index="3">
-                <img src="assets/images/temp_16.jpg" alt="Roll-up Standee & Flex Banner Exhibition" class="hero-slide-img">
-                <div class="hero-slide-overlay"></div>
-                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10">
+              <!-- Slide 4: Flex Banners & Highway Hoardings -->
+              <div class="hero-slide img-loader-box" data-index="3">
+                <img src="assets/images/Flex%20Banner%20Hoarding%20Printing/Banner%20-1.webp" alt="Flex Banners & Hoarding Printing" class="hero-slide-img imagine-lazy-img" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+                <div class="img-logo-placeholder">
+                  <div class="placeholder-logo-badge">
+                    <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                  </div>
+                  <span class="placeholder-text"><span class="placeholder-dot"></span> IMAGINE ATELIER PRODUCTION</span>
+                </div>
+                <div class="hero-slide-overlay z-10"></div>
+                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between z-20">
                   <div class="space-y-1">
                     <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-yellow-400 text-slate-950 uppercase">
-                      EXHIBITIONS & RETAIL
+                      HEAVY-DUTY OUTDOOR
                     </span>
                     <h3 class="text-lg sm:text-xl font-bold font-heading text-white">
-                      Roll-Up Standees & Banners
+                      Flex Banners & Hoardings
                     </h3>
                     <p class="text-xs text-slate-300 font-mono">
-                      Star Matte Anti-Curl Media • Anodized Base • Carry Case
+                      340 GSM Reinforced PVC • Weatherproof Eyelets • Vivid CMYK
                     </p>
                   </div>
-                  <button onclick="openWhatsAppQuote('Hero Slider: Roll-up Standee')" class="w-11 h-11 rounded-2xl bg-brand-lime text-slate-950 flex items-center justify-center text-lg hover:bg-brand-limeHover transition-all flex-shrink-0 shadow-lg hover:scale-110 ml-2" title="Order Roll-Up Standee">
+                  <button onclick="openWhatsAppQuote('Hero Slider: Flex Banners & Hoardings')" class="w-11 h-11 rounded-2xl bg-brand-lime text-slate-950 flex items-center justify-center text-lg hover:bg-brand-limeHover transition-all flex-shrink-0 shadow-lg hover:scale-110 ml-2" title="Order Flex Banners">
                     <i class="fa-brands fa-whatsapp"></i>
                   </button>
                 </div>
               </div>
 
               <!-- Slide 5: Brochures & Catalogs -->
-              <div class="hero-slide" data-index="4">
-                <img src="assets/images/temp_2.jpg" alt="High Quality Commercial Brochures & Catalogs" class="hero-slide-img">
-                <div class="hero-slide-overlay"></div>
-                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10">
+              <div class="hero-slide img-loader-box" data-index="4">
+                <img src="assets/images/Brochure/Brochure%20-%201.webp" alt="High Quality Commercial Brochures & Catalogs" class="hero-slide-img imagine-lazy-img" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+                <div class="img-logo-placeholder">
+                  <div class="placeholder-logo-badge">
+                    <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                  </div>
+                  <span class="placeholder-text"><span class="placeholder-dot"></span> IMAGINE ATELIER PRODUCTION</span>
+                </div>
+                <div class="hero-slide-overlay z-10"></div>
+                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between z-20">
                   <div class="space-y-1">
                     <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-purple-400 text-slate-950 uppercase">
                       COMMERCIAL OFFSET
@@ -500,33 +571,39 @@
                 </div>
               </div>
 
-              <!-- Slide 6: Ceramic Mugs & Merch -->
-              <div class="hero-slide" data-index="5">
-                <img src="assets/images/temp_38.jpg" alt="Custom Branded Coffee Mugs & Merch" class="hero-slide-img">
-                <div class="hero-slide-overlay"></div>
-                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10">
+              <!-- Slide 6: Roll-Up Standees & Displays -->
+              <div class="hero-slide img-loader-box" data-index="5">
+                <img src="assets/images/Rollup%20Standee/Rollup%20Standee%20-%202.webp" alt="Roll-up Standee Exhibition Display" class="hero-slide-img imagine-lazy-img" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+                <div class="img-logo-placeholder">
+                  <div class="placeholder-logo-badge">
+                    <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                  </div>
+                  <span class="placeholder-text"><span class="placeholder-dot"></span> IMAGINE ATELIER PRODUCTION</span>
+                </div>
+                <div class="hero-slide-overlay z-10"></div>
+                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between z-20">
                   <div class="space-y-1">
-                    <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-emerald-400 text-slate-950 uppercase">
-                      CUSTOM MERCHANDISE
+                    <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-teal-400 text-slate-950 uppercase">
+                      EXHIBITIONS & EVENTS
                     </span>
                     <h3 class="text-lg sm:text-xl font-bold font-heading text-white">
-                      Sublimation Mugs & Gifts
+                      Roll-Up Standees & Displays
                     </h3>
                     <p class="text-xs text-slate-300 font-mono">
-                      11oz Grade-A Ceramic • Vivid Gamut • Dishwasher Safe
+                      Star Matte Anti-Curl Media • Anodized Aluminum Base • Padded Bag
                     </p>
                   </div>
-                  <button onclick="openWhatsAppQuote('Hero Slider: Coffee Mugs & Merch')" class="w-11 h-11 rounded-2xl bg-brand-lime text-slate-950 flex items-center justify-center text-lg hover:bg-brand-limeHover transition-all flex-shrink-0 shadow-lg hover:scale-110 ml-2" title="Order Coffee Mugs">
+                  <button onclick="openWhatsAppQuote('Hero Slider: Roll-up Standee')" class="w-11 h-11 rounded-2xl bg-brand-lime text-slate-950 flex items-center justify-center text-lg hover:bg-brand-limeHover transition-all flex-shrink-0 shadow-lg hover:scale-110 ml-2" title="Order Roll-Up Standee">
                     <i class="fa-brands fa-whatsapp"></i>
                   </button>
                 </div>
               </div>
 
               <!-- Interactive Floating Navigation Arrows -->
-              <button id="heroSlidePrev" class="hero-slider-nav-btn absolute left-3 top-1/2 -translate-y-1/2" aria-label="Previous Slide">
+              <button id="heroSlidePrev" onclick="window.heroPrevSlide && window.heroPrevSlide()" class="hero-slider-nav-btn absolute left-3 top-1/2 -translate-y-1/2" aria-label="Previous Slide">
                 <i class="fa-solid fa-chevron-left text-sm"></i>
               </button>
-              <button id="heroSlideNext" class="hero-slider-nav-btn absolute right-3 top-1/2 -translate-y-1/2" aria-label="Next Slide">
+              <button id="heroSlideNext" onclick="window.heroNextSlide && window.heroNextSlide()" class="hero-slider-nav-btn absolute right-3 top-1/2 -translate-y-1/2" aria-label="Next Slide">
                 <i class="fa-solid fa-chevron-right text-sm"></i>
               </button>
 
@@ -536,39 +613,39 @@
             <div class="pt-3.5 space-y-2.5">
               <!-- Slide Pagination Dots -->
               <div class="flex items-center justify-center gap-1.5">
-                <button class="hero-dot active" data-index="0" aria-label="Slide 1"></button>
-                <button class="hero-dot" data-index="1" aria-label="Slide 2"></button>
-                <button class="hero-dot" data-index="2" aria-label="Slide 3"></button>
-                <button class="hero-dot" data-index="3" aria-label="Slide 4"></button>
-                <button class="hero-dot" data-index="4" aria-label="Slide 5"></button>
-                <button class="hero-dot" data-index="5" aria-label="Slide 6"></button>
+                <button class="hero-dot active" data-index="0" onclick="window.goToHeroSlide && window.goToHeroSlide(0)" aria-label="Slide 1"></button>
+                <button class="hero-dot" data-index="1" onclick="window.goToHeroSlide && window.goToHeroSlide(1)" aria-label="Slide 2"></button>
+                <button class="hero-dot" data-index="2" onclick="window.goToHeroSlide && window.goToHeroSlide(2)" aria-label="Slide 3"></button>
+                <button class="hero-dot" data-index="3" onclick="window.goToHeroSlide && window.goToHeroSlide(3)" aria-label="Slide 4"></button>
+                <button class="hero-dot" data-index="4" onclick="window.goToHeroSlide && window.goToHeroSlide(4)" aria-label="Slide 5"></button>
+                <button class="hero-dot" data-index="5" onclick="window.goToHeroSlide && window.goToHeroSlide(5)" aria-label="Slide 6"></button>
               </div>
 
               <!-- Interactive 6-Item Segmented Product Buttons (Zero overflow, zero scrollbars!) -->
               <div id="heroThumbStrip" class="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
-                <button class="hero-thumb-btn active" data-index="0" title="Visiting Cards">
+                <button class="hero-thumb-btn active" data-index="0" onclick="window.goToHeroSlide && window.goToHeroSlide(0)" title="Visiting Cards">
                   <span class="w-1.5 h-1.5 rounded-full bg-brand-lime flex-shrink-0"></span>
                   <span class="thumb-title truncate">Cards</span>
                 </button>
-                <button class="hero-thumb-btn" data-index="1" title="3D Glow Signs">
+                <button class="hero-thumb-btn" data-index="1" onclick="window.goToHeroSlide && window.goToHeroSlide(1)" title="3D Glow Signs">
                   <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan flex-shrink-0"></span>
                   <span class="thumb-title truncate">Signage</span>
                 </button>
-                <button class="hero-thumb-btn" data-index="2" title="UV DTF Stickers">
+                <button class="hero-thumb-btn" data-index="2" onclick="window.goToHeroSlide && window.goToHeroSlide(2)" title="UV DTF Stickers">
                   <span class="w-1.5 h-1.5 rounded-full bg-brand-magenta flex-shrink-0"></span>
                   <span class="thumb-title truncate">UV DTF</span>
                 </button>
-                <button class="hero-thumb-btn" data-index="3" title="Standees & Banners">
+                <button class="hero-thumb-btn" data-index="3" onclick="window.goToHeroSlide && window.goToHeroSlide(3)" title="Flex Banners">
                   <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 flex-shrink-0"></span>
-                  <span class="thumb-title truncate">Standees</span>
+                  <span class="thumb-title truncate">Banners</span>
                 </button>
-                <button class="hero-thumb-btn" data-index="4" title="Brochures & Catalogs">
+                <button class="hero-thumb-btn" data-index="4" onclick="window.goToHeroSlide && window.goToHeroSlide(4)" title="Brochures & Catalogs">
                   <span class="w-1.5 h-1.5 rounded-full bg-purple-400 flex-shrink-0"></span>
                   <span class="thumb-title truncate">Brochure</span>
                 </button>
-                <button class="hero-thumb-btn" data-index="5" title="Coffee Mugs & Merch">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                  <span class="thumb-title truncate">Mugs</span>
+                <button class="hero-thumb-btn" data-index="5" onclick="window.goToHeroSlide && window.goToHeroSlide(5)" title="Roll-Up Standees">
+                  <span class="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0"></span>
+                  <span class="thumb-title truncate">Standees</span>
                 </button>
               </div>
             </div>
@@ -867,8 +944,14 @@
 
         <!-- Finish 1: Velvet Soft-Touch & Foil -->
         <div class="light-card rounded-2xl overflow-hidden flex flex-col reveal-on-scroll reveal-delay-1">
-          <div class="aspect-[4/3] overflow-hidden bg-slate-100">
-            <img src="assets/images/temp_2.jpg" alt="Velvet Soft-Touch and Gold Foil" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <div class="aspect-[4/3] overflow-hidden bg-slate-950 img-loader-box">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Tactile Craft</span>
+            </div>
+            <img src="assets/images/Visiting%20Card/Visiting%20Card%20-%202.webp" alt="Velvet Soft-Touch and Gold Foil" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between">
             <div>
@@ -889,8 +972,14 @@
 
         <!-- Finish 2: 3D Raised Spot UV -->
         <div class="light-card rounded-2xl overflow-hidden flex flex-col reveal-on-scroll reveal-delay-2">
-          <div class="aspect-[4/3] overflow-hidden bg-slate-100">
-            <img src="assets/images/temp_5.jpg" alt="Raised Spot UV Finishing" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <div class="aspect-[4/3] overflow-hidden bg-slate-950 img-loader-box">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Tactile Craft</span>
+            </div>
+            <img src="assets/images/Brochure/Brochure%20-%202.webp" alt="Raised Spot UV Finishing" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between">
             <div>
@@ -911,8 +1000,14 @@
 
         <!-- Finish 3: Cold-Transfer UV DTF Crystal -->
         <div class="light-card rounded-2xl overflow-hidden flex flex-col reveal-on-scroll reveal-delay-3">
-          <div class="aspect-[4/3] overflow-hidden bg-slate-100">
-            <img src="assets/images/temp_13.jpg" alt="UV DTF Crystal Cold Transfer" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <div class="aspect-[4/3] overflow-hidden bg-slate-950 img-loader-box">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Tactile Craft</span>
+            </div>
+            <img src="assets/images/Sticker%20Print/Sticker%20printing%20].webp" alt="UV DTF Crystal Cold Transfer" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between">
             <div>
@@ -933,8 +1028,14 @@
 
         <!-- Finish 4: 3D Acrylic & LED Illumination -->
         <div class="light-card rounded-2xl overflow-hidden flex flex-col reveal-on-scroll reveal-delay-4">
-          <div class="aspect-[4/3] overflow-hidden bg-slate-100">
-            <img src="assets/images/temp_8.jpg" alt="3D Acrylic & LED Signage" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          <div class="aspect-[4/3] overflow-hidden bg-slate-950 img-loader-box">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Tactile Craft</span>
+            </div>
+            <img src="assets/images/Sign%20Board%20Acrylic%20WOrk/Signboard%20-%202.webp" alt="3D Acrylic & LED Signage" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between">
             <div>
@@ -985,8 +1086,14 @@
         <!-- Card 1: Visiting Cards -->
         <div class="dark-card rounded-2xl overflow-hidden flex flex-col justify-between reveal-on-scroll reveal-delay-1 interactive-card group">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950">
-              <img src="assets/images/temp_1.jpg" alt="Visiting Cards" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Core Service</span>
+              </div>
+              <img src="assets/images/Visiting%20Card/Visiting%20Card%20-%204.webp" alt="Visiting Cards" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
             </div>
             <div class="p-6">
               <div class="flex items-center justify-between mb-2">
@@ -1010,8 +1117,14 @@
         <!-- Card 2: Brochures & Pamphlets -->
         <div class="dark-card rounded-2xl overflow-hidden flex flex-col justify-between reveal-on-scroll reveal-delay-2 interactive-card group">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950">
-              <img src="assets/images/temp_7.jpg" alt="Brochures & Pamphlets" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Core Service</span>
+              </div>
+              <img src="assets/images/Brochure/Brochure%20-%203.webp" alt="Brochures & Pamphlets" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
             </div>
             <div class="p-6">
               <div class="flex items-center justify-between mb-2">
@@ -1035,8 +1148,14 @@
         <!-- Card 3: Glow Sign Boards -->
         <div class="dark-card rounded-2xl overflow-hidden flex flex-col justify-between reveal-on-scroll reveal-delay-3 interactive-card group">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950">
-              <img src="assets/images/temp_4.jpg" alt="Glow Sign Board" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Core Service</span>
+              </div>
+              <img src="assets/images/Sign%20Board%20Acrylic%20WOrk/Untitled%20design%20(12).webp" alt="Glow Sign Board" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
             </div>
             <div class="p-6">
               <div class="flex items-center justify-between mb-2">
@@ -1060,8 +1179,14 @@
         <!-- Card 4: UV DTF STICKERS -->
         <div class="dark-card rounded-2xl overflow-hidden flex flex-col justify-between reveal-on-scroll reveal-delay-1 interactive-card group">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950">
-              <img src="assets/images/temp_12.jpg" alt="UV DTF STICKER" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Core Service</span>
+              </div>
+              <img src="assets/images/Sticker%20Print/Sticker%20Print.webp" alt="UV DTF STICKER" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
             </div>
             <div class="p-6">
               <div class="flex items-center justify-between mb-2">
@@ -1085,8 +1210,14 @@
         <!-- Card 5: Roll-up Standee -->
         <div class="dark-card rounded-2xl overflow-hidden flex flex-col justify-between reveal-on-scroll reveal-delay-2 interactive-card group">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950">
-              <img src="assets/images/temp_16.jpg" alt="Roll-up Standee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Core Service</span>
+              </div>
+              <img src="assets/images/Rollup%20Standee/Rollup%20Standee%20-%202.webp" alt="Roll-up Standee" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
             </div>
             <div class="p-6">
               <div class="flex items-center justify-between mb-2">
@@ -1110,8 +1241,14 @@
         <!-- Card 6: Coffee MUG & Merch -->
         <div class="dark-card rounded-2xl overflow-hidden flex flex-col justify-between reveal-on-scroll reveal-delay-3 interactive-card group">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950">
-              <img src="assets/images/temp_38.jpg" alt="Coffee MUG" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Core Service</span>
+              </div>
+              <img src="assets/images/Welcome%20Board%20Sunboard/Gemini_Generated_Image_ddptrqddptrqddpt.webp" alt="Coffee MUG" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
             </div>
             <div class="p-6">
               <div class="flex items-center justify-between mb-2">
@@ -1207,8 +1344,14 @@
         <div class="lg:col-span-6 grid grid-cols-2 gap-4 reveal-on-scroll reveal-delay-2">
           
           <div class="light-card p-3 rounded-2xl space-y-2">
-            <div class="aspect-square rounded-xl overflow-hidden bg-slate-100">
-              <img src="assets/images/temp_3.jpg" alt="Offset Printing Press" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            <div class="aspect-square rounded-xl overflow-hidden bg-slate-950 img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Facility Press</span>
+              </div>
+              <img src="assets/images/FLYER%20%20Handbill/Flyer%20-%201.webp" alt="Offset Printing Press" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
             </div>
             <div class="p-1">
               <h4 class="text-xs font-bold text-slate-900">Offset Multi-Color Press</h4>
@@ -1217,8 +1360,14 @@
           </div>
 
           <div class="light-card p-3 rounded-2xl space-y-2">
-            <div class="aspect-square rounded-xl overflow-hidden bg-slate-100">
-              <img src="assets/images/temp_6.jpg" alt="Roland Wide Format" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            <div class="aspect-square rounded-xl overflow-hidden bg-slate-950 img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Facility Press</span>
+              </div>
+              <img src="assets/images/Flex%20Banner%20Hoarding%20Printing/Banner%20-%202.webp" alt="Roland Wide Format" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
             </div>
             <div class="p-1">
               <h4 class="text-xs font-bold text-slate-900">Roland Wide-Format</h4>
@@ -1227,8 +1376,14 @@
           </div>
 
           <div class="light-card p-3 rounded-2xl space-y-2">
-            <div class="aspect-square rounded-xl overflow-hidden bg-slate-100">
-              <img src="assets/images/temp_10.jpg" alt="UV Flatbed Printing" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            <div class="aspect-square rounded-xl overflow-hidden bg-slate-950 img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Facility Press</span>
+              </div>
+              <img src="assets/images/Sign%20Board%20Acrylic%20WOrk/Untitled%20design%20(11).webp" alt="UV Flatbed Printing" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
             </div>
             <div class="p-1">
               <h4 class="text-xs font-bold text-slate-900">UV Flatbed System</h4>
@@ -1237,8 +1392,14 @@
           </div>
 
           <div class="light-card p-3 rounded-2xl space-y-2">
-            <div class="aspect-square rounded-xl overflow-hidden bg-slate-100">
-              <img src="assets/images/temp_14.jpg" alt="CNC Laser Cutting" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            <div class="aspect-square rounded-xl overflow-hidden bg-slate-950 img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Facility Press</span>
+              </div>
+              <img src="assets/images/Sunboard%20Cutout/EVENT%20Sunboard%20CUTOUT.webp" alt="CNC Laser Cutting" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
             </div>
             <div class="p-1">
               <h4 class="text-xs font-bold text-slate-900">CNC Laser Cutting</h4>
@@ -1274,30 +1435,54 @@
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal-on-scroll reveal-delay-2">
         
-        <a href="portfolio/" class="group relative rounded-2xl overflow-hidden aspect-square bg-slate-900 border border-white/10">
-          <img src="assets/images/temp_18.jpg" alt="Corporate Stationery" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+        <a href="portfolio/" class="group relative rounded-2xl overflow-hidden aspect-square bg-slate-900 border border-white/10 img-loader-box">
+          <div class="img-logo-placeholder">
+            <div class="placeholder-logo-badge">
+              <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+            </div>
+            <span class="placeholder-text"><span class="placeholder-dot"></span> Dispatched Output</span>
+          </div>
+          <img src="assets/images/Letter%20Head/letterhead%20-%201.webp" alt="Corporate Stationery" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          <div class="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
             <span class="text-xs font-bold text-white">Corporate Identity</span>
           </div>
         </a>
 
-        <a href="portfolio/" class="group relative rounded-2xl overflow-hidden aspect-square bg-slate-900 border border-white/10">
-          <img src="assets/images/temp_22.jpg" alt="Storefront Signage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+        <a href="portfolio/" class="group relative rounded-2xl overflow-hidden aspect-square bg-slate-900 border border-white/10 img-loader-box">
+          <div class="img-logo-placeholder">
+            <div class="placeholder-logo-badge">
+              <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+            </div>
+            <span class="placeholder-text"><span class="placeholder-dot"></span> Dispatched Output</span>
+          </div>
+          <img src="assets/images/Sign%20Board%20Acrylic%20WOrk/Signboard%20-%203.webp" alt="Storefront Signage" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          <div class="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
             <span class="text-xs font-bold text-white">3D Retail Signage</span>
           </div>
         </a>
 
-        <a href="portfolio/" class="group relative rounded-2xl overflow-hidden aspect-square bg-slate-900 border border-white/10">
-          <img src="assets/images/temp_26.jpg" alt="Custom Stickers" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+        <a href="portfolio/" class="group relative rounded-2xl overflow-hidden aspect-square bg-slate-900 border border-white/10 img-loader-box">
+          <div class="img-logo-placeholder">
+            <div class="placeholder-logo-badge">
+              <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+            </div>
+            <span class="placeholder-text"><span class="placeholder-dot"></span> Dispatched Output</span>
+          </div>
+          <img src="assets/images/Sticker%20Print/Sticker%20printing%20].webp" alt="Custom Stickers" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          <div class="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
             <span class="text-xs font-bold text-white">UV DTF Decals</span>
           </div>
         </a>
 
-        <a href="portfolio/" class="group relative rounded-2xl overflow-hidden aspect-square bg-slate-900 border border-white/10">
-          <img src="assets/images/temp_32.jpg" alt="Merchandise & Cups" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+        <a href="portfolio/" class="group relative rounded-2xl overflow-hidden aspect-square bg-slate-900 border border-white/10 img-loader-box">
+          <div class="img-logo-placeholder">
+            <div class="placeholder-logo-badge">
+              <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+            </div>
+            <span class="placeholder-text"><span class="placeholder-dot"></span> Dispatched Output</span>
+          </div>
+          <img src="assets/images/Flex%20Banner%20Hoarding%20Printing/Billboard%20-%202.webp" alt="Merchandise & Cups" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          <div class="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
             <span class="text-xs font-bold text-white">Ceramic Merch</span>
           </div>
         </a>
@@ -1358,7 +1543,7 @@
         
         <div class="lg:col-span-4 space-y-4">
           <div class="p-1.5 bg-white rounded-xl inline-block">
-            <img src="assets/logo/Imagine Logo.png" alt="Imagine Printers" class="h-10 w-auto">
+            <img src="assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="h-10 w-auto">
           </div>
           <p class="text-xs text-slate-400 leading-relaxed">
             Imagine Printers (Est. 2011) — Premier commercial printing, packaging, luxury stationery, and 3D architectural signage manufacturer based in Thane, serving Maharashtra and all-India corporations.

@@ -68,6 +68,43 @@
 
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="../css/style.css">
+  <!-- Universal Instant Brand Image Loader & Fail-Safe Fallback -->
+  <script>
+    window.onImagineImgLoaded = function(img) {
+      if (!img) return;
+      img.classList.add("is-loaded");
+      var parent = img.closest(".img-loader-box") || img.parentElement;
+      if (parent) {
+        var placeholder = parent.querySelector(".img-logo-placeholder");
+        if (placeholder) {
+          placeholder.classList.add("is-hidden");
+        }
+      }
+    };
+
+    window.onImagineImgError = function(img) {
+      if (!img) return;
+      if (img.src && img.src.includes(".webp") && !img.dataset.pngTried) {
+        img.dataset.pngTried = "true";
+        img.src = img.src.replace(/\.webp(\?.*)?$/, ".png$1");
+        return;
+      }
+      img.onerror = null;
+      var isSub = window.location.pathname.includes("/portfolio/") ||
+                  window.location.pathname.includes("/services/") ||
+                  window.location.pathname.includes("/about/") ||
+                  window.location.pathname.includes("/contact/");
+      img.src = isSub ? "../assets/logo/Imagine%20Logo.png" : "assets/logo/Imagine%20Logo.png";
+      img.classList.add("is-loaded", "is-fallback-logo");
+      var parent = img.closest(".img-loader-box") || img.parentElement;
+      if (parent) {
+        var placeholder = parent.querySelector(".img-logo-placeholder");
+        if (placeholder) {
+          placeholder.classList.add("is-hidden");
+        }
+      }
+    };
+  </script>
 </head>
 <body class="font-sans bg-[#07090F] text-slate-200 antialiased selection:bg-brand-lime selection:text-black">
 
@@ -111,7 +148,7 @@
       <!-- Logo -->
       <a href="../" class="flex items-center gap-3 group">
         <div class="p-1.5 bg-white rounded-xl shadow-lg border border-white/20 transition-transform group-hover:scale-105">
-          <img src="../assets/logo/Imagine Logo.png" alt="Imagine Printers Logo" class="h-9 sm:h-10 w-auto object-contain">
+          <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers Logo" class="h-9 sm:h-10 w-auto object-contain">
         </div>
       </a>
 
@@ -201,7 +238,7 @@
     <div>
       <div class="flex items-center justify-between pb-6 border-b border-white/10">
         <div class="p-1 bg-white rounded-lg inline-block">
-          <img src="../assets/logo/Imagine Logo.png" alt="Imagine Printers" class="h-8 w-auto">
+          <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="h-8 w-auto">
         </div>
         <button id="closeMobileMenu" class="w-8 h-8 rounded-full bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center">
           <i class="fa-solid fa-xmark text-lg"></i>
@@ -324,9 +361,15 @@
         <!-- 1. Brochure -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="corporate" data-title="Brochure" data-tags="bifold trifold booklet corporate catalog printing">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_7.jpg" alt="Brochure Printing" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-brand-lime backdrop-blur-md">#01 STATIONERY</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Brochure/Brochure%20-%201.webp" alt="Brochure Printing" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-brand-lime backdrop-blur-md">#01 STATIONERY</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Brochure</h3>
@@ -350,9 +393,15 @@
         <!-- 2. Visiting Cards -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="corporate" data-title="Visiting Cards" data-tags="business card luxury cards velvet matte metallic embossed">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_1.jpg" alt="Visiting Cards" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-brand-cyan backdrop-blur-md">#02 STATIONERY</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Visiting%20Card/Visiting%20Card%20-%201.webp" alt="Visiting Cards" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-brand-cyan backdrop-blur-md">#02 STATIONERY</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Visiting Cards</h3>
@@ -376,9 +425,15 @@
         <!-- 3. Pamphlets -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="corporate" data-title="Pamphlets" data-tags="flyers marketing distribution inserts advertising">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_9.jpg" alt="Pamphlets & Flyers" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-brand-magenta backdrop-blur-md">#03 STATIONERY</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/FLYER%20%20Handbill/Flyer%20-%201.webp" alt="Pamphlets & Flyers" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-brand-magenta backdrop-blur-md">#03 STATIONERY</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Pamphlets</h3>
@@ -402,9 +457,15 @@
         <!-- 4. Bill Books -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="corporate" data-title="Bill Books" data-tags="invoice books receipt voucher carbonless ncr duplicate triplicate">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_11.jpg" alt="Bill Books" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-orange-400 backdrop-blur-md">#04 STATIONERY</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Letter%20Head/letterhead%20-%201.webp" alt="Bill Books" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-orange-400 backdrop-blur-md">#04 STATIONERY</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Bill Books</h3>
@@ -428,9 +489,15 @@
         <!-- 5. Letterheads -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="corporate" data-title="Letterheads" data-tags="official letterhead executive stationery bond paper texture">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_15.jpg" alt="Letterheads" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-purple-400 backdrop-blur-md">#05 STATIONERY</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Letter%20Head/letterhead%20-%202.webp" alt="Letterheads" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-purple-400 backdrop-blur-md">#05 STATIONERY</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Letterheads</h3>
@@ -454,9 +521,15 @@
         <!-- 6. ID Cards -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="corporate" data-title="ID Cards" data-tags="identity card employee badge lanyard school card pvc rfid">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_17.jpg" alt="ID Cards" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-blue-400 backdrop-blur-md">#06 STATIONERY</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Visiting%20Card/Visiting%20Card%20-%203.webp" alt="ID Cards" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-blue-400 backdrop-blur-md">#06 STATIONERY</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">ID Cards</h3>
@@ -480,9 +553,15 @@
         <!-- 7. Stickers -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="corporate" data-title="Stickers" data-tags="labels die cut packaging product stickers waterproof">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_19.jpg" alt="Stickers & Labels" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-emerald-400 backdrop-blur-md">#07 STATIONERY</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Sticker%20Print/Sticker%20printing%20].webp" alt="Stickers & Labels" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-emerald-400 backdrop-blur-md">#07 STATIONERY</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Stickers & Labels</h3>
@@ -506,9 +585,15 @@
         <!-- 8. Envelopes -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="corporate" data-title="Envelopes" data-tags="corporate envelope mailer window peel seal stationery">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_21.jpg" alt="Envelopes" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-amber-400 backdrop-blur-md">#08 STATIONERY</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/ENVELOPE/Envelope%20-%201.webp" alt="Envelopes" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-amber-400 backdrop-blur-md">#08 STATIONERY</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Envelopes</h3>
@@ -532,9 +617,15 @@
         <!-- 9. Glow Sign Board -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="signage" data-title="Glow Sign Board" data-tags="backlit led sign board retail shopfront signage outdoor">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_4.jpg" alt="Glow Sign Board" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-yellow-400 backdrop-blur-md">#09 SIGNAGE</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/Signboard%20-%201.webp" alt="Glow Sign Board" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-yellow-400 backdrop-blur-md">#09 SIGNAGE</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Glow Sign Board</h3>
@@ -558,9 +649,15 @@
         <!-- 10. Acrylic Work -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="signage" data-title="Acrylic Work" data-tags="acrylic letters laser cut reception logo 3d letters">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_8.jpg" alt="Acrylic Work" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-teal-400 backdrop-blur-md">#10 SIGNAGE</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/Signboard%20-%202.webp" alt="Acrylic Work" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-teal-400 backdrop-blur-md">#10 SIGNAGE</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Acrylic Work</h3>
@@ -584,9 +681,15 @@
         <!-- 11. UV Printing -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="signage" data-title="UV Printing" data-tags="flatbed uv print glass metal wood canvas acp rigid substrate">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_10.jpg" alt="UV Printing" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-indigo-400 backdrop-blur-md">#11 SIGNAGE</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/Untitled%20design%20(11).webp" alt="UV Printing" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-indigo-400 backdrop-blur-md">#11 SIGNAGE</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">UV Printing</h3>
@@ -610,9 +713,15 @@
         <!-- 12. Signages -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="signage" data-title="Signages" data-tags="wayfinding safety signs direction brass titanium metal letters">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_14.jpg" alt="Signages" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-rose-400 backdrop-blur-md">#12 SIGNAGE</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/Hospital%20Board.webp" alt="Signages" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-rose-400 backdrop-blur-md">#12 SIGNAGE</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Signages</h3>
@@ -636,9 +745,15 @@
         <!-- 13. Sunboard Sheets -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="signage" data-title="Sunboard Sheets" data-tags="foam board mounting vinyl retail visual merchandising posm">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_23.jpg" alt="Sunboard Sheets" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-cyan-400 backdrop-blur-md">#13 SIGNAGE</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Sunboard%20Cutout/EVENT%20Sunboard%20CUTOUT.webp" alt="Sunboard Sheets" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-cyan-400 backdrop-blur-md">#13 SIGNAGE</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Sunboard Sheets</h3>
@@ -662,9 +777,15 @@
         <!-- 14. Roll-up Standee -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="signage" data-title="Roll-up Standee" data-tags="pull up banner exhibition stand portable trade show display">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_16.jpg" alt="Roll-up Standee" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-purple-400 backdrop-blur-md">#14 SIGNAGE</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Rollup%20Standee/Rollup%20Standee%20-%202.webp" alt="Roll-up Standee" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-purple-400 backdrop-blur-md">#14 SIGNAGE</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Roll-up Standee</h3>
@@ -688,9 +809,15 @@
         <!-- 15. Flex Banner -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="signage" data-title="Flex Banner" data-tags="outdoor hoarding frontlit backlit banner star flex banner printing">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_24.jpg" alt="Flex Banner" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-red-400 backdrop-blur-md">#15 SIGNAGE</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Flex%20Banner%20Hoarding%20Printing/Banner%20-1.webp" alt="Flex Banner" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-red-400 backdrop-blur-md">#15 SIGNAGE</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Flex Banner</h3>
@@ -714,9 +841,15 @@
         <!-- 16. Vinyl -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="signage" data-title="Vinyl" data-tags="self adhesive vinyl frosted glass film vehicle wrap wall graphics">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_27.jpg" alt="Vinyl Graphics" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-sky-400 backdrop-blur-md">#16 SIGNAGE</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Flex%20Banner%20Hoarding%20Printing/Billboard%20-%201.webp" alt="Vinyl Graphics" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-sky-400 backdrop-blur-md">#16 SIGNAGE</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Vinyl Graphics</h3>
@@ -740,9 +873,15 @@
         <!-- 17. UV DTF STICKER -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="merch" data-title="UV DTF STICKER" data-tags="uv dtf sticker cold transfer 3d embossed crystal stickers mugs metal bottles">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_12.jpg" alt="UV DTF STICKER" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-brand-magenta backdrop-blur-md">#17 TRENDING</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Sticker%20Print/Sticker%20Print.webp" alt="UV DTF STICKER" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-brand-magenta backdrop-blur-md">#17 TRENDING</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">UV DTF STICKER</h3>
@@ -766,9 +905,15 @@
         <!-- 18. Coffee MUG -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="merch" data-title="Coffee MUG" data-tags="custom mug ceramic corporate gifting magic mug sublimation">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_20.jpg" alt="Coffee MUG" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-amber-400 backdrop-blur-md">#18 MERCH</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Visiting%20Card/Visiting%20Card%20-%205.webp" alt="Coffee MUG & Gifting" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-amber-400 backdrop-blur-md">#18 MERCH</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Coffee MUG</h3>
@@ -792,9 +937,15 @@
         <!-- 19. TENT CARD -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="merch" data-title="TENT CARD" data-tags="table tent restaurant menu conference table display acrylic tent card">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_28.jpg" alt="TENT CARD" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-lime-400 backdrop-blur-md">#19 DISPLAY</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Brochure/Brochure%20-%206.webp" alt="TENT CARD" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-lime-400 backdrop-blur-md">#19 DISPLAY</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">TENT CARD</h3>
@@ -818,9 +969,15 @@
         <!-- 20. Video editing -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="digital" data-title="Video editing" data-tags="commercial video post production reels brand video promo">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_35.jpg" alt="Video editing" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-blue-400 backdrop-blur-md">#20 MEDIA</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/Event%20Back%20Drop.webp" alt="Video Editing Backdrop" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-blue-400 backdrop-blur-md">#20 MEDIA</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">Video editing</h3>
@@ -844,9 +1001,15 @@
         <!-- 21. AI video -->
         <div class="service-card-item dark-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="digital" data-title="AI video" data-tags="ai video generation avatar generative animation product reels ai marketing">
           <div>
-            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative">
-              <img src="../assets/images/temp_40.jpg" alt="AI video" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 left-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-fuchsia-400 backdrop-blur-md">#21 DIGITAL</span>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-950 relative img-loader-box">
+              <div class="img-logo-placeholder">
+                <div class="placeholder-logo-badge">
+                  <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+                </div>
+                <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+              </div>
+              <img src="../assets/images/Welcome%20Board%20Sunboard/Gemini_Generated_Image_y7smm3y7smm3y7sm.webp" alt="AI Video & Creative Visuals" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+              <span class="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/70 text-fuchsia-400 backdrop-blur-md">#21 DIGITAL</span>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-bold font-heading text-white">AI video</h3>
@@ -1184,7 +1347,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
         <div class="lg:col-span-4 space-y-4">
           <div class="p-1.5 bg-white rounded-xl inline-block">
-            <img src="../assets/logo/Imagine Logo.png" alt="Imagine Printers" class="h-10 w-auto">
+            <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="h-10 w-auto">
           </div>
           <p class="text-xs text-slate-400 leading-relaxed">
             Imagine Printers (Est. 2011) — Premier commercial printing, packaging, luxury stationery, and 3D architectural signage manufacturer based in Thane, serving Maharashtra and all-India corporations.

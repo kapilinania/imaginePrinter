@@ -1,7 +1,8 @@
-﻿.DS_Store
+.DS_Store
 Thumbs.db
 desktop.ini
 *.tmp
 *.log
 .vscode/
 .idea/
+.tmp_edge*

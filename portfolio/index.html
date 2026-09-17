@@ -68,6 +68,43 @@
 
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="../css/style.css">
+  <!-- Universal Instant Brand Image Loader & Fail-Safe Fallback -->
+  <script>
+    window.onImagineImgLoaded = function(img) {
+      if (!img) return;
+      img.classList.add("is-loaded");
+      var parent = img.closest(".img-loader-box") || img.parentElement;
+      if (parent) {
+        var placeholder = parent.querySelector(".img-logo-placeholder");
+        if (placeholder) {
+          placeholder.classList.add("is-hidden");
+        }
+      }
+    };
+
+    window.onImagineImgError = function(img) {
+      if (!img) return;
+      if (img.src && img.src.includes(".webp") && !img.dataset.pngTried) {
+        img.dataset.pngTried = "true";
+        img.src = img.src.replace(/\.webp(\?.*)?$/, ".png$1");
+        return;
+      }
+      img.onerror = null;
+      var isSub = window.location.pathname.includes("/portfolio/") ||
+                  window.location.pathname.includes("/services/") ||
+                  window.location.pathname.includes("/about/") ||
+                  window.location.pathname.includes("/contact/");
+      img.src = isSub ? "../assets/logo/Imagine%20Logo.png" : "assets/logo/Imagine%20Logo.png";
+      img.classList.add("is-loaded", "is-fallback-logo");
+      var parent = img.closest(".img-loader-box") || img.parentElement;
+      if (parent) {
+        var placeholder = parent.querySelector(".img-logo-placeholder");
+        if (placeholder) {
+          placeholder.classList.add("is-hidden");
+        }
+      }
+    };
+  </script>
 </head>
 <body class="font-sans bg-[#07090F] text-slate-200 antialiased selection:bg-brand-lime selection:text-black">
 
@@ -111,7 +148,7 @@
       <!-- Logo -->
       <a href="../" class="flex items-center gap-3 group">
         <div class="p-1.5 bg-white rounded-xl shadow-lg border border-white/20 transition-transform group-hover:scale-105">
-          <img src="../assets/logo/Imagine Logo.png" alt="Imagine Printers Logo" class="h-9 sm:h-10 w-auto object-contain">
+          <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers Logo" class="h-9 sm:h-10 w-auto object-contain">
         </div>
       </a>
 
@@ -201,7 +238,7 @@
     <div>
       <div class="flex items-center justify-between pb-6 border-b border-white/10">
         <div class="p-1 bg-white rounded-lg inline-block">
-          <img src="../assets/logo/Imagine Logo.png" alt="Imagine Printers" class="h-8 w-auto">
+          <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="h-8 w-auto">
         </div>
         <button id="closeMobileMenu" class="w-8 h-8 rounded-full bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center">
           <i class="fa-solid fa-xmark text-lg"></i>
@@ -263,176 +300,1457 @@
         Real output delivered to corporate, retail, hospitality, and event clients. Tap any card to open the interactive full-screen lightbox and inspect materials.
       </p>
 
-      <!-- Category Filter Pills -->
+            <!-- Category Filter Pills -->
       <div class="flex flex-wrap items-center justify-center gap-2 pt-4">
         <button class="portfolio-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-brand-lime text-slate-950" data-filter="all">
-          All Showcase
+          All Works (61)
         </button>
-        <button class="portfolio-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-brand-lime" data-filter="stationery">
-          Stationery & Cards
+        <button class="portfolio-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-brand-lime" data-filter="cards">
+          Visiting Cards (8)
         </button>
         <button class="portfolio-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-brand-lime" data-filter="signage">
-          Signage & 3D Letters
+          3D Acrylic & Signs (10)
         </button>
-        <button class="portfolio-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-brand-lime" data-filter="merch">
-          Merch & Stickers
+        <button class="portfolio-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-brand-lime" data-filter="brochures">
+          Brochures (7)
         </button>
-        <button class="portfolio-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-brand-lime" data-filter="digital">
-          Digital & AI Media
+        <button class="portfolio-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-brand-lime" data-filter="flyers">
+          Flyers & Handbills (10)
         </button>
+        <button class="portfolio-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-brand-lime" data-filter="banners">
+          Flex & Hoardings (6)
+        </button>
+        <button class="portfolio-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-brand-lime" data-filter="stationery">
+          Stationery & Envelopes (12)
+        </button>
+        <button class="portfolio-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-brand-lime" data-filter="standees">
+          Roll-Up Standees (1)
+        </button>
+        <button class="portfolio-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-brand-lime" data-filter="stickers">
+          UV DTF & Stickers (2)
+        </button>
+        <button class="portfolio-filter-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-brand-lime" data-filter="sunboard">
+          Sunboard & Welcome (5)
+        </button>
+      </div>
+
+      <!-- Live Search Box & Results Counter -->
+      <div class="pt-6 max-w-md mx-auto">
+        <div class="relative">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+          <input id="portfolioSearchInput" type="text" placeholder="Search works (e.g. visiting card, acrylic, gold foil, flyer)..." class="w-full pl-11 pr-4 py-2.5 rounded-2xl bg-slate-900/90 border border-white/10 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-brand-lime transition-all shadow-inner">
+        </div>
+        <p id="portfolioCountDisplay" class="text-center text-[11px] font-mono text-slate-400 mt-2">Showing 61 of 61 portfolio items</p>
       </div>
     </div>
   </section>
 
   <!-- Portfolio Gallery Grid (Dark Theme) -->
-  <section class="py-16 section-dark">
+  <section class="py-12 section-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Item 1: Luxury Cards -->
-        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll reveal-delay-1" data-category="stationery" data-img="assets/images/temp_1.jpg" data-title="Velvet Matte Visiting Cards with Gold Foil" data-tag="Luxury Corporate Stationery">
-          <div class="aspect-[4/3] overflow-hidden bg-slate-950">
-            <img src="../assets/images/temp_1.jpg" alt="Velvet Visiting Cards" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <!-- Item 1: Velvet Finish Visiting Card - 1 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="cards" data-img="../assets/images/Visiting%20Card/Visiting%20Card%20-%201.webp" data-title="Velvet Finish Visiting Card - 1" data-tag="450 GSM • Velvet Touch • Hot Gold Foil">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Visiting%20Card/Visiting%20Card%20-%201.webp" alt="Velvet Finish Visiting Card - 1" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-mono font-bold text-brand-lime uppercase">Stationery</span>
-              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors">Velvet Matte Gold Foil Cards</h4>
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-lime uppercase">Visiting Cards</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Velvet Finish Visiting Card - 1</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">450 GSM • Velvet Touch • Hot Gold Foil</p>
             </div>
-            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors">
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
               <i class="fa-solid fa-expand text-xs"></i>
             </div>
           </div>
         </div>
 
-        <!-- Item 2: Signage -->
-        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll reveal-delay-2" data-category="signage" data-img="assets/images/temp_4.jpg" data-title="Backlit 3D Acrylic Glow Sign Board" data-tag="Retail Storefront Branding">
-          <div class="aspect-[4/3] overflow-hidden bg-slate-950">
-            <img src="../assets/images/temp_4.jpg" alt="3D Acrylic Glow Sign Board" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <!-- Item 2: Velvet Finish Visiting Card - 2 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="cards" data-img="../assets/images/Visiting%20Card/Visiting%20Card%20-%202.webp" data-title="Velvet Finish Visiting Card - 2" data-tag="450 GSM • Velvet Touch • Hot Gold Foil">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Visiting%20Card/Visiting%20Card%20-%202.webp" alt="Velvet Finish Visiting Card - 2" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-mono font-bold text-yellow-400 uppercase">Glow Signage</span>
-              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors">Backlit 3D Acrylic Storefront</h4>
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-lime uppercase">Visiting Cards</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Velvet Finish Visiting Card - 2</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">450 GSM • Velvet Touch • Hot Gold Foil</p>
             </div>
-            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors">
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
               <i class="fa-solid fa-expand text-xs"></i>
             </div>
           </div>
         </div>
 
-        <!-- Item 3: Brochures -->
-        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll reveal-delay-3" data-category="stationery" data-img="assets/images/temp_7.jpg" data-title="Tri-Fold Corporate Product Catalog" data-tag="High-Gloss Art Paper 250 GSM">
-          <div class="aspect-[4/3] overflow-hidden bg-slate-950">
-            <img src="../assets/images/temp_7.jpg" alt="Corporate Tri-Fold Brochure" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <!-- Item 3: Velvet Finish Visiting Card - 3 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="cards" data-img="../assets/images/Visiting%20Card/Visiting%20Card%20-%203.webp" data-title="Velvet Finish Visiting Card - 3" data-tag="450 GSM • Velvet Touch • Hot Gold Foil">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Visiting%20Card/Visiting%20Card%20-%203.webp" alt="Velvet Finish Visiting Card - 3" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-mono font-bold text-brand-cyan uppercase">Brochures</span>
-              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors">Tri-Fold Corporate Showcase</h4>
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-lime uppercase">Visiting Cards</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Velvet Finish Visiting Card - 3</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">450 GSM • Velvet Touch • Hot Gold Foil</p>
             </div>
-            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors">
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
               <i class="fa-solid fa-expand text-xs"></i>
             </div>
           </div>
         </div>
 
-        <!-- Item 4: UV DTF Stickers -->
-        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll reveal-delay-1" data-category="merch" data-img="assets/images/temp_12.jpg" data-title="UV DTF Crystal Cold-Transfer 3D Stickers" data-tag="Waterproof Metallic Varnish Decals">
-          <div class="aspect-[4/3] overflow-hidden bg-slate-950">
-            <img src="../assets/images/temp_12.jpg" alt="UV DTF Crystal Stickers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <!-- Item 4: Velvet Finish Visiting Card - 4 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="cards" data-img="../assets/images/Visiting%20Card/Visiting%20Card%20-%204.webp" data-title="Velvet Finish Visiting Card - 4" data-tag="450 GSM • Velvet Touch • Hot Gold Foil">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Visiting%20Card/Visiting%20Card%20-%204.webp" alt="Velvet Finish Visiting Card - 4" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-mono font-bold text-brand-magenta uppercase">UV DTF Decals</span>
-              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors">3D Embossed Cold Transfer</h4>
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-lime uppercase">Visiting Cards</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Velvet Finish Visiting Card - 4</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">450 GSM • Velvet Touch • Hot Gold Foil</p>
             </div>
-            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors">
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
               <i class="fa-solid fa-expand text-xs"></i>
             </div>
           </div>
         </div>
 
-        <!-- Item 5: Standees -->
-        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll reveal-delay-2" data-category="signage" data-img="assets/images/temp_16.jpg" data-title="Trade Show Roll-up Standee 6x3 ft" data-tag="Star Matte Anti-Curling Film">
-          <div class="aspect-[4/3] overflow-hidden bg-slate-950">
-            <img src="../assets/images/temp_16.jpg" alt="Roll-up Standee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <!-- Item 5: Velvet Finish Visiting Card - 5 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="cards" data-img="../assets/images/Visiting%20Card/Visiting%20Card%20-%205.webp" data-title="Velvet Finish Visiting Card - 5" data-tag="450 GSM • Velvet Touch • Hot Gold Foil">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Visiting%20Card/Visiting%20Card%20-%205.webp" alt="Velvet Finish Visiting Card - 5" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-mono font-bold text-purple-400 uppercase">Exhibition</span>
-              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors">Aluminum Roll-Up Standee</h4>
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-lime uppercase">Visiting Cards</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Velvet Finish Visiting Card - 5</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">450 GSM • Velvet Touch • Hot Gold Foil</p>
             </div>
-            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors">
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
               <i class="fa-solid fa-expand text-xs"></i>
             </div>
           </div>
         </div>
 
-        <!-- Item 6: Coffee Mug Merch -->
-        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll reveal-delay-3" data-category="merch" data-img="assets/images/temp_20.jpg" data-title="Sublimation Ceramic Coffee Mugs" data-tag="Corporate Welcome Kit Merchandise">
-          <div class="aspect-[4/3] overflow-hidden bg-slate-950">
-            <img src="../assets/images/temp_20.jpg" alt="Custom Coffee Mugs" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <!-- Item 6: Velvet Finish Visiting Card - 6 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="cards" data-img="../assets/images/Visiting%20Card/Visiting%20Card%20-%206.webp" data-title="Velvet Finish Visiting Card - 6" data-tag="450 GSM • Velvet Touch • Hot Gold Foil">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Visiting%20Card/Visiting%20Card%20-%206.webp" alt="Velvet Finish Visiting Card - 6" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-mono font-bold text-amber-400 uppercase">Merchandise</span>
-              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors">Ceramic Corporate Coffee Mugs</h4>
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-lime uppercase">Visiting Cards</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Velvet Finish Visiting Card - 6</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">450 GSM • Velvet Touch • Hot Gold Foil</p>
             </div>
-            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors">
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
               <i class="fa-solid fa-expand text-xs"></i>
             </div>
           </div>
         </div>
 
-        <!-- Item 7: Acrylic 3D Work -->
-        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll reveal-delay-1" data-category="signage" data-img="assets/images/temp_25.jpg" data-title="Gold Mirror Acrylic Reception Sign" data-tag="Laser-Cut 3D Letters">
-          <div class="aspect-[4/3] overflow-hidden bg-slate-950">
-            <img src="../assets/images/temp_25.jpg" alt="Acrylic Reception Sign" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <!-- Item 7: Velvet Finish Visiting Card - 7 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="cards" data-img="../assets/images/Visiting%20Card/Visiting%20Card%20-%207.webp" data-title="Velvet Finish Visiting Card - 7" data-tag="450 GSM • Velvet Touch • Hot Gold Foil">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Visiting%20Card/Visiting%20Card%20-%207.webp" alt="Velvet Finish Visiting Card - 7" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-mono font-bold text-teal-400 uppercase">Acrylic 3D</span>
-              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors">Mirror Acrylic Reception Sign</h4>
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-lime uppercase">Visiting Cards</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Velvet Finish Visiting Card - 7</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">450 GSM • Velvet Touch • Hot Gold Foil</p>
             </div>
-            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors">
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
               <i class="fa-solid fa-expand text-xs"></i>
             </div>
           </div>
         </div>
 
-        <!-- Item 8: Stickers & Labels -->
-        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll reveal-delay-2" data-category="stationery" data-img="assets/images/temp_30.jpg" data-title="Die-Cut Waterproof Bottle Labels" data-tag="Polypropylene Gloss Packaging Stickers">
-          <div class="aspect-[4/3] overflow-hidden bg-slate-950">
-            <img src="../assets/images/temp_30.jpg" alt="Die-Cut Product Stickers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <!-- Item 8: Velvet Finish Visiting Card - 8 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="cards" data-img="../assets/images/Visiting%20Card/Visiting%20Card%20-%208.webp" data-title="Velvet Finish Visiting Card - 8" data-tag="450 GSM • Velvet Touch • Hot Gold Foil">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Visiting%20Card/Visiting%20Card%20-%208.webp" alt="Velvet Finish Visiting Card - 8" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-mono font-bold text-emerald-400 uppercase">Packaging</span>
-              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors">Die-Cut Waterproof Stickers</h4>
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-lime uppercase">Visiting Cards</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Velvet Finish Visiting Card - 8</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">450 GSM • Velvet Touch • Hot Gold Foil</p>
             </div>
-            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors">
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
               <i class="fa-solid fa-expand text-xs"></i>
             </div>
           </div>
         </div>
 
-        <!-- Item 9: Digital & AI Video -->
-        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll reveal-delay-3" data-category="digital" data-img="assets/images/temp_35.jpg" data-title="Commercial Promo & AI Product Video" data-tag="Commercial Reel Editing & 4K Grading">
-          <div class="aspect-[4/3] overflow-hidden bg-slate-950">
-            <img src="../assets/images/temp_35.jpg" alt="AI Video & Editing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <!-- Item 9: 837D2C7B Fc2B 4698 9Fed 896F69820970 Display -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="signage" data-img="../assets/images/Sign%20Board%20Acrylic%20WOrk/837d2c7b-fc2b-4698-9fed-896f69820970.webp" data-title="837D2C7B Fc2B 4698 9Fed 896F69820970 Display" data-tag="Cast Acrylic • Samsung IP67 Modules • CNC Extruded">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/837d2c7b-fc2b-4698-9fed-896f69820970.webp" alt="837D2C7B Fc2B 4698 9Fed 896F69820970 Display" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-mono font-bold text-blue-400 uppercase">Digital Media</span>
-              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors">AI Video & Corporate Reels</h4>
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-yellow-400 uppercase">3D Acrylic & Glow Signs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">837D2C7B Fc2B 4698 9Fed 896F69820970 Display</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Cast Acrylic • Samsung IP67 Modules • CNC Extruded</p>
             </div>
-            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors">
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
               <i class="fa-solid fa-expand text-xs"></i>
             </div>
           </div>
         </div>
 
+        <!-- Item 10: 99760Ecf E2Ca 44A1 9300 F4Ee46Fe3Bc3 Display -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="signage" data-img="../assets/images/Sign%20Board%20Acrylic%20WOrk/99760ecf-e2ca-44a1-9300-f4ee46fe3bc3.webp" data-title="99760Ecf E2Ca 44A1 9300 F4Ee46Fe3Bc3 Display" data-tag="Cast Acrylic • Samsung IP67 Modules • CNC Extruded">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/99760ecf-e2ca-44a1-9300-f4ee46fe3bc3.webp" alt="99760Ecf E2Ca 44A1 9300 F4Ee46Fe3Bc3 Display" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-yellow-400 uppercase">3D Acrylic & Glow Signs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">99760Ecf E2Ca 44A1 9300 F4Ee46Fe3Bc3 Display</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Cast Acrylic • Samsung IP67 Modules • CNC Extruded</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 11: Ultra-Slim LED Clip-On Light Box -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="signage" data-img="../assets/images/Sign%20Board%20Acrylic%20WOrk/Cliponlight%20Board.webp" data-title="Ultra-Slim LED Clip-On Light Box" data-tag="Cast Acrylic • Samsung IP67 Modules • CNC Extruded">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/Cliponlight%20Board.webp" alt="Ultra-Slim LED Clip-On Light Box" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-yellow-400 uppercase">3D Acrylic & Glow Signs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Ultra-Slim LED Clip-On Light Box</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Cast Acrylic • Samsung IP67 Modules • CNC Extruded</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 12: Stage Backdrop & Exhibition Display -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="signage" data-img="../assets/images/Sign%20Board%20Acrylic%20WOrk/Event%20Back%20Drop.webp" data-title="Stage Backdrop & Exhibition Display" data-tag="Cast Acrylic • Samsung IP67 Modules • CNC Extruded">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/Event%20Back%20Drop.webp" alt="Stage Backdrop & Exhibition Display" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-yellow-400 uppercase">3D Acrylic & Glow Signs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Stage Backdrop & Exhibition Display</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Cast Acrylic • Samsung IP67 Modules • CNC Extruded</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 13: Wayfinding & Department Sign Board -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="signage" data-img="../assets/images/Sign%20Board%20Acrylic%20WOrk/Hospital%20Board.webp" data-title="Wayfinding & Department Sign Board" data-tag="Cast Acrylic • Samsung IP67 Modules • CNC Extruded">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/Hospital%20Board.webp" alt="Wayfinding & Department Sign Board" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-yellow-400 uppercase">3D Acrylic & Glow Signs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Wayfinding & Department Sign Board</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Cast Acrylic • Samsung IP67 Modules • CNC Extruded</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 14: Backlit 3D Acrylic Signboard - 1 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="signage" data-img="../assets/images/Sign%20Board%20Acrylic%20WOrk/Signboard%20-%201.webp" data-title="Backlit 3D Acrylic Signboard - 1" data-tag="Cast Acrylic • Samsung IP67 Modules • CNC Extruded">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/Signboard%20-%201.webp" alt="Backlit 3D Acrylic Signboard - 1" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-yellow-400 uppercase">3D Acrylic & Glow Signs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Backlit 3D Acrylic Signboard - 1</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Cast Acrylic • Samsung IP67 Modules • CNC Extruded</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 15: Backlit 3D Acrylic Signboard - 2 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="signage" data-img="../assets/images/Sign%20Board%20Acrylic%20WOrk/Signboard%20-%202.webp" data-title="Backlit 3D Acrylic Signboard - 2" data-tag="Cast Acrylic • Samsung IP67 Modules • CNC Extruded">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/Signboard%20-%202.webp" alt="Backlit 3D Acrylic Signboard - 2" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-yellow-400 uppercase">3D Acrylic & Glow Signs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Backlit 3D Acrylic Signboard - 2</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Cast Acrylic • Samsung IP67 Modules • CNC Extruded</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 16: Backlit 3D Acrylic Signboard - 3 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="signage" data-img="../assets/images/Sign%20Board%20Acrylic%20WOrk/Signboard%20-%203.webp" data-title="Backlit 3D Acrylic Signboard - 3" data-tag="Cast Acrylic • Samsung IP67 Modules • CNC Extruded">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/Signboard%20-%203.webp" alt="Backlit 3D Acrylic Signboard - 3" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-yellow-400 uppercase">3D Acrylic & Glow Signs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Backlit 3D Acrylic Signboard - 3</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Cast Acrylic • Samsung IP67 Modules • CNC Extruded</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 17: Untitled Design (11) Display -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="signage" data-img="../assets/images/Sign%20Board%20Acrylic%20WOrk/Untitled%20design%20(11).webp" data-title="Untitled Design (11) Display" data-tag="Cast Acrylic • Samsung IP67 Modules • CNC Extruded">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/Untitled%20design%20(11).webp" alt="Untitled Design (11) Display" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-yellow-400 uppercase">3D Acrylic & Glow Signs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Untitled Design (11) Display</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Cast Acrylic • Samsung IP67 Modules • CNC Extruded</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 18: Untitled Design (12) Display -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="signage" data-img="../assets/images/Sign%20Board%20Acrylic%20WOrk/Untitled%20design%20(12).webp" data-title="Untitled Design (12) Display" data-tag="Cast Acrylic • Samsung IP67 Modules • CNC Extruded">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/Untitled%20design%20(12).webp" alt="Untitled Design (12) Display" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-yellow-400 uppercase">3D Acrylic & Glow Signs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Untitled Design (12) Display</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Cast Acrylic • Samsung IP67 Modules • CNC Extruded</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 19: Tri-Fold Brochure - 1 Catalog -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="brochures" data-img="../assets/images/Brochure/Brochure%20-%201.webp" data-title="Tri-Fold Brochure - 1 Catalog" data-tag="170-350 GSM Japanese Art • Tri-Fold & Stitched">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Brochure/Brochure%20-%201.webp" alt="Tri-Fold Brochure - 1 Catalog" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-cyan uppercase">Brochures & Catalogs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Tri-Fold Brochure - 1 Catalog</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">170-350 GSM Japanese Art • Tri-Fold & Stitched</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 20: Tri-Fold Brochure - 2 Catalog -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="brochures" data-img="../assets/images/Brochure/Brochure%20-%202.webp" data-title="Tri-Fold Brochure - 2 Catalog" data-tag="170-350 GSM Japanese Art • Tri-Fold & Stitched">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Brochure/Brochure%20-%202.webp" alt="Tri-Fold Brochure - 2 Catalog" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-cyan uppercase">Brochures & Catalogs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Tri-Fold Brochure - 2 Catalog</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">170-350 GSM Japanese Art • Tri-Fold & Stitched</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 21: Tri-Fold Brochure - 3 Catalog -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="brochures" data-img="../assets/images/Brochure/Brochure%20-%203.webp" data-title="Tri-Fold Brochure - 3 Catalog" data-tag="170-350 GSM Japanese Art • Tri-Fold & Stitched">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Brochure/Brochure%20-%203.webp" alt="Tri-Fold Brochure - 3 Catalog" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-cyan uppercase">Brochures & Catalogs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Tri-Fold Brochure - 3 Catalog</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">170-350 GSM Japanese Art • Tri-Fold & Stitched</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 22: Tri-Fold Brochure - 4 Catalog -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="brochures" data-img="../assets/images/Brochure/Brochure%20-%204.webp" data-title="Tri-Fold Brochure - 4 Catalog" data-tag="170-350 GSM Japanese Art • Tri-Fold & Stitched">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Brochure/Brochure%20-%204.webp" alt="Tri-Fold Brochure - 4 Catalog" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-cyan uppercase">Brochures & Catalogs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Tri-Fold Brochure - 4 Catalog</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">170-350 GSM Japanese Art • Tri-Fold & Stitched</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 23: Tri-Fold Brochure - 5 Catalog -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="brochures" data-img="../assets/images/Brochure/Brochure%20-%205.webp" data-title="Tri-Fold Brochure - 5 Catalog" data-tag="170-350 GSM Japanese Art • Tri-Fold & Stitched">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Brochure/Brochure%20-%205.webp" alt="Tri-Fold Brochure - 5 Catalog" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-cyan uppercase">Brochures & Catalogs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Tri-Fold Brochure - 5 Catalog</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">170-350 GSM Japanese Art • Tri-Fold & Stitched</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 24: Tri-Fold Brochure - 6 Catalog -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="brochures" data-img="../assets/images/Brochure/Brochure%20-%206.webp" data-title="Tri-Fold Brochure - 6 Catalog" data-tag="170-350 GSM Japanese Art • Tri-Fold & Stitched">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Brochure/Brochure%20-%206.webp" alt="Tri-Fold Brochure - 6 Catalog" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-cyan uppercase">Brochures & Catalogs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Tri-Fold Brochure - 6 Catalog</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">170-350 GSM Japanese Art • Tri-Fold & Stitched</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 25: Tri-Fold Brochure - 7 Catalog -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="brochures" data-img="../assets/images/Brochure/Brochure%20-%207.webp" data-title="Tri-Fold Brochure - 7 Catalog" data-tag="170-350 GSM Japanese Art • Tri-Fold & Stitched">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Brochure/Brochure%20-%207.webp" alt="Tri-Fold Brochure - 7 Catalog" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-cyan uppercase">Brochures & Catalogs</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Tri-Fold Brochure - 7 Catalog</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">170-350 GSM Japanese Art • Tri-Fold & Stitched</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 26: Commercial Flyer - 1 Distribution -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="flyers" data-img="../assets/images/FLYER%20%20Handbill/Flyer%20-%201.webp" data-title="Commercial Flyer - 1 Distribution" data-tag="130 GSM Gloss Coated • Fast Commercial Run">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/FLYER%20%20Handbill/Flyer%20-%201.webp" alt="Commercial Flyer - 1 Distribution" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-orange-400 uppercase">Flyers & Handbills</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Commercial Flyer - 1 Distribution</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">130 GSM Gloss Coated • Fast Commercial Run</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 27: Commercial Flyer - 10 Distribution -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="flyers" data-img="../assets/images/FLYER%20%20Handbill/Flyer%20-%2010.webp" data-title="Commercial Flyer - 10 Distribution" data-tag="130 GSM Gloss Coated • Fast Commercial Run">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/FLYER%20%20Handbill/Flyer%20-%2010.webp" alt="Commercial Flyer - 10 Distribution" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-orange-400 uppercase">Flyers & Handbills</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Commercial Flyer - 10 Distribution</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">130 GSM Gloss Coated • Fast Commercial Run</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 28: Commercial Flyer - 2 Distribution -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="flyers" data-img="../assets/images/FLYER%20%20Handbill/Flyer%20-%202.webp" data-title="Commercial Flyer - 2 Distribution" data-tag="130 GSM Gloss Coated • Fast Commercial Run">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/FLYER%20%20Handbill/Flyer%20-%202.webp" alt="Commercial Flyer - 2 Distribution" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-orange-400 uppercase">Flyers & Handbills</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Commercial Flyer - 2 Distribution</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">130 GSM Gloss Coated • Fast Commercial Run</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 29: Commercial Flyer - 3 Distribution -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="flyers" data-img="../assets/images/FLYER%20%20Handbill/Flyer%20-%203.webp" data-title="Commercial Flyer - 3 Distribution" data-tag="130 GSM Gloss Coated • Fast Commercial Run">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/FLYER%20%20Handbill/Flyer%20-%203.webp" alt="Commercial Flyer - 3 Distribution" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-orange-400 uppercase">Flyers & Handbills</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Commercial Flyer - 3 Distribution</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">130 GSM Gloss Coated • Fast Commercial Run</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 30: Commercial Flyer - 4 Distribution -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="flyers" data-img="../assets/images/FLYER%20%20Handbill/Flyer%20-%204.webp" data-title="Commercial Flyer - 4 Distribution" data-tag="130 GSM Gloss Coated • Fast Commercial Run">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/FLYER%20%20Handbill/Flyer%20-%204.webp" alt="Commercial Flyer - 4 Distribution" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-orange-400 uppercase">Flyers & Handbills</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Commercial Flyer - 4 Distribution</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">130 GSM Gloss Coated • Fast Commercial Run</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 31: Commercial Flyer - 5 Distribution -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="flyers" data-img="../assets/images/FLYER%20%20Handbill/Flyer%20-%205.webp" data-title="Commercial Flyer - 5 Distribution" data-tag="130 GSM Gloss Coated • Fast Commercial Run">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/FLYER%20%20Handbill/Flyer%20-%205.webp" alt="Commercial Flyer - 5 Distribution" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-orange-400 uppercase">Flyers & Handbills</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Commercial Flyer - 5 Distribution</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">130 GSM Gloss Coated • Fast Commercial Run</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 32: Commercial Flyer - 6 Distribution -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="flyers" data-img="../assets/images/FLYER%20%20Handbill/Flyer%20-%206.webp" data-title="Commercial Flyer - 6 Distribution" data-tag="130 GSM Gloss Coated • Fast Commercial Run">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/FLYER%20%20Handbill/Flyer%20-%206.webp" alt="Commercial Flyer - 6 Distribution" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-orange-400 uppercase">Flyers & Handbills</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Commercial Flyer - 6 Distribution</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">130 GSM Gloss Coated • Fast Commercial Run</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 33: Commercial Flyer - 7 Distribution -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="flyers" data-img="../assets/images/FLYER%20%20Handbill/Flyer%20-%207.webp" data-title="Commercial Flyer - 7 Distribution" data-tag="130 GSM Gloss Coated • Fast Commercial Run">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/FLYER%20%20Handbill/Flyer%20-%207.webp" alt="Commercial Flyer - 7 Distribution" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-orange-400 uppercase">Flyers & Handbills</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Commercial Flyer - 7 Distribution</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">130 GSM Gloss Coated • Fast Commercial Run</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 34: Commercial Flyer - 8 Distribution -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="flyers" data-img="../assets/images/FLYER%20%20Handbill/Flyer%20-%208.webp" data-title="Commercial Flyer - 8 Distribution" data-tag="130 GSM Gloss Coated • Fast Commercial Run">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/FLYER%20%20Handbill/Flyer%20-%208.webp" alt="Commercial Flyer - 8 Distribution" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-orange-400 uppercase">Flyers & Handbills</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Commercial Flyer - 8 Distribution</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">130 GSM Gloss Coated • Fast Commercial Run</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 35: Commercial Flyer - 9 Distribution -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="flyers" data-img="../assets/images/FLYER%20%20Handbill/Flyer%20-%209.webp" data-title="Commercial Flyer - 9 Distribution" data-tag="130 GSM Gloss Coated • Fast Commercial Run">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/FLYER%20%20Handbill/Flyer%20-%209.webp" alt="Commercial Flyer - 9 Distribution" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-orange-400 uppercase">Flyers & Handbills</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Commercial Flyer - 9 Distribution</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">130 GSM Gloss Coated • Fast Commercial Run</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 36: Heavy-Duty Frontlit Banner - 2 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="banners" data-img="../assets/images/Flex%20Banner%20Hoarding%20Printing/Banner%20-%202.webp" data-title="Heavy-Duty Frontlit Banner - 2" data-tag="340 GSM Reinforced PVC • Heavy Weather Eyelets">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Flex%20Banner%20Hoarding%20Printing/Banner%20-%202.webp" alt="Heavy-Duty Frontlit Banner - 2" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-purple-400 uppercase">Flex & Hoardings</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Heavy-Duty Frontlit Banner - 2</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">340 GSM Reinforced PVC • Heavy Weather Eyelets</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 37: Heavy-Duty Frontlit Banner - 3 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="banners" data-img="../assets/images/Flex%20Banner%20Hoarding%20Printing/Banner%20-%203.webp" data-title="Heavy-Duty Frontlit Banner - 3" data-tag="340 GSM Reinforced PVC • Heavy Weather Eyelets">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Flex%20Banner%20Hoarding%20Printing/Banner%20-%203.webp" alt="Heavy-Duty Frontlit Banner - 3" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-purple-400 uppercase">Flex & Hoardings</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Heavy-Duty Frontlit Banner - 3</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">340 GSM Reinforced PVC • Heavy Weather Eyelets</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 38: Heavy-Duty Frontlit Banner -1 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="banners" data-img="../assets/images/Flex%20Banner%20Hoarding%20Printing/Banner%20-1.webp" data-title="Heavy-Duty Frontlit Banner -1" data-tag="340 GSM Reinforced PVC • Heavy Weather Eyelets">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Flex%20Banner%20Hoarding%20Printing/Banner%20-1.webp" alt="Heavy-Duty Frontlit Banner -1" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-purple-400 uppercase">Flex & Hoardings</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Heavy-Duty Frontlit Banner -1</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">340 GSM Reinforced PVC • Heavy Weather Eyelets</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 39: Highway Unipole Billboard - 1 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="banners" data-img="../assets/images/Flex%20Banner%20Hoarding%20Printing/Billboard%20-%201.webp" data-title="Highway Unipole Billboard - 1" data-tag="340 GSM Reinforced PVC • Heavy Weather Eyelets">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Flex%20Banner%20Hoarding%20Printing/Billboard%20-%201.webp" alt="Highway Unipole Billboard - 1" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-purple-400 uppercase">Flex & Hoardings</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Highway Unipole Billboard - 1</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">340 GSM Reinforced PVC • Heavy Weather Eyelets</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 40: Highway Unipole Billboard - 2 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="banners" data-img="../assets/images/Flex%20Banner%20Hoarding%20Printing/Billboard%20-%202.webp" data-title="Highway Unipole Billboard - 2" data-tag="340 GSM Reinforced PVC • Heavy Weather Eyelets">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Flex%20Banner%20Hoarding%20Printing/Billboard%20-%202.webp" alt="Highway Unipole Billboard - 2" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-purple-400 uppercase">Flex & Hoardings</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Highway Unipole Billboard - 2</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">340 GSM Reinforced PVC • Heavy Weather Eyelets</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 41: Highway Unipole Billboard - 3 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="banners" data-img="../assets/images/Flex%20Banner%20Hoarding%20Printing/Billboard%20-%203.webp" data-title="Highway Unipole Billboard - 3" data-tag="340 GSM Reinforced PVC • Heavy Weather Eyelets">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Flex%20Banner%20Hoarding%20Printing/Billboard%20-%203.webp" alt="Highway Unipole Billboard - 3" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-purple-400 uppercase">Flex & Hoardings</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Highway Unipole Billboard - 3</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">340 GSM Reinforced PVC • Heavy Weather Eyelets</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 42: Executive Letterhead - 1 Stationery -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="stationery" data-img="../assets/images/Letter%20Head/letterhead%20-%201.webp" data-title="Executive Letterhead - 1 Stationery" data-tag="100 GSM Royal Bond Paper • Laser Compatible">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Letter%20Head/letterhead%20-%201.webp" alt="Executive Letterhead - 1 Stationery" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-emerald-400 uppercase">Executive Letterheads</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Executive Letterhead - 1 Stationery</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">100 GSM Royal Bond Paper • Laser Compatible</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 43: Executive Letterhead - 2 Stationery -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="stationery" data-img="../assets/images/Letter%20Head/letterhead%20-%202.webp" data-title="Executive Letterhead - 2 Stationery" data-tag="100 GSM Royal Bond Paper • Laser Compatible">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Letter%20Head/letterhead%20-%202.webp" alt="Executive Letterhead - 2 Stationery" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-emerald-400 uppercase">Executive Letterheads</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Executive Letterhead - 2 Stationery</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">100 GSM Royal Bond Paper • Laser Compatible</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 44: Executive Letterhead - 3 Stationery -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="stationery" data-img="../assets/images/Letter%20Head/letterhead%20-%203.webp" data-title="Executive Letterhead - 3 Stationery" data-tag="100 GSM Royal Bond Paper • Laser Compatible">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Letter%20Head/letterhead%20-%203.webp" alt="Executive Letterhead - 3 Stationery" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-emerald-400 uppercase">Executive Letterheads</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Executive Letterhead - 3 Stationery</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">100 GSM Royal Bond Paper • Laser Compatible</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 45: Executive Letterhead - 4 Stationery -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="stationery" data-img="../assets/images/Letter%20Head/letterhead%20-%204.webp" data-title="Executive Letterhead - 4 Stationery" data-tag="100 GSM Royal Bond Paper • Laser Compatible">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Letter%20Head/letterhead%20-%204.webp" alt="Executive Letterhead - 4 Stationery" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-emerald-400 uppercase">Executive Letterheads</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Executive Letterhead - 4 Stationery</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">100 GSM Royal Bond Paper • Laser Compatible</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 46: Executive Letterhead - 5 Stationery -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="stationery" data-img="../assets/images/Letter%20Head/letterhead%20-%205.webp" data-title="Executive Letterhead - 5 Stationery" data-tag="100 GSM Royal Bond Paper • Laser Compatible">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Letter%20Head/letterhead%20-%205.webp" alt="Executive Letterhead - 5 Stationery" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-emerald-400 uppercase">Executive Letterheads</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Executive Letterhead - 5 Stationery</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">100 GSM Royal Bond Paper • Laser Compatible</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 47: Corporate Envelope - 1 Mailer -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="stationery" data-img="../assets/images/ENVELOPE/Envelope%20-%201.webp" data-title="Corporate Envelope - 1 Mailer" data-tag="Peel & Seal Strip • Inside Security Tint">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/ENVELOPE/Envelope%20-%201.webp" alt="Corporate Envelope - 1 Mailer" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-blue-400 uppercase">Office Envelopes</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Corporate Envelope - 1 Mailer</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Peel & Seal Strip • Inside Security Tint</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 48: Corporate Envelope - 2 Mailer -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="stationery" data-img="../assets/images/ENVELOPE/Envelope%20-%202.webp" data-title="Corporate Envelope - 2 Mailer" data-tag="Peel & Seal Strip • Inside Security Tint">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/ENVELOPE/Envelope%20-%202.webp" alt="Corporate Envelope - 2 Mailer" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-blue-400 uppercase">Office Envelopes</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Corporate Envelope - 2 Mailer</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Peel & Seal Strip • Inside Security Tint</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 49: Corporate Envelope - 3 Mailer -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="stationery" data-img="../assets/images/ENVELOPE/Envelope%20-%203.webp" data-title="Corporate Envelope - 3 Mailer" data-tag="Peel & Seal Strip • Inside Security Tint">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/ENVELOPE/Envelope%20-%203.webp" alt="Corporate Envelope - 3 Mailer" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-blue-400 uppercase">Office Envelopes</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Corporate Envelope - 3 Mailer</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Peel & Seal Strip • Inside Security Tint</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 50: Corporate Envelope - 4 Mailer -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="stationery" data-img="../assets/images/ENVELOPE/Envelope%20-%204.webp" data-title="Corporate Envelope - 4 Mailer" data-tag="Peel & Seal Strip • Inside Security Tint">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/ENVELOPE/Envelope%20-%204.webp" alt="Corporate Envelope - 4 Mailer" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-blue-400 uppercase">Office Envelopes</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Corporate Envelope - 4 Mailer</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Peel & Seal Strip • Inside Security Tint</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 51: Corporate Envelope - 5 Mailer -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="stationery" data-img="../assets/images/ENVELOPE/Envelope%20-%205.webp" data-title="Corporate Envelope - 5 Mailer" data-tag="Peel & Seal Strip • Inside Security Tint">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/ENVELOPE/Envelope%20-%205.webp" alt="Corporate Envelope - 5 Mailer" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-blue-400 uppercase">Office Envelopes</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Corporate Envelope - 5 Mailer</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Peel & Seal Strip • Inside Security Tint</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 52: Corporate Envelope - 6 Mailer -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="stationery" data-img="../assets/images/ENVELOPE/Envelope%20-%206.webp" data-title="Corporate Envelope - 6 Mailer" data-tag="Peel & Seal Strip • Inside Security Tint">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/ENVELOPE/Envelope%20-%206.webp" alt="Corporate Envelope - 6 Mailer" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-blue-400 uppercase">Office Envelopes</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Corporate Envelope - 6 Mailer</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Peel & Seal Strip • Inside Security Tint</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 53: Corporate Envelope - 7 Mailer -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="stationery" data-img="../assets/images/ENVELOPE/Envelope%20-%207.webp" data-title="Corporate Envelope - 7 Mailer" data-tag="Peel & Seal Strip • Inside Security Tint">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/ENVELOPE/Envelope%20-%207.webp" alt="Corporate Envelope - 7 Mailer" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-blue-400 uppercase">Office Envelopes</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Corporate Envelope - 7 Mailer</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Peel & Seal Strip • Inside Security Tint</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 54: Rollup Standee   2 Display -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="standees" data-img="../assets/images/Rollup%20Standee/Rollup%20Standee%20-%202.webp" data-title="Rollup Standee   2 Display" data-tag="Star Matte Anti-Curl Film • Heavy Base 6x3 ft">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Rollup%20Standee/Rollup%20Standee%20-%202.webp" alt="Rollup Standee   2 Display" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-pink-400 uppercase">Roll-Up Standees</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Rollup Standee   2 Display</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Star Matte Anti-Curl Film • Heavy Base 6x3 ft</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 55: Waterproof Sticker Print -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="stickers" data-img="../assets/images/Sticker%20Print/Sticker%20Print.webp" data-title="Waterproof Sticker Print" data-tag="Cold Transfer Varnish • Waterproof Permanent">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Sticker%20Print/Sticker%20Print.webp" alt="Waterproof Sticker Print" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-magenta uppercase">UV DTF & Stickers</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Waterproof Sticker Print</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Cold Transfer Varnish • Waterproof Permanent</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 56: Waterproof Sticker Printing ] -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="stickers" data-img="../assets/images/Sticker%20Print/Sticker%20printing%20].webp" data-title="Waterproof Sticker Printing ]" data-tag="Cold Transfer Varnish • Waterproof Permanent">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Sticker%20Print/Sticker%20printing%20].webp" alt="Waterproof Sticker Printing ]" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-brand-magenta uppercase">UV DTF & Stickers</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Waterproof Sticker Printing ]</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Cold Transfer Varnish • Waterproof Permanent</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 57: Dimensional Event Sunboard Cutout -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="sunboard" data-img="../assets/images/Sunboard%20Cutout/EVENT%20Sunboard%20CUTOUT.webp" data-title="Dimensional Event Sunboard Cutout" data-tag="5mm High Density Foam • CNC Contour Router Cut">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Sunboard%20Cutout/EVENT%20Sunboard%20CUTOUT.webp" alt="Dimensional Event Sunboard Cutout" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-amber-400 uppercase">Sunboard 3D Cutouts</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Dimensional Event Sunboard Cutout</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">5mm High Density Foam • CNC Contour Router Cut</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 58: Dimensional Sunboard  Cutout -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="sunboard" data-img="../assets/images/Sunboard%20Cutout/Sunboard%20%20Cutout.webp" data-title="Dimensional Sunboard  Cutout" data-tag="5mm High Density Foam • CNC Contour Router Cut">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Sunboard%20Cutout/Sunboard%20%20Cutout.webp" alt="Dimensional Sunboard  Cutout" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-amber-400 uppercase">Sunboard 3D Cutouts</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Dimensional Sunboard  Cutout</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">5mm High Density Foam • CNC Contour Router Cut</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 59: Custom Artistic Welcome Sunboards -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="sunboard" data-img="../assets/images/Welcome%20Board%20Sunboard/Gemini_Generated_Image_ddptrqddptrqddpt.webp" data-title="Custom Artistic Welcome Sunboards" data-tag="High Definition UV Flatbed • Rigid Foam Display">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Welcome%20Board%20Sunboard/Gemini_Generated_Image_ddptrqddptrqddpt.webp" alt="Custom Artistic Welcome Sunboards" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-teal-400 uppercase">Welcome Sunboards</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Custom Artistic Welcome Sunboards</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">High Definition UV Flatbed • Rigid Foam Display</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 60: Custom Artistic Welcome Sunboards -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="sunboard" data-img="../assets/images/Welcome%20Board%20Sunboard/Gemini_Generated_Image_y7smm3y7smm3y7sm.webp" data-title="Custom Artistic Welcome Sunboards" data-tag="High Definition UV Flatbed • Rigid Foam Display">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Welcome%20Board%20Sunboard/Gemini_Generated_Image_y7smm3y7smm3y7sm.webp" alt="Custom Artistic Welcome Sunboards" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-teal-400 uppercase">Welcome Sunboards</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Custom Artistic Welcome Sunboards</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">High Definition UV Flatbed • Rigid Foam Display</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 61: Dimensional Sunboard - 1 -->
+        <div class="portfolio-item group cursor-pointer relative rounded-2xl overflow-hidden dark-card reveal-on-scroll" data-category="sunboard" data-img="../assets/images/Welcome%20Board%20Sunboard/Sunboard%20-%201.webp" data-title="Dimensional Sunboard - 1" data-tag="High Definition UV Flatbed • Rigid Foam Display">
+          <div class="img-loader-box aspect-[4/3] bg-slate-950">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Imagine Craft</span>
+            </div>
+            <img src="../assets/images/Welcome%20Board%20Sunboard/Sunboard%20-%201.webp" alt="Dimensional Sunboard - 1" class="imagine-lazy-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
+          </div>
+          <div class="p-4 bg-[#0E1322] border-t border-white/5 flex items-center justify-between">
+            <div class="min-w-0 pr-2">
+              <span class="text-[10px] font-mono font-bold text-teal-400 uppercase">Welcome Sunboards</span>
+              <h4 class="text-sm font-bold text-white group-hover:text-brand-lime transition-colors truncate">Dimensional Sunboard - 1</h4>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">High Definition UV Flatbed • Rigid Foam Display</p>
+            </div>
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:bg-brand-lime group-hover:text-black transition-colors flex-shrink-0">
+              <i class="fa-solid fa-expand text-xs"></i>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -726,30 +2044,55 @@
     </div>
   </section>
 
-  <!-- Full-Screen Lightbox Modal -->
-  <div id="portfolioLightbox" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8 modal-backdrop">
-    <div class="relative max-w-4xl w-full bg-[#0E1322] rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
-      <button id="closeLightbox" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/70 text-white hover:bg-brand-lime hover:text-black flex items-center justify-center text-lg transition-all" aria-label="Close modal">
+    <!-- Full-Screen Lightbox Modal -->
+  <div id="portfolioLightbox" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 modal-backdrop">
+    <div class="relative max-w-5xl w-full bg-[#0E1322] rounded-3xl overflow-hidden border border-white/15 shadow-2xl flex flex-col">
+      
+      <!-- Close Button -->
+      <button id="closeLightbox" class="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-black/80 text-white hover:bg-brand-lime hover:text-black flex items-center justify-center text-lg transition-all shadow-lg" aria-label="Close modal">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      
-      <div class="max-h-[70vh] bg-black/90 flex items-center justify-center overflow-hidden">
-        <img id="lightboxImage" src="" alt="Portfolio Full Preview" class="max-h-[70vh] w-auto max-w-full object-contain">
+
+      <!-- Prev / Next Floating Navigation Buttons -->
+      <button id="lightboxPrev" class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/80 text-white hover:bg-brand-lime hover:text-black flex items-center justify-center text-base transition-all shadow-lg" aria-label="Previous image">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button id="lightboxNext" class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/80 text-white hover:bg-brand-lime hover:text-black flex items-center justify-center text-base transition-all shadow-lg" aria-label="Next image">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <!-- Full-Resolution Image Area with Centered Imagine Logo Loader -->
+      <div class="relative h-[65vh] sm:h-[72vh] bg-black/95 flex items-center justify-center overflow-hidden">
+        <div id="lightboxLoader" class="lightbox-loader-wrap">
+          <div class="p-3 bg-white/10 rounded-2xl border border-white/20 shadow-2xl backdrop-blur-md">
+            <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="h-10 w-auto object-contain animate-pulse">
+          </div>
+          <span class="text-xs font-mono text-slate-400 mt-3 uppercase tracking-wider flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-brand-lime animate-ping"></span> Loading High-Res Output...
+          </span>
+        </div>
+        <img id="lightboxImage" src="" alt="Portfolio Full Preview" class="max-h-[65vh] sm:max-h-[72vh] w-auto max-w-full object-contain transition-opacity duration-300">
       </div>
 
-      <div class="p-6 bg-[#0E1322] border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <span id="lightboxTag" class="text-xs font-mono text-brand-lime font-bold uppercase">Imagine Atelier</span>
-          <h3 id="lightboxTitle" class="text-lg sm:text-xl font-bold font-heading text-white">Project Inspection</h3>
+      <!-- Details Footer Bar with Direct WhatsApp Action -->
+      <div class="p-4 sm:p-6 bg-[#0E1322] border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="min-w-0">
+          <div class="flex items-center gap-3">
+            <span id="lightboxTag" class="text-xs font-mono text-brand-lime font-bold uppercase truncate">Imagine Atelier</span>
+            <span class="text-slate-600">•</span>
+            <span id="lightboxCounter" class="text-xs font-mono text-slate-400 flex-shrink-0">1 / 61</span>
+          </div>
+          <h3 id="lightboxTitle" class="text-base sm:text-lg font-bold font-heading text-white mt-1 truncate">Project Inspection</h3>
         </div>
         <button onclick="
           const title = document.getElementById('lightboxTitle').textContent;
-          openWhatsAppQuote(`Sample Work: ${title}`);
-        " class="px-5 py-2.5 rounded-xl bg-brand-lime text-slate-950 font-heading font-black text-xs hover:bg-brand-limeHover transition-all flex items-center justify-center gap-2 flex-shrink-0">
+          openWhatsAppQuote(`Portfolio Work Sample: $Dimensional Sunboard - 1`);
+        " class="px-5 py-2.5 rounded-xl bg-brand-lime text-slate-950 font-heading font-black text-xs hover:bg-brand-limeHover transition-all flex items-center justify-center gap-2 flex-shrink-0 shadow-lg shadow-brand-lime/20">
           <i class="fa-brands fa-whatsapp text-sm"></i>
           <span>Order Similar Output</span>
         </button>
       </div>
+
     </div>
   </div>
 
@@ -803,7 +2146,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
         <div class="lg:col-span-4 space-y-4">
           <div class="p-1.5 bg-white rounded-xl inline-block">
-            <img src="../assets/logo/Imagine Logo.png" alt="Imagine Printers" class="h-10 w-auto">
+            <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="h-10 w-auto">
           </div>
           <p class="text-xs text-slate-400 leading-relaxed">
             Imagine Printers (Est. 2011) — Premier commercial printing, packaging, luxury stationery, and 3D architectural signage manufacturer based in Thane, serving Maharashtra and all-India corporations.

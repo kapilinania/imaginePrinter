@@ -68,6 +68,43 @@
 
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="../css/style.css">
+  <!-- Universal Instant Brand Image Loader & Fail-Safe Fallback -->
+  <script>
+    window.onImagineImgLoaded = function(img) {
+      if (!img) return;
+      img.classList.add("is-loaded");
+      var parent = img.closest(".img-loader-box") || img.parentElement;
+      if (parent) {
+        var placeholder = parent.querySelector(".img-logo-placeholder");
+        if (placeholder) {
+          placeholder.classList.add("is-hidden");
+        }
+      }
+    };
+
+    window.onImagineImgError = function(img) {
+      if (!img) return;
+      if (img.src && img.src.includes(".webp") && !img.dataset.pngTried) {
+        img.dataset.pngTried = "true";
+        img.src = img.src.replace(/\.webp(\?.*)?$/, ".png$1");
+        return;
+      }
+      img.onerror = null;
+      var isSub = window.location.pathname.includes("/portfolio/") ||
+                  window.location.pathname.includes("/services/") ||
+                  window.location.pathname.includes("/about/") ||
+                  window.location.pathname.includes("/contact/");
+      img.src = isSub ? "../assets/logo/Imagine%20Logo.png" : "assets/logo/Imagine%20Logo.png";
+      img.classList.add("is-loaded", "is-fallback-logo");
+      var parent = img.closest(".img-loader-box") || img.parentElement;
+      if (parent) {
+        var placeholder = parent.querySelector(".img-logo-placeholder");
+        if (placeholder) {
+          placeholder.classList.add("is-hidden");
+        }
+      }
+    };
+  </script>
 </head>
 <body class="font-sans bg-[#07090F] text-slate-200 antialiased selection:bg-brand-lime selection:text-black">
 
@@ -111,7 +148,7 @@
       <!-- Logo -->
       <a href="../" class="flex items-center gap-3 group">
         <div class="p-1.5 bg-white rounded-xl shadow-lg border border-white/20 transition-transform group-hover:scale-105">
-          <img src="../assets/logo/Imagine Logo.png" alt="Imagine Printers Logo" class="h-9 sm:h-10 w-auto object-contain">
+          <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers Logo" class="h-9 sm:h-10 w-auto object-contain">
         </div>
       </a>
 
@@ -201,7 +238,7 @@
     <div>
       <div class="flex items-center justify-between pb-6 border-b border-white/10">
         <div class="p-1 bg-white rounded-lg inline-block">
-          <img src="../assets/logo/Imagine Logo.png" alt="Imagine Printers" class="h-8 w-auto">
+          <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="h-8 w-auto">
         </div>
         <button id="closeMobileMenu" class="w-8 h-8 rounded-full bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center">
           <i class="fa-solid fa-xmark text-lg"></i>
@@ -354,8 +391,14 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
         <div class="light-card p-6 rounded-2xl space-y-4 reveal-on-scroll reveal-delay-1">
-          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-slate-100 mb-2">
-            <img src="../assets/images/temp_3.jpg" alt="Commercial Offset Press" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-slate-950 mb-2 img-loader-box">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Atelier Tech</span>
+            </div>
+            <img src="../assets/images/FLYER%20%20Handbill/Flyer%20-%201.webp" alt="Commercial Offset Press" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <h3 class="text-base font-bold font-heading text-slate-900">Commercial Offset Press</h3>
           <p class="text-xs text-slate-600 leading-relaxed">
@@ -364,8 +407,14 @@
         </div>
 
         <div class="light-card p-6 rounded-2xl space-y-4 reveal-on-scroll reveal-delay-2">
-          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-slate-100 mb-2">
-            <img src="../assets/images/temp_10.jpg" alt="Industrial UV Flatbed Printers" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-slate-950 mb-2 img-loader-box">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Atelier Tech</span>
+            </div>
+            <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/Untitled%20design%20(11).webp" alt="Industrial UV Flatbed Printers" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <h3 class="text-base font-bold font-heading text-slate-900">Industrial UV Flatbed Printers</h3>
           <p class="text-xs text-slate-600 leading-relaxed">
@@ -374,8 +423,14 @@
         </div>
 
         <div class="light-card p-6 rounded-2xl space-y-4 reveal-on-scroll reveal-delay-3">
-          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-slate-100 mb-2">
-            <img src="../assets/images/temp_13.jpg" alt="UV DTF Crystal Transfer Units" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-slate-950 mb-2 img-loader-box">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Atelier Tech</span>
+            </div>
+            <img src="../assets/images/Sticker%20Print/Sticker%20Print.webp" alt="UV DTF Crystal Transfer Units" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <h3 class="text-base font-bold font-heading text-slate-900">UV DTF Crystal Transfer Units</h3>
           <p class="text-xs text-slate-600 leading-relaxed">
@@ -384,8 +439,14 @@
         </div>
 
         <div class="light-card p-6 rounded-2xl space-y-4 reveal-on-scroll reveal-delay-1">
-          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-slate-100 mb-2">
-            <img src="../assets/images/temp_14.jpg" alt="CNC Laser Cutting" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-slate-950 mb-2 img-loader-box">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Atelier Tech</span>
+            </div>
+            <img src="../assets/images/Sunboard%20Cutout/EVENT%20Sunboard%20CUTOUT.webp" alt="CNC Laser & Router Systems" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <h3 class="text-base font-bold font-heading text-slate-900">CNC Laser & Router Systems</h3>
           <p class="text-xs text-slate-600 leading-relaxed">
@@ -394,8 +455,14 @@
         </div>
 
         <div class="light-card p-6 rounded-2xl space-y-4 reveal-on-scroll reveal-delay-2">
-          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-slate-100 mb-2">
-            <img src="../assets/images/temp_6.jpg" alt="Roland Eco-Solvent" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-slate-950 mb-2 img-loader-box">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Atelier Tech</span>
+            </div>
+            <img src="../assets/images/Flex%20Banner%20Hoarding%20Printing/Banner%20-%202.webp" alt="Roland Eco-Solvent Large Format" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <h3 class="text-base font-bold font-heading text-slate-900">Roland Eco-Solvent Large Format</h3>
           <p class="text-xs text-slate-600 leading-relaxed">
@@ -404,8 +471,14 @@
         </div>
 
         <div class="light-card p-6 rounded-2xl space-y-4 reveal-on-scroll reveal-delay-3">
-          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-slate-100 mb-2">
-            <img src="../assets/images/temp_35.jpg" alt="AI Video & Media" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+          <div class="aspect-[16/10] rounded-xl overflow-hidden bg-slate-950 mb-2 img-loader-box">
+            <div class="img-logo-placeholder">
+              <div class="placeholder-logo-badge">
+                <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="placeholder-logo-img">
+              </div>
+              <span class="placeholder-text"><span class="placeholder-dot"></span> Atelier Tech</span>
+            </div>
+            <img src="../assets/images/Sign%20Board%20Acrylic%20WOrk/Event%20Back%20Drop.webp" alt="AI Video & Media Production" class="imagine-lazy-img w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" onload="onImagineImgLoaded(this)" onerror="onImagineImgError(this)">
           </div>
           <h3 class="text-base font-bold font-heading text-slate-900">AI Video & Media Production</h3>
           <p class="text-xs text-slate-600 leading-relaxed">
@@ -795,7 +868,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
         <div class="lg:col-span-4 space-y-4">
           <div class="p-1.5 bg-white rounded-xl inline-block">
-            <img src="../assets/logo/Imagine Logo.png" alt="Imagine Printers" class="h-10 w-auto">
+            <img src="../assets/logo/Imagine%20Logo.png" alt="Imagine Printers" class="h-10 w-auto">
           </div>
           <p class="text-xs text-slate-400 leading-relaxed">
             Imagine Printers (Est. 2011) — Premier commercial printing, packaging, luxury stationery, and 3D architectural signage manufacturer based in Thane, serving Maharashtra and all-India corporations.

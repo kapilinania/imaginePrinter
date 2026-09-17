@@ -3,18 +3,35 @@
  * Custom Animated Cursor, Infinite Text Flipper, 3D Card Tilt, Scroll Reveals & Ticker
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-  initCustomCursor();
-  initInfiniteTextFlipper();
-  initHeroInteractiveSlider();
-  initScrollReveals();
-  initMobileMenu();
-  initStickyHeader();
-  initServicesFilterAndSearch();
-  initPortfolioLightbox();
-  initContactForm();
-  initCallbackModal();
-});
+function initAll() {
+  const tasks = [
+    initCustomCursor,
+    initInfiniteTextFlipper,
+    initHeroInteractiveSlider,
+    initScrollReveals,
+    initMobileMenu,
+    initStickyHeader,
+    initServicesFilterAndSearch,
+    initPortfolioLightbox,
+    initBrandImageLoaders,
+    initContactForm,
+    initCallbackModal
+  ];
+
+  tasks.forEach(task => {
+    try {
+      task();
+    } catch (err) {
+      console.error(`[Init Error in ${task.name}]:`, err);
+    }
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAll);
+} else {
+  initAll();
+}
 
 /* --------------------------------------------------------------------------
    1. Custom Animated Brand Cursor (Desktop Only)
@@ -292,6 +309,9 @@ function initHeroInteractiveSlider() {
 
   // Initialize first active slide
   updateSlide(0);
+  window.goToHeroSlide = updateSlide;
+  window.heroNextSlide = nextSlide;
+  window.heroPrevSlide = prevSlide;
 }
 
 /* --------------------------------------------------------------------------
@@ -458,18 +478,58 @@ function initServicesFilterAndSearch() {
 }
 
 /* --------------------------------------------------------------------------
-   10. Portfolio Lightbox & Filter (portfolio.html)
+   10. Portfolio Lightbox & Interactive Filter (portfolio.html)
    -------------------------------------------------------------------------- */
+let activeLightboxItems = [];
+let currentLightboxIndex = 0;
+
 function initPortfolioLightbox() {
-  const portfolioItems = document.querySelectorAll('.portfolio-item');
+  const portfolioItems = Array.from(document.querySelectorAll('.portfolio-item'));
   const modal = document.getElementById('portfolioLightbox');
   const modalImg = document.getElementById('lightboxImage');
+  const modalLoader = document.getElementById('lightboxLoader');
   const modalTitle = document.getElementById('lightboxTitle');
   const modalTag = document.getElementById('lightboxTag');
+  const modalCounter = document.getElementById('lightboxCounter');
   const closeBtn = document.getElementById('closeLightbox');
+  const prevBtn = document.getElementById('lightboxPrev');
+  const nextBtn = document.getElementById('lightboxNext');
   const filterBtns = document.querySelectorAll('.portfolio-filter-btn');
+  const searchInput = document.getElementById('portfolioSearchInput');
+  const counterDisplay = document.getElementById('portfolioCountDisplay');
 
-  if (filterBtns.length && portfolioItems.length) {
+  activeLightboxItems = portfolioItems;
+
+  let currentCategory = 'all';
+  let currentSearch = '';
+
+  function updatePortfolioVisibility() {
+    let visibleCount = 0;
+    activeLightboxItems = [];
+
+    portfolioItems.forEach(item => {
+      const cat = item.getAttribute('data-category') || '';
+      const title = (item.getAttribute('data-title') || '').toLowerCase();
+      const tag = (item.getAttribute('data-tag') || '').toLowerCase();
+
+      const matchCat = (currentCategory === 'all') || (cat === currentCategory);
+      const matchSearch = !currentSearch || title.includes(currentSearch) || tag.includes(currentSearch);
+
+      if (matchCat && matchSearch) {
+        item.style.display = '';
+        activeLightboxItems.push(item);
+        visibleCount++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    if (counterDisplay) {
+      counterDisplay.textContent = `Showing ${visibleCount} of ${portfolioItems.length} portfolio items`;
+    }
+  }
+
+  if (filterBtns.length) {
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => {
@@ -479,33 +539,58 @@ function initPortfolioLightbox() {
         btn.classList.add('bg-brand-lime', 'text-slate-950', 'font-bold');
         btn.classList.remove('bg-slate-900', 'text-slate-300', 'border-slate-800');
 
-        const filter = btn.getAttribute('data-filter');
-        portfolioItems.forEach(item => {
-          if (filter === 'all' || item.getAttribute('data-category') === filter) {
-            item.style.display = '';
-          } else {
-            item.style.display = 'none';
-          }
-        });
+        currentCategory = btn.getAttribute('data-filter') || 'all';
+        updatePortfolioVisibility();
       });
     });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      currentSearch = e.target.value.trim().toLowerCase();
+      updatePortfolioVisibility();
+    });
+  }
+
+  function showLightboxIndex(index) {
+    if (!activeLightboxItems.length) return;
+    if (index < 0) index = activeLightboxItems.length - 1;
+    if (index >= activeLightboxItems.length) index = 0;
+    currentLightboxIndex = index;
+
+    const item = activeLightboxItems[currentLightboxIndex];
+    const imgSrc = item.getAttribute('data-img') || item.querySelector('img')?.src;
+    const title = item.getAttribute('data-title') || 'Imagine Print Production';
+    const tag = item.getAttribute('data-tag') || 'Commercial Print Craft';
+
+    if (modalLoader) modalLoader.classList.remove('is-hidden');
+    if (modalImg) {
+      modalImg.style.opacity = '0';
+      modalImg.onload = () => {
+        if (modalLoader) modalLoader.classList.add('is-hidden');
+        modalImg.style.opacity = '1';
+      };
+      modalImg.onerror = () => {
+        if (modalLoader) modalLoader.classList.remove('is-hidden');
+      };
+      modalImg.src = imgSrc;
+    }
+
+    if (modalTitle) modalTitle.textContent = title;
+    if (modalTag) modalTag.textContent = tag;
+    if (modalCounter) modalCounter.textContent = `${currentLightboxIndex + 1} / ${activeLightboxItems.length}`;
   }
 
   if (modal && modalImg) {
     portfolioItems.forEach(item => {
       item.addEventListener('click', () => {
-        const imgSrc = item.getAttribute('data-img') || item.querySelector('img')?.src;
-        const title = item.getAttribute('data-title') || 'Print Production Showcase';
-        const tag = item.getAttribute('data-tag') || 'Imagine Printers Atelier';
+        const foundIdx = activeLightboxItems.indexOf(item);
+        const targetIdx = foundIdx !== -1 ? foundIdx : 0;
+        showLightboxIndex(targetIdx);
 
-        if (imgSrc) {
-          modalImg.src = imgSrc;
-          if (modalTitle) modalTitle.textContent = title;
-          if (modalTag) modalTag.textContent = tag;
-          modal.classList.remove('hidden');
-          modal.classList.add('flex');
-          document.body.classList.add('overflow-hidden');
-        }
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.classList.add('overflow-hidden');
       });
     });
 
@@ -517,16 +602,68 @@ function initPortfolioLightbox() {
     }
 
     if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+    if (prevBtn) prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showLightboxIndex(currentLightboxIndex - 1);
+    });
+    if (nextBtn) nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showLightboxIndex(currentLightboxIndex + 1);
+    });
+
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeLightbox();
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-        closeLightbox();
+      if (!modal.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showLightboxIndex(currentLightboxIndex - 1);
+        if (e.key === 'ArrowRight') showLightboxIndex(currentLightboxIndex + 1);
       }
     });
   }
+}
+
+/* --------------------------------------------------------------------------
+   10B. Branded Logo Image Loader System (All Pages)
+   Ensures Imagine Printers logo is shown while images load; zero blank spaces
+   -------------------------------------------------------------------------- */
+window.onImagineImgLoaded = function(img) {
+  if (!img) return;
+  img.classList.add('is-loaded');
+  const parent = img.closest('.img-loader-box') || img.parentElement;
+  if (parent) {
+    const placeholder = parent.querySelector('.img-logo-placeholder');
+    if (placeholder) {
+      placeholder.classList.add('is-hidden');
+    }
+  }
+};
+
+window.onImagineImgError = function(img) {
+  if (!img) return;
+  // Keep logo placeholder visible gracefully, hide broken icon
+  img.style.display = 'none';
+  const parent = img.closest('.img-loader-box') || img.parentElement;
+  if (parent) {
+    const placeholder = parent.querySelector('.img-logo-placeholder');
+    if (placeholder) {
+      placeholder.classList.remove('is-hidden');
+    }
+  }
+};
+
+function initBrandImageLoaders() {
+  const images = document.querySelectorAll('.imagine-lazy-img');
+  images.forEach(img => {
+    if (img.complete && img.naturalWidth !== 0) {
+      window.onImagineImgLoaded(img);
+    } else {
+      img.addEventListener('load', () => window.onImagineImgLoaded(img));
+      img.addEventListener('error', () => window.onImagineImgError(img));
+    }
+  });
 }
 
 /* --------------------------------------------------------------------------
@@ -534,7 +671,7 @@ function initPortfolioLightbox() {
    -------------------------------------------------------------------------- */
 // Configurable Google Apps Script Web App Endpoint URL
 // Users can set window.IMAGINE_SCRIPT_URL or replace this string directly
-const GOOGLE_SHEETS_SCRIPT_URL = window.IMAGINE_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbz5NU0N5CX48CZGW4POYhAcZGv2mL--PER0wEJaCH-NXFuZI42DvcpP9SKRKEiJ1ORJ/exec';
+const GOOGLE_SHEETS_SCRIPT_URL = window.IMAGINE_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbwRrkJqJcUg8hUhfExcbbQUwWQfavvhiaO8WoNQ0gz4uD3vMYCXeJzhnqb2DX39q0ep/exec';
 
 /**
  * Ultra-fast, non-blocking background dispatcher to Google Sheets
